@@ -1,0 +1,122 @@
+[
+  {
+    "id": "sm-1",
+    "name": "Panchamrit Kit",
+    "hindiName": "पंचामृत किट",
+    "price": 349,
+    "category": "Kits",
+    "description": "Complete set for panchamrit abhishek — includes pure desi ghee, raw honey, cow's milk, curd, and mishri (rock sugar).",
+    "inStock": true,
+    "image": null
+  },
+  {
+    "id": "sm-2",
+    "name": "Satyanarayan Puja Kit",
+    "hindiName": "सत्यनारायण पूजा किट",
+    "price": 799,
+    "category": "Kits",
+    "description": "Complete samagri for Satyanarayan Vrat Katha including wheat, banana, milk, sugar, and 25 essential puja items.",
+    "inStock": true,
+    "image": null
+  },
+  {
+    "id": "sm-3",
+    "name": "Pure Cow Ghee (500g)",
+    "hindiName": "शुद्ध गाय का घी",
+    "price": 599,
+    "category": "Ingredients",
+    "description": "Pure A2 desi cow ghee from Gir cows, triple filtered. Essential for havan, abhishek, and lamp lighting.",
+    "inStock": true,
+    "image": null
+  },
+  {
+    "id": "sm-4",
+    "name": "Havan Samagri Mix (250g)",
+    "hindiName": "हवन सामग्री मिश्रण",
+    "price": 249,
+    "category": "Ingredients",
+    "description": "Blend of 51 sacred herbs, dried fruits, and aromatic ingredients for a complete and fragrant havan ritual.",
+    "inStock": true,
+    "image": null
+  },
+  {
+    "id": "sm-5",
+    "name": "Navgrah Havan Kit",
+    "hindiName": "नवग्रह हवन किट",
+    "price": 1299,
+    "category": "Kits",
+    "description": "9 types of samidha (sacred wood), 9 grains, 9 colored flowers — complete kit for planetary pacification havan.",
+    "inStock": true,
+    "image": null
+  },
+  {
+    "id": "sm-6",
+    "name": "Bilva Leaves (Dried, 100g)",
+    "hindiName": "बिल्व पत्र",
+    "price": 149,
+    "category": "Individual Items",
+    "description": "Sun-dried trifoliate Bilva (Bel) leaves, sacred to Lord Shiva. Essential for Shivratri puja and Rudrabhishek.",
+    "inStock": true,
+    "image": null
+  },
+  {
+    "id": "sm-7",
+    "name": "Kumkum & Haldi Set",
+    "hindiName": "कुमकुम और हल्दी सेट",
+    "price": 199,
+    "category": "Individual Items",
+    "description": "Premium natural kumkum (red vermillion) and organic haldi (turmeric) for all pujas and religious ceremonies.",
+    "inStock": true,
+    "image": null
+  },
+  {
+    "id": "sm-8",
+    "name": "Brass Diya Set (Set of 5)",
+    "hindiName": "पीतल दिया सेट",
+    "price": 449,
+    "category": "Individual Items",
+    "description": "Traditional handcrafted brass oil lamps. Premium quality, rust-free, perfect for daily puja and festivals.",
+    "inStock": false,
+    "image": null
+  },
+  {
+    "id": "sm-9",
+    "name": "Griha Pravesh Kit",
+    "hindiName": "गृह प्रवेश किट",
+    "price": 1499,
+    "category": "Kits",
+    "description": "Complete housewarming kit with kalash, mango leaves, coconut, red cloth, and 40+ essential puja items.",
+    "inStock": true,
+    "image": null
+  },
+  {
+    "id": "sm-10",
+    "name": "Ganga Jal (500ml)",
+    "hindiName": "गंगा जल",
+    "price": 199,
+    "category": "Individual Items",
+    "description": "Pure, certified Ganga Jal sourced directly from Haridwar. Essential for abhishek, purification rites, and daily puja.",
+    "inStock": true,
+    "image": null
+  },
+  {
+    "id": "sm-11",
+    "name": "Rudraksha Mala (108 beads)",
+    "hindiName": "रुद्राक्ष माला",
+    "price": 899,
+    "category": "Individual Items",
+    "description": "Certified 5-faced (Panchmukhi) Rudraksha mala from Nepal, energized and blessed. Ideal for Shiva mantra jaap.",
+    "inStock": true,
+    "image": null
+  },
+  {
+    "id": "sm-12",
+    "name": "Puja Thali Set (7 items)",
+    "hindiName": "पूजा थाली सेट",
+    "price": 699,
+    "category": "Individual Items",
+    "description": "Complete stainless steel puja thali with diya, sindoor holder, aarti stand, bell, incense holder, and small kalash.",
+    "inStock": true,
+    "image": null
+  }
+]

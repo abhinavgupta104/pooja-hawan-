@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "name": "Priya Mehta",
+    "profession": "Software Engineer",
+    "city": "Bangalore",
+    "rating": 5,
+    "review": "We booked Pandit Narasimha Murthy for our Griha Pravesh and it was an absolutely beautiful experience. He arrived 30 minutes early, explained every ritual in Kannada and Hindi, and the entire 5-hour ceremony felt divine. Our new home truly feels blessed. Will definitely book again for our upcoming birthday puja.",
+    "platform": "Google",
+    "photoInitials": "PM",
+    "date": "March 2026"
+  },
+  {
+    "id": 2,
+    "name": "Rahul Agarwal",
+    "profession": "Business Owner",
+    "city": "Delhi",
+    "rating": 5,
+    "review": "Booked for my office inauguration puja through Puja Havan and I'm thoroughly impressed. The pandit was highly experienced and the complete samagri kit was delivered the previous evening. Our office inauguration went flawlessly and our team felt the positive energy immediately. Highly recommend for business pujas!",
+    "platform": "Trustpilot",
+    "photoInitials": "RA",
+    "date": "April 2026"
+  },
+  {
+    "id": 3,
+    "name": "Anita Krishnamurthy",
+    "profession": "Doctor",
+    "city": "Chennai",
+    "rating": 5,
+    "review": "As Tamil speaking family, we were worried about finding a pandit who could perform rituals in Tamil with proper Agamic tradition. Puja Havan connected us with Pandit Venkatesh who was absolutely perfect. He performed the Satyanarayan Puja in pure Tamil with correct Agamic vidhi. Such a relief to find authentic South Indian tradition preserved.",
+    "platform": "Google",
+    "photoInitials": "AK",
+    "date": "February 2026"
+  },
+  {
+    "id": 4,
+    "name": "Vikram Nair",
+    "profession": "NRI — Abu Dhabi",
+    "city": "Dubai / Kerala",
+    "rating": 4,
+    "review": "Used the E-Puja service for my mother's annual Satyanarayana puja from abroad. The live stream was crystal clear, the pandit patiently waited for us to sync before each ritual, and the samagri kit was delivered to my family in Kochi beforehand. This service is a blessing for NRIs like us who miss performing pujas at home.",
+    "platform": "Google",
+    "photoInitials": "VN",
+    "date": "January 2026"
+  },
+  {
+    "id": 5,
+    "name": "Sunita Devi Sharma",
+    "profession": "Homemaker",
+    "city": "Lucknow",
+    "rating": 5,
+    "review": "My daughter's Namkaran ceremony was performed by Pandit Ramesh Kumar Sharma. His knowledge of Vedic traditions is vast and his explanations in Hindi made the ceremony meaningful for our entire family. He even helped us choose the name based on the nakshatra calculation. Baby Radha is truly lucky to have had such a beautiful ceremony.",
+    "platform": "Trustpilot",
+    "photoInitials": "SS",
+    "date": "March 2026"
+  },
+  {
+    "id": 6,
+    "name": "Deepak Chatterjee",
+    "profession": "Architect",
+    "city": "Kolkata",
+    "rating": 5,
+    "review": "Booked Pandit Krishnagopal for our Durga Puja at home. The pandal decoration guidance, proper Navapatra ritual with all 9 plants, and his melodious recitation of Chandi Path created an atmosphere that felt exactly like going to a traditional Bengal puja. His deep knowledge of Bengali traditions is unmatched on any platform.",
+    "platform": "Google",
+    "photoInitials": "DC",
+    "date": "October 2025"
+  },
+  {
+    "id": 7,
+    "name": "Meera Patel",
+    "profession": "Teacher",
+    "city": "Ahmedabad",
+    "rating": 5,
+    "review": "Got my Diwali Puja done through Puja Havan. The Gujarati-speaking pandit performed the Lakshmi Puja exactly as per our family traditions. The online booking was simple, the pandit was punctual, and the complete samagri was included at a very transparent price. No hidden costs whatsoever — I appreciate the honesty!",
+    "platform": "Google",
+    "photoInitials": "MP",
+    "date": "November 2025"
+  },
+  {
+    "id": 8,
+    "name": "Arjun Reddy",
+    "profession": "IIT Graduate Student",
+    "city": "Hyderabad",
+    "rating": 4,
+    "review": "Used Puja Havan for Saraswati Puja before my entrance exams. Pandit Narayana Iyer performed the puja beautifully in Telugu and explained the significance of each ritual. Very knowledgeable and approachable. The booking process through the app was seamless — even got the muhurat timing verified. Highly recommend!",
+    "platform": "Trustpilot",
+    "photoInitials": "AR",
+    "date": "January 2026"
+  }
+]
