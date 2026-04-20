@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import logo from '../../assets/logo.png'
 import { Phone, Mail, Clock } from 'lucide-react'
 
 // Inline social SVGs (brand icons removed from lucide-react v1+)
@@ -82,8 +83,18 @@ export default function Footer() {
       <div className="container-max" style={{ padding: '3rem 2rem', display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: '3rem' }}>
         {/* Col 1 */}
         <div>
-          <Link to="/" style={{ fontFamily: 'var(--font-heading)', fontSize: '1.4rem', color: 'var(--gold)', textDecoration: 'none', letterSpacing: '0.03em', display: 'block', marginBottom: '0.75rem' }}>
-            🪔 Puja Havan
+          <Link to="/" style={{ display: 'inline-block', marginBottom: '0.75rem' }} aria-label="Puja Havan — Home">
+            <img
+              src={logo}
+              alt="Puja Havan"
+              style={{
+                height: '56px',
+                width: 'auto',
+                objectFit: 'contain',
+                display: 'block',
+                filter: 'brightness(0) invert(1) sepia(1) saturate(3) hue-rotate(5deg)',
+              }}
+            />
           </Link>
           <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, marginBottom: '1.5rem', maxWidth: '320px' }}>
             India's most trusted platform for booking verified, experienced pandits across 50+ cities. Traditional rituals, modern accessibility.

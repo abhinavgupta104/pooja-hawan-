@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Menu, X, Phone, ChevronDown } from 'lucide-react'
+import logo from '../../assets/logo.png'
 import cities from '../../data/cities.json'
 
 const NAV_LINKS = [
@@ -52,23 +53,27 @@ export default function Navbar() {
         }}
       >
         <div className="container-max" style={{ display: 'flex', alignItems: 'center', height: '68px', gap: '1.5rem' }}>
-          {/* Brand */}
+          {/* Brand Logo */}
           <Link
             to="/"
             style={{
-              fontFamily: 'var(--font-heading)',
-              fontSize: '1.25rem',
-              color: 'var(--maroon)',
-              textDecoration: 'none',
-              fontWeight: 700,
-              letterSpacing: '0.03em',
               flexShrink: 0,
               display: 'flex',
               alignItems: 'center',
-              gap: '0.4rem',
+              textDecoration: 'none',
             }}
+            aria-label="Puja Havan — Home"
           >
-            🪔 Puja Havan
+            <img
+              src={logo}
+              alt="Puja Havan Logo"
+              style={{
+                height: '48px',
+                width: 'auto',
+                objectFit: 'contain',
+                display: 'block',
+              }}
+            />
           </Link>
 
           {/* Center: City selector */}
@@ -232,9 +237,9 @@ export default function Navbar() {
         <div className="mobile-sheet-overlay" onClick={() => setMobileOpen(false)} />
         <div className="mobile-sheet-panel" style={{ display: 'block' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem' }}>
-            <span style={{ fontFamily: 'var(--font-heading)', fontSize: '1.1rem', color: 'var(--maroon)' }}>
-              🪔 Puja Havan
-            </span>
+            <Link to="/" onClick={() => setMobileOpen(false)} aria-label="Puja Havan — Home">
+              <img src={logo} alt="Puja Havan" style={{ height: '44px', width: 'auto', objectFit: 'contain' }} />
+            </Link>
             <button
               onClick={() => setMobileOpen(false)}
               style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)' }}
