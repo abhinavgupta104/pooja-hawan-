@@ -96,7 +96,8 @@ export default function Contact() {
                 {[
                   { icon: Phone, text: '+91 99999 99999', sub: 'Mon–Sun, 6 AM – 10 PM' },
                   { icon: Mail, text: 'support@pujahavan.com', sub: 'We respond within 24 hours' },
-                  { icon: MapPin, text: '123 Puja Marg, New Delhi – 110001', sub: 'Head Office' },
+                  { icon: MapPin, text: '119/2 CK Nagar, Parappana Agrahara, Bengaluru 560100', sub: 'South India Office' },
+                  { icon: MapPin, text: 'D-9, Vyapar Marg, Sector 3, Noida 201301', sub: 'North India Office' },
                   { icon: Clock, text: '6:00 AM – 10:00 PM', sub: 'All days including holidays' },
                 ].map(({ icon: Icon, text, sub }) => (
                   <div key={text} style={{ display: 'flex', gap: '0.9rem', marginBottom: '1rem' }}>
@@ -152,8 +153,16 @@ export default function Contact() {
                 color: 'var(--text-muted)',
                 fontSize: '0.85rem',
               }}>
-                📍 123 Puja Marg, Karol Bagh, New Delhi – 110001<br />
-                <span style={{ fontSize: '0.75rem' }}>Near Karol Bagh Metro Station</span>
+              }}>
+                <div style={{ marginBottom: '1.5rem' }}>
+                  <p style={{ fontWeight: 600, color: 'var(--maroon)', fontSize: '0.85rem' }}>SOUTH INDIA OFFICE</p>
+                  📍 119/2 CK Nagar, Parappana Agrahara<br />Bengaluru, Karnataka 560100
+                </div>
+                <div>
+                  <p style={{ fontWeight: 600, color: 'var(--maroon)', fontSize: '0.85rem' }}>NORTH INDIA OFFICE</p>
+                  📍 D-9, Vyapar Marg, Sector 3<br />Noida, Uttar Pradesh 201301
+                </div>
+              </div>
               </div>
             </div>
           </div>

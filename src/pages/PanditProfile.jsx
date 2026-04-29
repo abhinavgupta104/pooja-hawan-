@@ -75,6 +75,18 @@ export default function PanditProfile() {
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '1.25rem' }}>
                   {pandit.education} · {pandit.certifications}
                 </p>
+                {pandit.whyChoose && (
+                  <div style={{ marginBottom: '1.5rem', backgroundColor: 'var(--bg-card)', padding: '1.25rem', borderRadius: '8px', border: '1px solid var(--border)' }}>
+                    <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.05rem', color: 'var(--text-primary)', marginBottom: '0.75rem' }}>Why Choose Acharya Ji</h3>
+                    <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                      {pandit.whyChoose.map(reason => (
+                        <li key={reason} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.4rem', fontSize: '0.9rem', color: 'var(--text-body)' }}>
+                          <span style={{ color: 'var(--saffron)' }}>✔️</span> {reason}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
                 <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                   <Link to="/booking" className="btn-primary">
                     Book {pandit.name.split(' ')[1]} →

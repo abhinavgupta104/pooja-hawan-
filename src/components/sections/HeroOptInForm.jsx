@@ -1,0 +1,116 @@
+import React, { useState } from 'react'
+
+export default function HeroOptInForm() {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    interest: '',
+    consent: true
+  })
+
+  const [submitted, setSubmitted] = useState(false)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    // Mock submission
+    setSubmitted(true)
+    setTimeout(() => {
+      setSubmitted(false)
+      setFormData({ name: '', phone: '', interest: '', consent: true })
+    }, 4000)
+  }
+
+  return (
+    <div
+      className="anim-fade-up anim-delay-3"
+      style={{
+        backgroundColor: 'var(--bg-card)',
+        border: '1.5px solid var(--gold-muted)',
+        borderRadius: '12px',
+        padding: '1.5rem',
+        boxShadow: 'var(--shadow-warm)',
+        marginBottom: '1.5rem',
+        maxWidth: '560px',
+      }}
+    >
+      <p style={{ fontFamily: 'var(--font-heading)', fontSize: '0.85rem', letterSpacing: '0.12em', color: 'var(--text-gold)', textTransform: 'uppercase', marginBottom: '1rem' }}>
+        Get Free Vedic Consultation
+      </p>
+
+      {submitted ? (
+        <div style={{ padding: '2rem 1rem', textAlign: 'center', backgroundColor: 'var(--gold-bg)', borderRadius: '8px', border: '1px solid var(--border-gold)' }}>
+          <p style={{ fontFamily: 'var(--font-heading)', fontSize: '1.2rem', color: 'var(--saffron)', marginBottom: '0.5rem' }}>🙏 Thank You!</p>
+          <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-body)', fontSize: '0.95rem' }}>Acharya Ji's team will contact you shortly.</p>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '0.75rem' }}>
+            <div className="form-field">
+              <label className="form-label" htmlFor="optin-name">Full Name</label>
+              <input
+                type="text"
+                id="optin-name"
+                required
+                className="form-input"
+                placeholder="Enter your name"
+                value={formData.name}
+                onChange={e => setFormData({ ...formData, name: e.target.value })}
+              />
+            </div>
+            <div className="form-field">
+              <label className="form-label" htmlFor="optin-phone">Phone Number</label>
+              <input
+                type="tel"
+                id="optin-phone"
+                required
+                className="form-input"
+                placeholder="WhatsApp number"
+                value={formData.phone}
+                onChange={e => setFormData({ ...formData, phone: e.target.value })}
+              />
+            </div>
+          </div>
+          
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '0.75rem', alignItems: 'end', marginBottom: '1rem' }}>
+            <div className="form-field">
+              <label className="form-label" htmlFor="optin-interest">I am interested in</label>
+              <select
+                id="optin-interest"
+                required
+                className="form-input form-select"
+                value={formData.interest}
+                onChange={e => setFormData({ ...formData, interest: e.target.value })}
+              >
+                <option value="">Select an option</option>
+                <option value="astrology">Kundli & Astrology</option>
+                <option value="puja">Puja Services</option>
+                <option value="vastu">Vastu Consultation</option>
+                <option value="other">Other Inquiry</option>
+              </select>
+            </div>
+            <button
+              type="submit"
+              className="btn-primary"
+              style={{ height: '42px', padding: '0 1.5rem', whiteSpace: 'nowrap' }}
+            >
+              Request Callback
+            </button>
+          </div>
+
+          <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+            <input 
+              type="checkbox" 
+              required
+              checked={formData.consent}
+              onChange={e => setFormData({ ...formData, consent: e.target.checked })}
+              style={{ accentColor: 'var(--maroon)', cursor: 'pointer', width: '16px', height: '16px' }}
+            />
+            <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+              I agree to receive communication from Puja Hawan via RCS, SMS, WhatsApp, Email, or Call. I understand I can opt out anytime.
+            </span>
+          </label>
+        </form>
+      )}
+    </div>
+  )
+}

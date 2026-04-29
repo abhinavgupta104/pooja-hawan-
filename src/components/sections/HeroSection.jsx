@@ -4,6 +4,7 @@ import { Search, CheckCircle2 } from 'lucide-react'
 import MandalaBg from '../common/MandalaBg'
 import services from '../../data/services.json'
 import cities from '../../data/cities.json'
+import HeroOptInForm from './HeroOptInForm'
 
 export default function HeroSection() {
   const [selectedPuja, setSelectedPuja] = useState('')
@@ -98,74 +99,8 @@ export default function HeroSection() {
               across 50+ cities in India.
             </p>
 
-            {/* Booking Widget */}
-            <div
-              className="anim-fade-up anim-delay-3"
-              style={{
-                backgroundColor: 'var(--bg-card)',
-                border: '1.5px solid var(--gold-muted)',
-                borderRadius: '12px',
-                padding: '1.5rem',
-                boxShadow: 'var(--shadow-warm)',
-                marginBottom: '1.5rem',
-                maxWidth: '560px',
-              }}
-            >
-              <p style={{ fontFamily: 'var(--font-heading)', fontSize: '0.75rem', letterSpacing: '0.12em', color: 'var(--text-gold)', textTransform: 'uppercase', marginBottom: '1rem' }}>
-                Find the Right Pandit
-              </p>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '0.75rem' }}>
-                <div className="form-field">
-                  <label className="form-label" htmlFor="hero-puja-type">Puja Type</label>
-                  <select
-                    id="hero-puja-type"
-                    className="form-input form-select"
-                    value={selectedPuja}
-                    onChange={e => setSelectedPuja(e.target.value)}
-                  >
-                    <option value="">Select Puja</option>
-                    {services.map(s => (
-                      <option key={s.id} value={s.id}>{s.name}</option>
-                    ))}
-                  </select>
-                </div>
-                <div className="form-field">
-                  <label className="form-label" htmlFor="hero-city">City</label>
-                  <select
-                    id="hero-city"
-                    className="form-input form-select"
-                    value={selectedCity}
-                    onChange={e => setSelectedCity(e.target.value)}
-                  >
-                    <option value="">Select City</option>
-                    {cities.map(c => (
-                      <option key={c.id} value={c.name}>{c.name}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '0.75rem', alignItems: 'end' }}>
-                <div className="form-field">
-                  <label className="form-label" htmlFor="hero-date">Date</label>
-                  <input
-                    type="date"
-                    id="hero-date"
-                    className="form-input"
-                    value={selectedDate}
-                    onChange={e => setSelectedDate(e.target.value)}
-                    min={new Date().toISOString().split('T')[0]}
-                  />
-                </div>
-                <button
-                  onClick={handleFind}
-                  className="btn-primary"
-                  style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', whiteSpace: 'nowrap', height: '42px' }}
-                >
-                  <Search size={16} />
-                  Find Pandit
-                </button>
-              </div>
-            </div>
+            {/* Opt-In Form */}
+            <HeroOptInForm />
 
             {/* Trust badges */}
             <div

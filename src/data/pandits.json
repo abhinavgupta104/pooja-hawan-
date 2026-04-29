@@ -1,11 +1,53 @@
 [
   {
+    "id": "acharya-prashant-pandey",
+    "name": "Acharya Prashant Pandey",
+    "photo": "/images/pandits/acharya_prashant.png",
+    "city": "Varanasi",
+    "languages": [
+      "Hindi",
+      "Sanskrit"
+    ],
+    "specializations": [
+      "Vastu Shanti",
+      "Vivah Puja",
+      "Satyanarayan Puja",
+      "Rudrabhishek",
+      "Vedic Astrology",
+      "Kundli Analysis"
+    ],
+    "experience": 20,
+    "rating": 5,
+    "reviewCount": 1500,
+    "pricePerPuja": 2100,
+    "bio": "Acharya Prashant Pandey is a highly experienced and respected Vedic astrologer (Jyotishacharya) with over 20 years of expertise in astrology, Vedic rituals, and Vastu Shastra. He has guided 1500+ individuals and families in making life decisions related to career, marriage, finance, health, and spiritual growth.",
+    "education": "Jyotishacharya (Phalit Jyotish) from Banaras Hindu University (BHU)",
+    "certifications": "Jyotishacharya & Vedic Consultant",
+    "available": true,
+    "whyChoose": [
+      "20+ Years Proven Experience",
+      "Authentic Vedic Knowledge",
+      "Accurate & Practical Guidance",
+      "Personalized Remedies",
+      "Trusted by 1500+ of Individual & Families"
+    ]
+  },
+  {
     "id": "pandit-1",
     "name": "Pt. Ramesh Kumar Sharma",
     "photo": "https://i.pravatar.cc/150?img=11",
     "city": "Delhi",
-    "languages": ["Hindi", "Sanskrit", "Maithil"],
-    "specializations": ["Satyanarayan Puja", "Griha Pravesh", "Navgraha Havan", "Rudrabhishek"],
+    "languages": [
+      "Hindi",
+      "Sanskrit",
+      "Maithil"
+    ],
+    "specializations": [
+      "Satyanarayan Puja",
+      "Griha Pravesh",
+      "Navgraha Havan",
+      "Rudrabhishek"
+    ],
     "experience": 22,
     "rating": 4.9,
     "reviewCount": 342,
@@ -20,8 +62,17 @@
     "name": "Pt. Venkatesh Raghavan",
     "photo": "https://i.pravatar.cc/150?img=12",
     "city": "Chennai",
-    "languages": ["Tamil", "Sanskrit", "Telugu"],
-    "specializations": ["Rudrabhishek", "Kaal Sarp Dosh", "Navgraha Havan", "Durga Puja"],
+    "languages": [
+      "Tamil",
+      "Sanskrit",
+      "Telugu"
+    ],
+    "specializations": [
+      "Rudrabhishek",
+      "Kaal Sarp Dosh",
+      "Navgraha Havan",
+      "Durga Puja"
+    ],
     "experience": 18,
     "rating": 4.8,
     "reviewCount": 218,
@@ -36,8 +87,18 @@
     "name": "Pt. Suresh Bhat Kulkarni",
     "photo": "https://i.pravatar.cc/150?img=13",
     "city": "Mumbai",
-    "languages": ["Marathi", "Hindi", "Sanskrit", "Kannada"],
-    "specializations": ["Satyanarayan Puja", "Ganesh Chaturthi Puja", "Vastu Shanti", "Namkaran Sanskar"],
+    "languages": [
+      "Marathi",
+      "Hindi",
+      "Sanskrit",
+      "Kannada"
+    ],
+    "specializations": [
+      "Satyanarayan Puja",
+      "Ganesh Chaturthi Puja",
+      "Vastu Shanti",
+      "Namkaran Sanskar"
+    ],
     "experience": 15,
     "rating": 4.9,
     "reviewCount": 289,
@@ -52,8 +113,18 @@
     "name": "Pt. Narasimha Murthy",
     "photo": "https://i.pravatar.cc/150?img=14",
     "city": "Bangalore",
-    "languages": ["Kannada", "Sanskrit", "Telugu", "Hindi"],
-    "specializations": ["Griha Pravesh", "Vastu Shanti", "Rudrabhishek", "Vivah Puja"],
+    "languages": [
+      "Kannada",
+      "Sanskrit",
+      "Telugu",
+      "Hindi"
+    ],
+    "specializations": [
+      "Griha Pravesh",
+      "Vastu Shanti",
+      "Rudrabhishek",
+      "Vivah Puja"
+    ],
     "experience": 20,
     "rating": 4.7,
     "reviewCount": 176,
@@ -68,8 +139,17 @@
     "name": "Pt. Krishnagopal Bhattacharya",
     "photo": "https://i.pravatar.cc/150?img=15",
     "city": "Kolkata",
-    "languages": ["Bengali", "Sanskrit", "Hindi"],
-    "specializations": ["Durga Puja", "Saraswati Puja", "Satyanarayan Puja", "Pitru Dosh Nivaran"],
+    "languages": [
+      "Bengali",
+      "Sanskrit",
+      "Hindi"
+    ],
+    "specializations": [
+      "Durga Puja",
+      "Saraswati Puja",
+      "Satyanarayan Puja",
+      "Pitru Dosh Nivaran"
+    ],
     "experience": 25,
     "rating": 4.9,
     "reviewCount": 312,
@@ -84,8 +164,17 @@
     "name": "Pt. Mukesh Pandya",
     "photo": "https://i.pravatar.cc/150?img=16",
     "city": "Ahmedabad",
-    "languages": ["Gujarati", "Hindi", "Sanskrit"],
-    "specializations": ["Satyanarayan Puja", "Lakshmi Puja", "Office Opening Puja", "Diwali Puja"],
+    "languages": [
+      "Gujarati",
+      "Hindi",
+      "Sanskrit"
+    ],
+    "specializations": [
+      "Satyanarayan Puja",
+      "Lakshmi Puja",
+      "Office Opening Puja",
+      "Diwali Puja"
+    ],
     "experience": 16,
     "rating": 4.8,
     "reviewCount": 203,
@@ -100,8 +189,18 @@
     "name": "Pt. Narayana Iyer",
     "photo": "https://i.pravatar.cc/150?img=17",
     "city": "Hyderabad",
-    "languages": ["Telugu", "Sanskrit", "Tamil", "Hindi"],
-    "specializations": ["Kaal Sarp Dosh", "Navgraha Havan", "Mahamrityunjay Jaap", "Pitru Dosh Nivaran"],
+    "languages": [
+      "Telugu",
+      "Sanskrit",
+      "Tamil",
+      "Hindi"
+    ],
+    "specializations": [
+      "Kaal Sarp Dosh",
+      "Navgraha Havan",
+      "Mahamrityunjay Jaap",
+      "Pitru Dosh Nivaran"
+    ],
     "experience": 19,
     "rating": 4.7,
     "reviewCount": 195,
@@ -116,8 +215,18 @@
     "name": "Pt. Dhirendra Prasad",
     "photo": "https://i.pravatar.cc/150?img=18",
     "city": "Patna",
-    "languages": ["Bihari", "Hindi", "Maithil", "Sanskrit"],
-    "specializations": ["Namkaran Sanskar", "Annaprashan Puja", "Vivah Puja", "Sundarkand Path"],
+    "languages": [
+      "Bihari",
+      "Hindi",
+      "Maithil",
+      "Sanskrit"
+    ],
+    "specializations": [
+      "Namkaran Sanskar",
+      "Annaprashan Puja",
+      "Vivah Puja",
+      "Sundarkand Path"
+    ],
     "experience": 14,
     "rating": 4.6,
     "reviewCount": 154,
@@ -132,8 +241,17 @@
     "name": "Pt. Ravi Shankar Joshi",
     "photo": "https://i.pravatar.cc/150?img=19",
     "city": "Pune",
-    "languages": ["Marathi", "Hindi", "Sanskrit"],
-    "specializations": ["Rudrabhishek", "Vastu Shanti", "Griha Pravesh", "Birthday Puja"],
+    "languages": [
+      "Marathi",
+      "Hindi",
+      "Sanskrit"
+    ],
+    "specializations": [
+      "Rudrabhishek",
+      "Vastu Shanti",
+      "Griha Pravesh",
+      "Birthday Puja"
+    ],
     "experience": 12,
     "rating": 4.8,
     "reviewCount": 167,
@@ -148,8 +266,18 @@
     "name": "Pt. Srinivasa Rao",
     "photo": "https://i.pravatar.cc/150?img=20",
     "city": "Coimbatore",
-    "languages": ["Tamil", "Kannada", "Sanskrit", "Telugu"],
-    "specializations": ["Satyanarayan Puja", "Durga Puja", "Ganesh Puja", "Vivah Puja"],
+    "languages": [
+      "Tamil",
+      "Kannada",
+      "Sanskrit",
+      "Telugu"
+    ],
+    "specializations": [
+      "Satyanarayan Puja",
+      "Durga Puja",
+      "Ganesh Puja",
+      "Vivah Puja"
+    ],
     "experience": 21,
     "rating": 4.9,
     "reviewCount": 267,

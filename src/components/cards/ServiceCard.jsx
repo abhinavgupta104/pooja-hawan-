@@ -42,7 +42,7 @@ export default function ServiceCard({ service, featured = false, index = 0 }) {
         {/* Left: visual */}
         <div style={{
           width: '40%',
-          background: 'linear-gradient(135deg, var(--gold-bg) 0%, var(--bg-section-alt) 100%)',
+          background: service.image ? `url(${service.image}) center/cover no-repeat` : 'linear-gradient(135deg, var(--gold-bg) 0%, var(--bg-section-alt) 100%)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -50,6 +50,10 @@ export default function ServiceCard({ service, featured = false, index = 0 }) {
           position: 'relative',
           overflow: 'hidden',
         }}>
+          {service.image && (
+            <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(10, 5, 5, 0.3)' }} />
+          )}
+          {!service.image && (
           <div style={{
             width: '100px',
             height: '100px',
@@ -59,9 +63,11 @@ export default function ServiceCard({ service, featured = false, index = 0 }) {
             alignItems: 'center',
             justifyContent: 'center',
             border: '2px solid var(--gold-muted)',
+            zIndex: 1,
           }}>
             <IconComponent size={48} color="var(--gold)" />
           </div>
+          )}
           {/* Decorative circles */}
           <div style={{
             position: 'absolute',
@@ -134,10 +140,28 @@ export default function ServiceCard({ service, featured = false, index = 0 }) {
         animationDelay: `calc(${index} * 80ms)`,
       }}
     >
-      {/* Icon */}
-      <div className="gold-icon-bg" style={{ width: '52px', height: '52px', marginBottom: '1rem' }}>
-        <IconComponent size={22} color="var(--gold)" />
-      </div>
+      {/* Icon / Image */}
+      {service.image ? (
+        <div style={{
+          width: '100%',
+          height: '160px',
+          marginBottom: '1rem',
+          borderRadius: '8px',
+          overflow: 'hidden',
+          border: '1px solid var(--gold-muted)',
+          flexShrink: 0,
+        }}>
+          <img 
+            src={service.image} 
+            alt={service.name} 
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+        </div>
+      ) : (
+        <div className="gold-icon-bg" style={{ width: '52px', height: '52px', marginBottom: '1rem' }}>
+          <IconComponent size={22} color="var(--gold)" />
+        </div>
+      )}
 
       {/* Category badge */}
       <span className="service-badge" style={{ marginBottom: '0.6rem', alignSelf: 'flex-start' }}>

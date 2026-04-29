@@ -10,11 +10,25 @@
     "shortDesc": "Blessings of Lord Vishnu for prosperity and harmony",
     "duration": "3-4 hours",
     "startingPrice": 1501,
-    "includes": ["Samagri kit", "Prasad ingredients", "Flower decoration", "Katha recitation"],
-    "benefits": ["Fulfillment of wishes", "Peace and harmony at home", "Removal of obstacles", "Financial prosperity"],
+    "includes": [
+      "Samagri kit",
+      "Prasad ingredients",
+      "Flower decoration",
+      "Katha recitation"
+    ],
+    "benefits": [
+      "Fulfillment of wishes",
+      "Peace and harmony at home",
+      "Removal of obstacles",
+      "Financial prosperity"
+    ],
     "featured": true,
     "mostBooked": true,
-    "tags": ["Popular", "Festival"]
+    "tags": [
+      "Popular",
+      "Festival"
+    ],
+    "image": "/images/gods/vishnu.png"
   },
   {
     "id": "griha-pravesh",
@@ -27,11 +41,25 @@
     "shortDesc": "Sacred housewarming ritual to purify new home",
     "duration": "4-5 hours",
     "startingPrice": 2501,
-    "includes": ["Vastu pooja", "Ganapati sthapana", "Navagraha puja", "Complete samagri"],
-    "benefits": ["Purification of space", "Removal of Vastu doshas", "Peace and prosperity", "Divine protection"],
+    "includes": [
+      "Vastu pooja",
+      "Ganapati sthapana",
+      "Navagraha puja",
+      "Complete samagri"
+    ],
+    "benefits": [
+      "Purification of space",
+      "Removal of Vastu doshas",
+      "Peace and prosperity",
+      "Divine protection"
+    ],
     "featured": false,
     "mostBooked": true,
-    "tags": ["Sanskar", "Home"]
+    "tags": [
+      "Sanskar",
+      "Home"
+    ],
+    "image": "/images/gods/vastu_purush.png"
   },
   {
     "id": "ganesh-puja",
@@ -44,11 +72,25 @@
     "shortDesc": "Remove obstacles with Lord Ganesh's blessings",
     "duration": "1-2 hours",
     "startingPrice": 1101,
-    "includes": ["Modak prasad", "Durva grass", "Red flowers", "Sandalwood paste"],
-    "benefits": ["Removal of obstacles", "Success in new ventures", "Wisdom and intelligence", "Good luck"],
+    "includes": [
+      "Modak prasad",
+      "Durva grass",
+      "Red flowers",
+      "Sandalwood paste"
+    ],
+    "benefits": [
+      "Removal of obstacles",
+      "Success in new ventures",
+      "Wisdom and intelligence",
+      "Good luck"
+    ],
     "featured": false,
     "mostBooked": true,
-    "tags": ["Festival", "Daily"]
+    "tags": [
+      "Festival",
+      "Daily"
+    ],
+    "image": "/images/gods/ganesha.png"
   },
   {
     "id": "rudrabhishek",
@@ -61,11 +103,25 @@
     "shortDesc": "Sacred Shiva abhishek for divine blessings",
     "duration": "2-3 hours",
     "startingPrice": 1801,
-    "includes": ["Panchamrit", "Bilva leaves", "Dhatura flowers", "Complete samagri"],
-    "benefits": ["Liberation from sins", "Health and longevity", "Peace of mind", "Fulfillment of desires"],
+    "includes": [
+      "Panchamrit",
+      "Bilva leaves",
+      "Dhatura flowers",
+      "Complete samagri"
+    ],
+    "benefits": [
+      "Liberation from sins",
+      "Health and longevity",
+      "Peace of mind",
+      "Fulfillment of desires"
+    ],
     "featured": false,
     "mostBooked": false,
-    "tags": ["Daily", "Shiva"]
+    "tags": [
+      "Daily",
+      "Shiva"
+    ],
+    "image": "/images/gods/shiva.png"
   },
   {
     "id": "navgraha-havan",
@@ -78,11 +134,25 @@
     "shortDesc": "Balance planetary energies with fire ritual",
     "duration": "3-4 hours",
     "startingPrice": 2101,
-    "includes": ["Nine types of samidha", "Ghee", "Complete havan samagri", "Prasad"],
-    "benefits": ["Planetary balance", "Career advancement", "Health improvement", "Removal of bad luck"],
+    "includes": [
+      "Nine types of samidha",
+      "Ghee",
+      "Complete havan samagri",
+      "Prasad"
+    ],
+    "benefits": [
+      "Planetary balance",
+      "Career advancement",
+      "Health improvement",
+      "Removal of bad luck"
+    ],
     "featured": false,
     "mostBooked": false,
-    "tags": ["Dosha Nivaran", "Havan"]
+    "tags": [
+      "Dosha Nivaran",
+      "Havan"
+    ],
+    "image": "/images/gods/navgraha.png"
   },
   {
     "id": "lakshmi-puja",
@@ -95,11 +165,25 @@
     "shortDesc": "Invoke Goddess Lakshmi for wealth and prosperity",
     "duration": "2-3 hours",
     "startingPrice": 1501,
-    "includes": ["Lotus flowers", "Red cloth", "Kumkum", "Sweet offerings"],
-    "benefits": ["Financial prosperity", "Success in business", "Abundance and wealth", "Peace and harmony"],
+    "includes": [
+      "Lotus flowers",
+      "Red cloth",
+      "Kumkum",
+      "Sweet offerings"
+    ],
+    "benefits": [
+      "Financial prosperity",
+      "Success in business",
+      "Abundance and wealth",
+      "Peace and harmony"
+    ],
     "featured": false,
     "mostBooked": true,
-    "tags": ["Festival", "Prosperity"]
+    "tags": [
+      "Festival",
+      "Prosperity"
+    ],
+    "image": "/images/gods/lakshmi.png"
   },
   {
     "id": "mahamrityunjay-jaap",
@@ -112,11 +196,25 @@
     "shortDesc": "Powerful mantra jaap for health and longevity",
     "duration": "Full day (8 hours)",
     "startingPrice": 5101,
-    "includes": ["108-bead mala", "Bilva leaves", "White flowers", "Milk abhishek"],
-    "benefits": ["Protection from diseases", "Recovery from illness", "Long life", "Protection from accidents"],
+    "includes": [
+      "108-bead mala",
+      "Bilva leaves",
+      "White flowers",
+      "Milk abhishek"
+    ],
+    "benefits": [
+      "Protection from diseases",
+      "Recovery from illness",
+      "Long life",
+      "Protection from accidents"
+    ],
     "featured": false,
     "mostBooked": false,
-    "tags": ["Daily", "Health"]
+    "tags": [
+      "Daily",
+      "Health"
+    ],
+    "image": "/images/gods/shiva.png"
   },
   {
     "id": "namkaran-sanskar",
@@ -129,11 +227,25 @@
     "shortDesc": "Sacred naming ceremony for your newborn",
     "duration": "2-3 hours",
     "startingPrice": 1801,
-    "includes": ["Horoscope preparation", "Name suggestions", "Puja samagri", "Blessing ceremony"],
-    "benefits": ["Auspicious beginning for child", "Naming as per nakshatra", "Divine blessings", "Family union"],
+    "includes": [
+      "Horoscope preparation",
+      "Name suggestions",
+      "Puja samagri",
+      "Blessing ceremony"
+    ],
+    "benefits": [
+      "Auspicious beginning for child",
+      "Naming as per nakshatra",
+      "Divine blessings",
+      "Family union"
+    ],
     "featured": false,
     "mostBooked": false,
-    "tags": ["Sanskar", "Baby"]
+    "tags": [
+      "Sanskar",
+      "Baby"
+    ],
+    "image": "/images/gods/brahma.png"
   },
   {
     "id": "vivah-puja",
@@ -146,11 +258,25 @@
     "shortDesc": "Complete Vedic wedding ceremony rituals",
     "duration": "6-8 hours",
     "startingPrice": 11001,
-    "includes": ["Saptapadi", "Kanyadaan", "Mangalsutra ceremony", "Complete samagri"],
-    "benefits": ["Sacred union", "Divine blessings for couple", "Family harmony", "Prosperous married life"],
+    "includes": [
+      "Saptapadi",
+      "Kanyadaan",
+      "Mangalsutra ceremony",
+      "Complete samagri"
+    ],
+    "benefits": [
+      "Sacred union",
+      "Divine blessings for couple",
+      "Family harmony",
+      "Prosperous married life"
+    ],
     "featured": false,
     "mostBooked": false,
-    "tags": ["Sanskar", "Wedding"]
+    "tags": [
+      "Sanskar",
+      "Wedding"
+    ],
+    "image": "/images/gods/ram.png"
   },
   {
     "id": "vastu-shanti",
@@ -163,11 +289,25 @@
     "shortDesc": "Rectify Vastu doshas with sacred ritual",
     "duration": "4-5 hours",
     "startingPrice": 3501,
-    "includes": ["Vastu yantra", "Navagraha puja", "Havan", "Space purification"],
-    "benefits": ["Vastu dosha removal", "Peace in household", "Business growth", "Health improvement"],
+    "includes": [
+      "Vastu yantra",
+      "Navagraha puja",
+      "Havan",
+      "Space purification"
+    ],
+    "benefits": [
+      "Vastu dosha removal",
+      "Peace in household",
+      "Business growth",
+      "Health improvement"
+    ],
     "featured": false,
     "mostBooked": false,
-    "tags": ["Dosha Nivaran", "Vastu"]
+    "tags": [
+      "Dosha Nivaran",
+      "Vastu"
+    ],
+    "image": "/images/gods/vastu_purush.png"
   },
   {
     "id": "kaal-sarp-dosh",
@@ -180,11 +320,24 @@
     "shortDesc": "Neutralize Kaal Sarp Dosh from horoscope",
     "duration": "4-5 hours",
     "startingPrice": 3101,
-    "includes": ["Silver snake idol", "Special samagri", "Havan", "Yantra energization"],
-    "benefits": ["Relief from obstacles", "Career stability", "Health improvement", "Marital harmony"],
+    "includes": [
+      "Silver snake idol",
+      "Special samagri",
+      "Havan",
+      "Yantra energization"
+    ],
+    "benefits": [
+      "Relief from obstacles",
+      "Career stability",
+      "Health improvement",
+      "Marital harmony"
+    ],
     "featured": false,
     "mostBooked": false,
-    "tags": ["Dosha Nivaran"]
+    "tags": [
+      "Dosha Nivaran"
+    ],
+    "image": "/images/gods/shiva.png"
   },
   {
     "id": "pitru-dosh-nivaran",
@@ -197,11 +350,24 @@
     "shortDesc": "Ancestral pacification to remove Pitru Dosh",
     "duration": "3-4 hours",
     "startingPrice": 2501,
-    "includes": ["Tarpan ritual", "Pind daan", "Brahmin bhojan", "Complete samagri"],
-    "benefits": ["Ancestral peace", "Removal of Pitru Dosh", "Family health", "Prosperity"],
+    "includes": [
+      "Tarpan ritual",
+      "Pind daan",
+      "Brahmin bhojan",
+      "Complete samagri"
+    ],
+    "benefits": [
+      "Ancestral peace",
+      "Removal of Pitru Dosh",
+      "Family health",
+      "Prosperity"
+    ],
     "featured": false,
     "mostBooked": false,
-    "tags": ["Mukti Karma"]
+    "tags": [
+      "Mukti Karma"
+    ],
+    "image": "/images/gods/vishnu.png"
   },
   {
     "id": "sundarkand-path",
@@ -214,11 +380,25 @@
     "shortDesc": "Hanuman blessings through sacred Sundarkand recitation",
     "duration": "3-4 hours",
     "startingPrice": 1501,
-    "includes": ["Ramcharitmanas", "Hanuman prasad", "Tulsi garland", "Diyas"],
-    "benefits": ["Lord Hanuman's blessings", "Removal of obstacles", "Victory over enemies", "Health and strength"],
+    "includes": [
+      "Ramcharitmanas",
+      "Hanuman prasad",
+      "Tulsi garland",
+      "Diyas"
+    ],
+    "benefits": [
+      "Lord Hanuman's blessings",
+      "Removal of obstacles",
+      "Victory over enemies",
+      "Health and strength"
+    ],
     "featured": false,
     "mostBooked": false,
-    "tags": ["Daily", "Path"]
+    "tags": [
+      "Daily",
+      "Path"
+    ],
+    "image": "/images/gods/hanuman.png"
   },
   {
     "id": "office-opening-puja",
@@ -231,11 +411,25 @@
     "shortDesc": "Auspicious inauguration for new offices and shops",
     "duration": "2-3 hours",
     "startingPrice": 2101,
-    "includes": ["Ganesh puja", "Lakshmi puja", "Vastu purification", "Muhurat calculation"],
-    "benefits": ["Business success", "Employee harmony", "Customer attraction", "Financial growth"],
+    "includes": [
+      "Ganesh puja",
+      "Lakshmi puja",
+      "Vastu purification",
+      "Muhurat calculation"
+    ],
+    "benefits": [
+      "Business success",
+      "Employee harmony",
+      "Customer attraction",
+      "Financial growth"
+    ],
     "featured": false,
     "mostBooked": true,
-    "tags": ["Sanskar", "Business"]
+    "tags": [
+      "Sanskar",
+      "Business"
+    ],
+    "image": "/images/gods/ganesha.png"
   },
   {
     "id": "birthday-puja",
@@ -248,11 +442,24 @@
     "shortDesc": "Birthday blessings with personalized nakshatra puja",
     "duration": "1-2 hours",
     "startingPrice": 1101,
-    "includes": ["Nakshatra puja", "Jyotish consultation", "Prasad", "Aarti"],
-    "benefits": ["Health and longevity", "Success in new year", "Removal of doshas", "Divine blessings"],
+    "includes": [
+      "Nakshatra puja",
+      "Jyotish consultation",
+      "Prasad",
+      "Aarti"
+    ],
+    "benefits": [
+      "Health and longevity",
+      "Success in new year",
+      "Removal of doshas",
+      "Divine blessings"
+    ],
     "featured": false,
     "mostBooked": false,
-    "tags": ["Daily"]
+    "tags": [
+      "Daily"
+    ],
+    "image": "/images/gods/surya.png"
   },
   {
     "id": "durga-puja",
@@ -265,11 +472,24 @@
     "shortDesc": "Invoke Goddess Durga for strength and protection",
     "duration": "4-5 hours",
     "startingPrice": 2501,
-    "includes": ["Saptashati recitation", "Kumkum archana", "Red flowers", "Complete samagri"],
-    "benefits": ["Divine protection", "Victory over enemies", "Inner strength", "Removal of fears"],
+    "includes": [
+      "Saptashati recitation",
+      "Kumkum archana",
+      "Red flowers",
+      "Complete samagri"
+    ],
+    "benefits": [
+      "Divine protection",
+      "Victory over enemies",
+      "Inner strength",
+      "Removal of fears"
+    ],
     "featured": false,
     "mostBooked": true,
-    "tags": ["Festival"]
+    "tags": [
+      "Festival"
+    ],
+    "image": "/images/gods/durga.png"
   },
   {
     "id": "saraswati-puja",
@@ -282,11 +502,25 @@
     "shortDesc": "Blessings of Goddess Saraswati for education",
     "duration": "2-3 hours",
     "startingPrice": 1501,
-    "includes": ["White flowers", "Books offering", "Musical instruments", "White prasad"],
-    "benefits": ["Academic success", "Artistic talent", "Speech improvement", "Wisdom"],
+    "includes": [
+      "White flowers",
+      "Books offering",
+      "Musical instruments",
+      "White prasad"
+    ],
+    "benefits": [
+      "Academic success",
+      "Artistic talent",
+      "Speech improvement",
+      "Wisdom"
+    ],
     "featured": false,
     "mostBooked": false,
-    "tags": ["Festival", "Education"]
+    "tags": [
+      "Festival",
+      "Education"
+    ],
+    "image": "/images/gods/saraswati.png"
   },
   {
     "id": "diwali-puja",
@@ -299,11 +533,25 @@
     "shortDesc": "Diwali Lakshmi-Ganesh puja for prosperity",
     "duration": "2-3 hours",
     "startingPrice": 1801,
-    "includes": ["Lakshmi-Ganesh idols", "Diyas", "Rangoli samagri", "Sweet prasad"],
-    "benefits": ["Annual prosperity", "Business success", "Removal of debt", "Family happiness"],
+    "includes": [
+      "Lakshmi-Ganesh idols",
+      "Diyas",
+      "Rangoli samagri",
+      "Sweet prasad"
+    ],
+    "benefits": [
+      "Annual prosperity",
+      "Business success",
+      "Removal of debt",
+      "Family happiness"
+    ],
     "featured": false,
     "mostBooked": true,
-    "tags": ["Festival", "Diwali"]
+    "tags": [
+      "Festival",
+      "Diwali"
+    ],
+    "image": "/images/gods/lakshmi.png"
   },
   {
     "id": "ganesh-chaturthi-puja",
@@ -316,11 +564,24 @@
     "shortDesc": "Grand Ganesh Chaturthi celebration and puja",
     "duration": "3-11 days",
     "startingPrice": 5101,
-    "includes": ["Ganesh murti", "Daily aarti", "Modak prasad", "Visarjan ceremony"],
-    "benefits": ["Lord Ganesha's blessings", "Community harmony", "Success and prosperity", "Obstacle removal"],
+    "includes": [
+      "Ganesh murti",
+      "Daily aarti",
+      "Modak prasad",
+      "Visarjan ceremony"
+    ],
+    "benefits": [
+      "Lord Ganesha's blessings",
+      "Community harmony",
+      "Success and prosperity",
+      "Obstacle removal"
+    ],
     "featured": false,
     "mostBooked": false,
-    "tags": ["Festival"]
+    "tags": [
+      "Festival"
+    ],
+    "image": "/images/gods/ganesha.png"
   },
   {
     "id": "annaprashan-puja",
@@ -333,10 +594,24 @@
     "shortDesc": "Baby's first food ceremony — sacred Annaprashan",
     "duration": "2-3 hours",
     "startingPrice": 1801,
-    "includes": ["Silver plate", "Gold ring ceremony", "Kheer prasad", "Horoscope reading"],
-    "benefits": ["Healthy growth for baby", "Good digestion", "Intelligence", "Long life"],
+    "includes": [
+      "Silver plate",
+      "Gold ring ceremony",
+      "Kheer prasad",
+      "Horoscope reading"
+    ],
+    "benefits": [
+      "Healthy growth for baby",
+      "Good digestion",
+      "Intelligence",
+      "Long life"
+    ],
     "featured": false,
     "mostBooked": false,
-    "tags": ["Sanskar", "Baby"]
+    "tags": [
+      "Sanskar",
+      "Baby"
+    ],
+    "image": "/images/gods/krishna.png"
   }
 ]

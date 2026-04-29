@@ -14,13 +14,15 @@ const PANCHANG_ITEMS = [
 ]
 
 export default function PanchangWidget() {
+  const todayFormatted = new Date().toLocaleDateString('en-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
+
   return (
     <section style={{ backgroundColor: 'var(--gold-bg)', padding: '5rem 0' }}>
       <div className="container-max">
         <SectionLabel>TODAY'S PANCHANG</SectionLabel>
         <h2
           style={{
-            fontFamily: 'var(--font-display)',
+            fontFamily: 'var(--font-deva)',
             fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)',
             color: 'var(--text-primary)',
             marginBottom: '0.5rem',
@@ -35,7 +37,7 @@ export default function PanchangWidget() {
           color: 'var(--text-muted)',
           marginBottom: '0.5rem',
         }}>
-          {panchang.date}
+          {todayFormatted}
         </p>
         <div style={{ display: 'flex', gap: '1rem', marginBottom: '2.5rem', flexWrap: 'wrap' }}>
           <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', fontSize: '0.8rem', color: 'var(--text-muted)', fontFamily: 'var(--font-body)' }}>
@@ -46,10 +48,10 @@ export default function PanchangWidget() {
           </span>
         </div>
 
-        {/* 2x3 Grid */}
+        {/* Responsive Grid */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
           gap: '1rem',
           marginBottom: '2rem',
         }}>

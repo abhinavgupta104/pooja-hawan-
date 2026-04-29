@@ -7,15 +7,15 @@ import TrustStrip from '../components/sections/TrustStrip'
 import ServicesGrid from '../components/sections/ServicesGrid'
 import EPujaBanner from '../components/sections/EPujaBanner'
 import HowItWorks from '../components/sections/HowItWorks'
-import PanditByLanguage from '../components/sections/PanditByLanguage'
+
 import FestivalCalendar from '../components/sections/FestivalCalendar'
 import PanchangWidget from '../components/sections/PanchangWidget'
 import Testimonials from '../components/sections/Testimonials'
 import CitiesGrid from '../components/sections/CitiesGrid'
 import SamagriCTA from '../components/sections/SamagriCTA'
 import WhyUs from '../components/sections/WhyUs'
-import JoinAsPanditCTA from '../components/sections/JoinAsPanditCTA'
-import AppDownload from '../components/sections/AppDownload'
+import AcharyaProfileBanner from '../components/sections/AcharyaProfileBanner'
+
 import FAQSection from '../components/sections/FAQSection'
 import LotusDivider from '../components/common/LotusDivider'
 
@@ -49,8 +49,6 @@ export default function Home() {
           <div className="container-max"><LotusDivider /></div>
         </div>
 
-        {/* Sec 6: Pandit by Language */}
-        <PanditByLanguage />
 
         {/* Sec 7: Festival Calendar */}
         <FestivalCalendar />
@@ -75,11 +73,9 @@ export default function Home() {
         {/* Sec 12: Why Us */}
         <WhyUs />
 
-        {/* Sec 13: Join as Pandit */}
-        <JoinAsPanditCTA />
+        {/* Featured Pandit */}
+        <AcharyaProfileBanner />
 
-        {/* Sec 14: App Download */}
-        <AppDownload />
 
         {/* Sec 15: FAQ */}
         <FAQSection />

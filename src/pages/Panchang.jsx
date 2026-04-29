@@ -19,6 +19,8 @@ const PANCHANG_ITEMS = [
 const upcomingFestivals = [...festivalsData].sort((a,b) => new Date(a.date) - new Date(b.date)).slice(0, 8)
 
 export default function Panchang() {
+  const todayFormatted = new Date().toLocaleDateString('en-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
+
   return (
     <>
       <Navbar />
@@ -27,18 +29,18 @@ export default function Panchang() {
         <div style={{ backgroundColor: 'var(--gold-bg)', padding: '4rem 0', borderBottom: '1px solid var(--border)' }}>
           <div className="container-max">
             <SectionLabel>TODAY'S PANCHANG</SectionLabel>
-            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 3rem)', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
+            <h1 style={{ fontFamily: 'var(--font-deva)', fontSize: 'clamp(2rem, 5vw, 3rem)', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
               आज का पंचांग
             </h1>
             <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-muted)', fontSize: '1rem' }}>
-              {panchangData.date}
+              {todayFormatted}
             </p>
           </div>
         </div>
 
         {/* Full panchang */}
         <div className="container-max" style={{ padding: '3rem 2rem' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', marginBottom: '3rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '1rem', marginBottom: '3rem' }}>
             {PANCHANG_ITEMS.map(item => {
               const Icon = item.icon
               return (
@@ -58,7 +60,7 @@ export default function Panchang() {
           </div>
 
           <h2 className="section-heading" style={{ marginBottom: '1.5rem', fontSize: '1.8rem' }}>Auspicious Times Today</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem', marginBottom: '3rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1rem', marginBottom: '3rem' }}>
             <div>
               <p style={{ fontFamily: 'var(--font-heading)', fontSize: '0.8rem', color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: '0.75rem' }}>
                 Auspicious Muhurats
@@ -84,7 +86,7 @@ export default function Panchang() {
           </div>
 
           <h2 className="section-heading" style={{ marginBottom: '1.5rem', fontSize: '1.8rem' }}>Upcoming Festivals</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1rem' }}>
             {upcomingFestivals.map(f => (
               <div key={f.id} style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '8px', padding: '1rem 1.25rem', display: 'flex', gap: '1rem', alignItems: 'center' }}>
                 <div style={{ backgroundColor: 'var(--maroon)', borderRadius: '8px', padding: '0.6rem 0.9rem', textAlign: 'center', flexShrink: 0 }}>

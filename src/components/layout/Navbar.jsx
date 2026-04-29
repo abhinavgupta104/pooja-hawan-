@@ -6,7 +6,6 @@ import cities from '../../data/cities.json'
 
 const NAV_LINKS = [
   { label: 'Services', href: '/services' },
-  { label: 'Pandits', href: '/pandits' },
   { label: 'E-Puja', href: '/e-puja' },
   { label: 'Panchang', href: '/panchang' },
   { label: 'Shop', href: '/shop' },
@@ -198,6 +197,29 @@ export default function Navbar() {
               </svg>
             </a>
 
+            <a
+              href="#footer"
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: '0.85rem',
+                color: 'var(--maroon)',
+                textDecoration: 'none',
+                padding: '0.45rem 1.1rem',
+                border: '1.5px solid var(--maroon)',
+                borderRadius: '6px',
+                fontWeight: 600,
+                transition: 'all 0.2s',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+              className="hidden-mobile"
+              onMouseEnter={e => { e.currentTarget.style.backgroundColor = 'var(--maroon)'; e.currentTarget.style.color = 'white' }}
+              onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = 'var(--maroon)' }}
+            >
+              Contact Us
+            </a>
+
             <Link to="/booking" className="btn-primary" style={{ fontSize: '0.85rem', padding: '0.55rem 1.2rem', display: 'none' }} id="cta-desktop">
               Book a Puja
             </Link>
@@ -275,13 +297,14 @@ export default function Navbar() {
             >
               About Us
             </Link>
-            <Link
-              to="/contact"
+            <a
+              href="#footer"
               onClick={() => setMobileOpen(false)}
               style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', color: 'var(--text-body)', textDecoration: 'none', padding: '0.75rem 0.5rem', borderBottom: '1px solid var(--border)', display: 'block' }}
             >
-              Contact
-            </Link>
+              Contact Us
+            </a>
+
             <Link
               to="/pandit-registration"
               onClick={() => setMobileOpen(false)}
