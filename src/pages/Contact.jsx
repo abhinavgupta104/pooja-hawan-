@@ -151,8 +151,6 @@ export default function Contact() {
                 textAlign: 'center',
                 fontFamily: 'var(--font-body)',
                 color: 'var(--text-muted)',
-                fontSize: '0.85rem',
-              }}>
               }}>
                 <div style={{ marginBottom: '1.5rem' }}>
                   <p style={{ fontWeight: 600, color: 'var(--maroon)', fontSize: '0.85rem' }}>SOUTH INDIA OFFICE</p>
@@ -162,7 +160,6 @@ export default function Contact() {
                   <p style={{ fontWeight: 600, color: 'var(--maroon)', fontSize: '0.85rem' }}>NORTH INDIA OFFICE</p>
                   📍 D-9, Vyapar Marg, Sector 3<br />Noida, Uttar Pradesh 201301
                 </div>
-              </div>
               </div>
             </div>
           </div>
