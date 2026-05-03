@@ -41,7 +41,7 @@ export default function AcharyaProfileBanner() {
               background: 'linear-gradient(135deg, var(--gold) 0%, var(--maroon) 100%)',
               marginBottom: '1.5rem'
             }}>
-              <img src={pandit.photo} alt={pandit.name} style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover', border: '4px solid var(--bg-card)' }} />
+              <img src="/images/pandits/acharya_prashant_final.jpg" alt={pandit.name} style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover', border: '4px solid var(--bg-card)' }} />
             </div>
             <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.6rem', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>{pandit.name}</h3>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '0.2rem', marginBottom: '1rem' }}>
