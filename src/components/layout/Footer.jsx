@@ -220,15 +220,22 @@ export default function Footer() {
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.8rem', color: 'rgba(255,255,255,0.65)', fontSize: '0.9rem', lineHeight: 1.5 }}>
               <MapPin size={18} color="var(--gold)" style={{ marginTop: '2px', flexShrink: 0 }} /> 
               <div>
-                <p style={{ fontWeight: 600, color: 'var(--gold)', fontSize: '0.85rem', marginBottom: '0.2rem' }}>SOUTH INDIA OFFICE</p>
+                <p style={{ fontWeight: 600, color: 'var(--gold)', fontSize: '0.85rem', marginBottom: '0.2rem' }}>HEAD OFFICE</p>
+                <span>D-9, Vyapar Marg, Sector 3<br/>Noida, Uttar Pradesh 201301</span>
+              </div>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.8rem', color: 'rgba(255,255,255,0.65)', fontSize: '0.9rem', lineHeight: 1.5 }}>
+              <MapPin size={18} color="var(--gold)" style={{ marginTop: '2px', flexShrink: 0 }} /> 
+              <div>
+                <p style={{ fontWeight: 600, color: 'var(--gold)', fontSize: '0.85rem', marginBottom: '0.2rem' }}>ZONAL OFFICE SOUTH</p>
                 <span>119/2 CK Nagar, Parappana Agrahara<br/>Bengaluru, Karnataka 560100</span>
               </div>
             </div>
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.8rem', color: 'rgba(255,255,255,0.65)', fontSize: '0.9rem', lineHeight: 1.5 }}>
               <MapPin size={18} color="var(--gold)" style={{ marginTop: '2px', flexShrink: 0 }} /> 
               <div>
-                <p style={{ fontWeight: 600, color: 'var(--gold)', fontSize: '0.85rem', marginBottom: '0.2rem' }}>NORTH INDIA OFFICE</p>
-                <span>D-9, Vyapar Marg, Sector 3<br/>Noida, Uttar Pradesh 201301</span>
+                <p style={{ fontWeight: 600, color: 'var(--gold)', fontSize: '0.85rem', marginBottom: '0.2rem' }}>ZONAL OFFICE EAST</p>
+                <span>A-9, 303, D2, Subhash Nagar Housing Complex<br/>Guru Garden Road, Prabhash Nagar<br/>Rishra, Hooghly, West Bengal 712203</span>
               </div>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: 'rgba(255,255,255,0.65)', fontSize: '0.9rem' }}>

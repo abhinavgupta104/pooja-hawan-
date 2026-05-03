@@ -55,7 +55,7 @@ export default function Kundali() {
       const datetime = `${formData.date}T${formData.time}:00+05:30`;
       const coordinates = `${formData.lat},${formData.lon}`;
       
-      const baseUrl = 'http://localhost:3001/api/prokerala';
+      const baseUrl = '/api/prokerala';
       const queryStr = `?coordinates=${coordinates}&datetime=${encodeURIComponent(datetime)}`;
       
       // Fetch multiple endpoints simultaneously

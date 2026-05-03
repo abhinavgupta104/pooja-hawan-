@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3001/api/prokerala';
+const BASE_URL = '/api/prokerala';
 
 /**
  * Fetches data from a specific Prokerala endpoint.

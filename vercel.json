@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/prokerala/:match*",
+      "destination": "/api/prokerala"
+    },
+    {
+      "source": "/(?!api).*|/api/(?!prokerala).*",
+      "destination": "/index.html"
+    }
+  ]
+}
