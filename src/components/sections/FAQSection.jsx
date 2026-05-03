@@ -24,8 +24,8 @@ const FAQS = [
     a: 'Yes! We offer same-day bookings (subject to availability). Bookings made before 10 AM usually get confirmed for same-day. You can also check real-time availability of pandits in your city on the Pandits page.',
   },
   {
-    q: 'How does E-Puja work?',
-    a: 'After booking an E-Puja, we arrange delivery of a samagri kit to your home 1–2 days before the puja. On the day, the pandit connects via a live video call (WhatsApp or Zoom). You participate from wherever you are while the pandit guides you through the ceremony. E-Pujas are perfect for NRIs and families separated by distance.',
+    q: 'How does the puja work?',
+    a: 'After booking a puja, we arrange delivery of a samagri kit to your home 1–2 days before the puja. On the day, the pandit connects via a live video call (WhatsApp or Zoom). You participate from wherever you are while the pandit guides you through the ceremony. These pujas are perfect for NRIs and families separated by distance.',
   },
   {
     q: 'What is your cancellation and refund policy?',

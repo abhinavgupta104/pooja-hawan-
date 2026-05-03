@@ -32,23 +32,22 @@ const SERVICES_LINKS = [
 
 const QUICK_LINKS = [
   { label: 'Find a Pandit', href: '/pandits' },
+  { label: 'Puja Services', href: '/puja' },
   { label: 'E-Puja (Online)', href: '/e-puja' },
+  { label: 'Virtual Puja', href: '/virtual-puja' },
   { label: 'Daily Panchang', href: '/panchang' },
   { label: 'Samagri Shop', href: '/shop' },
-  { label: 'Vedic Blog', href: '/blog' },
-  { label: 'Join as Pandit', href: '/pandit-registration' },
 ]
 
 const SEO_LINKS = [
-  'Hindi Pandits in Bangalore',
-  'Telugu Pandits in Hyderabad',
-  'Tamil Pandits in Chennai',
-  'Marathi Pandits in Mumbai',
-  'Bengali Pandits in Kolkata',
-  'Gujarati Pandits in Ahmedabad',
+  'Pandits in Bangalore',
   'Pandits in Delhi',
-  'Pandits in Pune',
   'Online Puja Booking',
+  'Pandits in Mumbai (Coming Soon)',
+  'Pandits in Hyderabad (Coming Soon)',
+  'Pandits in Chennai (Coming Soon)',
+  'Pandits in Kolkata (Coming Soon)',
+  'Pandits in Pune (Coming Soon)',
 ]
 
 export default function Footer() {

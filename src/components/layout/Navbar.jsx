@@ -6,10 +6,12 @@ import cities from '../../data/cities.json'
 
 const NAV_LINKS = [
   { label: 'Services', href: '/services' },
+  { label: 'Puja', href: '/puja' },
   { label: 'E-Puja', href: '/e-puja' },
+  { label: 'Virtual Puja', href: '/virtual-puja' },
   { label: 'Panchang', href: '/panchang' },
+  { label: 'Numerology', href: '/numerology' },
   { label: 'Shop', href: '/shop' },
-  { label: 'Blog', href: '/blog' },
 ]
 
 export default function Navbar() {
@@ -122,7 +124,13 @@ export default function Navbar() {
                   {cities.map(c => (
                     <button
                       key={c.id}
-                      onClick={() => { setSelectedCity(c.name); setCityDropOpen(false) }}
+                      onClick={() => { 
+                        if (c.isAvailable) {
+                          setSelectedCity(c.name); 
+                          setCityDropOpen(false) 
+                        }
+                      }}
+                      disabled={!c.isAvailable}
                       style={{
                         display: 'block',
                         width: '100%',
@@ -130,17 +138,30 @@ export default function Navbar() {
                         padding: '0.5rem 1rem',
                         fontFamily: 'var(--font-body)',
                         fontSize: '0.85rem',
-                        color: selectedCity === c.name ? 'var(--saffron)' : 'var(--text-body)',
+                        color: !c.isAvailable ? 'var(--text-muted)' : (selectedCity === c.name ? 'var(--saffron)' : 'var(--text-body)'),
                         background: selectedCity === c.name ? 'var(--gold-bg)' : 'transparent',
                         border: 'none',
-                        cursor: 'pointer',
+                        cursor: c.isAvailable ? 'pointer' : 'not-allowed',
                         transition: 'background 0.15s',
+                        opacity: c.isAvailable ? 1 : 0.6,
                       }}
-                      onMouseEnter={e => e.currentTarget.style.backgroundColor = 'var(--gold-bg)'}
-                      onMouseLeave={e => e.currentTarget.style.backgroundColor = selectedCity === c.name ? 'var(--gold-bg)' : 'transparent'}
+                      onMouseEnter={e => { if (c.isAvailable) e.currentTarget.style.backgroundColor = 'var(--gold-bg)' }}
+                      onMouseLeave={e => { if (c.isAvailable) e.currentTarget.style.backgroundColor = selectedCity === c.name ? 'var(--gold-bg)' : 'transparent' }}
                     >
                       {c.name}
                       <span style={{ color: 'var(--text-muted)', fontSize: '0.72rem', marginLeft: '0.5rem' }}>{c.state}</span>
+                      {!c.isAvailable && (
+                        <span style={{ 
+                          float: 'right', 
+                          fontSize: '0.65rem', 
+                          backgroundColor: 'rgba(0,0,0,0.05)', 
+                          padding: '2px 6px', 
+                          borderRadius: '4px',
+                          color: 'var(--text-muted)'
+                        }}>
+                          Coming Soon
+                        </span>
+                      )}
                     </button>
                   ))}
                 </div>

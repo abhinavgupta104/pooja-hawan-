@@ -488,6 +488,58 @@ body {
 .bg-gold-bg    { background-color: var(--gold-bg); }
 .border-gold   { border-color: var(--gold); }
 
+/* Glassmorphism Form */
+.glass-form {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  box-shadow: 0 8px 32px rgba(44, 21, 3, 0.05);
+}
+
+/* Rotating Mandala Background */
+.mandala-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 0;
+  animation: mandalaRotate 120s linear infinite;
+}
+
+/* Live Status Pulse */
+.live-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.2rem 0.6rem;
+  background: rgba(123, 28, 28, 0.1);
+  color: var(--maroon);
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.live-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--maroon);
+  border-radius: 50%;
+  animation: livePulse 1.5s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
 /* Container */
 .container-max {
   max-width: 1280px;
@@ -628,4 +680,145 @@ body {
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
   padding-right: 2.5rem;
+}
+
+/* Moon Phase Visualization */
+.moon-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  margin: 0 auto;
+}
+
+.moon-sphere {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background-color: #f6f1d5;
+  background-image: radial-gradient(circle at 30% 30%, #fff 0%, #f6f1d5 50%, #d4af37 100%);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    inset -15px -15px 30px rgba(0,0,0,0.15),
+    0 0 50px rgba(212, 175, 55, 0.2);
+  transition: transform 1s ease-in-out;
+}
+
+.moon-texture {
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  background: radial-gradient(rgba(0,0,0,0.08) 1px, transparent 1px);
+  background-size: 15px 15px;
+  opacity: 0.4;
+  animation: moonRotate 60s linear infinite;
+}
+
+@keyframes moonRotate {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.moon-shadow {
+  position: absolute;
+  top: -10%;
+  height: 120%;
+  background: #1a1a1a;
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 50%;
+  box-shadow: inset 10px 0 20px rgba(0,0,0,0.8), -10px 0 20px rgba(0,0,0,0.8);
+  filter: blur(2px);
+}
+
+.moon-glow {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.25) 0%, transparent 70%);
+  z-index: -1;
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.15); }
+}
+
+.tithi-label {
+  position: absolute;
+  bottom: -5px;
+  background: linear-gradient(135deg, var(--maroon), #600);
+  color: var(--gold);
+  padding: 0.4rem 1.25rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  border: 1px solid var(--border-gold);
+  z-index: 3;
+  font-family: var(--font-cinzel-dec);
+}
+
+/* Divine Micro-Interactions */
+.sacred-hover {
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  position: relative;
+}
+
+.sacred-hover:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2), 0 0 25px rgba(212, 175, 55, 0.1) !important;
+  border-color: var(--border-gold) !important;
+  z-index: 5;
+}
+
+/* Sparkle Effect */
+.sparkle-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.sparkle-particle {
+  position: absolute;
+  background: radial-gradient(circle, #fff 0%, var(--gold) 50%, transparent 100%);
+  border-radius: 50%;
+  opacity: 0;
+  animation: sparkle-anim 1s ease-out forwards;
+}
+
+@keyframes sparkle-anim {
+  0% { transform: scale(0) translate(0, 0); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: scale(1.5) translate(var(--tx), var(--ty)); opacity: 0; }
+}
+
+/* Cosmic Rotation for Zodiac Wheel */
+.cosmic-bg-rotate {
+  animation: cosmic-rotate 180s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes cosmic-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.planet-dot {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.planet-dot:hover {
+  filter: drop-shadow(0 0 8px var(--gold));
+  cursor: pointer;
 }

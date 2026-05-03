@@ -55,7 +55,7 @@ export default function EPujaBanner() {
             lineHeight: 1.2,
           }}
         >
-          Can't be present? Book an E-Puja
+          Can't be present? Book a Puja
         </h2>
         <p style={{
           fontFamily: 'var(--font-body)',
@@ -70,8 +70,8 @@ export default function EPujaBanner() {
           Samagri kit delivered to your doorstep.
         </p>
 
-        <Link to="/e-puja" className="btn-gold-outline" style={{ marginBottom: '2.5rem' }}>
-          Explore E-Puja Services
+        <Link to="/puja" className="btn-gold-outline" style={{ marginBottom: '2.5rem' }}>
+          Explore Puja Services
         </Link>
 
         {/* Feature icons */}

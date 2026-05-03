@@ -13,9 +13,12 @@ const Panchang            = lazy(() => import('./pages/Panchang'))
 const Shop                = lazy(() => import('./pages/Shop'))
 const Booking             = lazy(() => import('./pages/Booking'))
 const Blog                = lazy(() => import('./pages/Blog'))
+const Numerology          = lazy(() => import('./pages/Numerology'))
 const PanditRegistration  = lazy(() => import('./pages/PanditRegistration'))
 const About               = lazy(() => import('./pages/About'))
 const Contact             = lazy(() => import('./pages/Contact'))
+const ComingSoon           = lazy(() => import('./pages/ComingSoon'))
+const VirtualPuja         = lazy(() => import('./pages/VirtualPuja'))
 
 function LoadingSpinner() {
   return (
@@ -55,11 +58,14 @@ export default function App() {
           <Route path="/service/:slug"       element={<ServiceDetail />} />
           <Route path="/pandits"             element={<Pandits />} />
           <Route path="/pandit/:id"          element={<PanditProfile />} />
-          <Route path="/e-puja"              element={<EPuja />} />
+          <Route path="/puja"                element={<EPuja />} />
+          <Route path="/e-puja"              element={<ComingSoon />} />
+          <Route path="/virtual-puja"        element={<VirtualPuja />} />
           <Route path="/panchang"            element={<Panchang />} />
           <Route path="/shop"                element={<Shop />} />
           <Route path="/booking"             element={<Booking />} />
           <Route path="/blog"                element={<Blog />} />
+          <Route path="/numerology"          element={<Numerology />} />
           <Route path="/pandit-registration" element={<PanditRegistration />} />
           <Route path="/about"               element={<About />} />
           <Route path="/contact"             element={<Contact />} />

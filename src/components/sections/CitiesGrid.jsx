@@ -21,32 +21,38 @@ export default function CitiesGrid() {
           marginBottom: '2rem',
         }}>
           {displayed.map(city => (
-            <Link
+            <div
               key={city.id}
-              to={`/pandits?city=${city.name}`}
               style={{
-                textDecoration: 'none',
                 position: 'relative',
                 overflow: 'hidden',
                 borderRadius: '8px',
-                border: '1px solid var(--border)',
+                border: city.isAvailable ? '1px solid var(--border)' : '1px solid var(--border-muted)',
                 backgroundColor: 'var(--bg-card)',
                 padding: '1.25rem 0.75rem',
                 textAlign: 'center',
                 display: 'block',
                 transition: 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)',
-                boxShadow: 'var(--shadow-card)',
-                cursor: 'pointer',
+                boxShadow: city.isAvailable ? 'var(--shadow-card)' : 'none',
+                cursor: city.isAvailable ? 'pointer' : 'default',
+                opacity: city.isAvailable ? 1 : 0.6,
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.transform = 'translateY(-4px)'
-                e.currentTarget.style.borderColor = 'var(--border-gold)'
-                e.currentTarget.style.boxShadow = 'var(--shadow-hover)'
+                if (city.isAvailable) {
+                  e.currentTarget.style.transform = 'translateY(-4px)'
+                  e.currentTarget.style.borderColor = 'var(--border-gold)'
+                  e.currentTarget.style.boxShadow = 'var(--shadow-hover)'
+                }
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.transform = 'translateY(0)'
-                e.currentTarget.style.borderColor = 'var(--border)'
-                e.currentTarget.style.boxShadow = 'var(--shadow-card)'
+                if (city.isAvailable) {
+                  e.currentTarget.style.transform = 'translateY(0)'
+                  e.currentTarget.style.borderColor = 'var(--border)'
+                  e.currentTarget.style.boxShadow = 'var(--shadow-card)'
+                }
+              }}
+              onClick={() => {
+                if (city.isAvailable) window.location.href = `/pandits?city=${city.name}`
               }}
             >
               {/* Color accent top */}
@@ -56,26 +62,37 @@ export default function CitiesGrid() {
                 left: 0,
                 right: 0,
                 height: '3px',
-                backgroundColor: city.color,
+                backgroundColor: city.isAvailable ? city.color : '#ccc',
               }} />
 
               <p style={{
                 fontFamily: 'var(--font-heading)',
                 fontSize: '0.85rem',
-                color: 'var(--text-primary)',
+                color: city.isAvailable ? 'var(--text-primary)' : 'var(--text-muted)',
                 fontWeight: 400,
                 marginBottom: '0.25rem',
               }}>
                 {city.name}
               </p>
-              <p style={{
-                fontFamily: 'var(--font-body)',
-                fontSize: '0.68rem',
-                color: 'var(--text-muted)',
-              }}>
-                {city.panditCount}+ pandits
-              </p>
-            </Link>
+              {city.isAvailable ? (
+                <p style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.68rem',
+                  color: 'var(--text-muted)',
+                }}>
+                  {city.panditCount}+ pandits
+                </p>
+              ) : (
+                <span style={{ 
+                  fontSize: '0.6rem', 
+                  color: 'var(--text-muted)', 
+                  textTransform: 'uppercase', 
+                  letterSpacing: '0.05em' 
+                }}>
+                  Coming Soon
+                </span>
+              )}
+            </div>
           ))}
         </div>
 

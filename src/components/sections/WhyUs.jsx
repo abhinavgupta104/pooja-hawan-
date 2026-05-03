@@ -20,7 +20,7 @@ const FEATURES = [
   },
   {
     icon: Monitor,
-    title: 'E-Puja for NRIs & Remote Families',
+    title: 'Puja for NRIs & Remote Families',
     desc: 'Live-streamed Vedic ceremonies from anywhere in the world. Samagri kit delivered to your home.',
   },
   {

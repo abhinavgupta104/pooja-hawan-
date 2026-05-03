@@ -20,23 +20,23 @@ export default function EPuja() {
           <div className="container-max">
             <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📿</div>
             <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: 'white', marginBottom: '1rem', fontWeight: 500 }}>
-              E-Puja — Sacred Rituals, Anywhere in the World
+              Puja — Sacred Rituals, Performed for You
             </h1>
             <p style={{ fontFamily: 'var(--font-body)', color: 'rgba(255,245,230,0.85)', lineHeight: 1.7, maxWidth: '560px', margin: '0 auto 2rem', fontSize: '1rem' }}>
               Live-streamed Vedic ceremonies performed by experienced pandits. You participate from wherever you are in the world. Samagri kit delivered to your home.
             </p>
-            <a href="/booking" className="btn-gold-outline">Book E-Puja Now</a>
+            <a href="/booking" className="btn-gold-outline">Book Puja Now</a>
           </div>
         </div>
 
         {/* How it works */}
         <div style={{ backgroundColor: 'var(--bg-section-alt)', padding: '5rem 0' }}>
           <div className="container-max">
-            <SectionLabel>HOW E-PUJA WORKS</SectionLabel>
+            <SectionLabel>HOW PUJA WORKS</SectionLabel>
             <h2 className="section-heading" style={{ marginBottom: '2.5rem' }}>3 Simple Steps</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
               {[
-                { step: '01', icon: Package, title: 'Book & Receive Kit', desc: 'Book your E-Puja online. We deliver the samagri kit to your home 1-2 days before the ceremony.' },
+                { step: '01', icon: Package, title: 'Book & Receive Kit', desc: 'Book your puja online. We deliver the samagri kit to your home 1-2 days before the ceremony.' },
                 { step: '02', icon: Video, title: 'Join Live Stream', desc: 'Connect via WhatsApp Video or Zoom at the scheduled time. Our pandit will guide you through every step.' },
                 { step: '03', icon: CheckCircle2, title: 'Receive Blessings', desc: 'Participate fully in the sacred ceremony from anywhere. Receive divine blessings and prasad preparation guidance.' },
               ].map(item => {
@@ -58,7 +58,7 @@ export default function EPuja() {
 
         {/* Available services */}
         <div className="container-max" style={{ padding: '4rem 2rem' }}>
-          <SectionLabel>AVAILABLE FOR E-PUJA</SectionLabel>
+          <SectionLabel>AVAILABLE SERVICES</SectionLabel>
           <h2 className="section-heading" style={{ marginBottom: '2rem' }}>Ceremonies Available Online</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.25rem' }}>
             {EPUJA_SERVICES.map(s => (
