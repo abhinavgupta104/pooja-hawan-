@@ -5,7 +5,7 @@
       "destination": "/api/prokerala"
     },
     {
-      "source": "/(?!api).*|/api/(?!prokerala).*",
+      "source": "/((?!api).*)",
       "destination": "/index.html"
     }
   ]
