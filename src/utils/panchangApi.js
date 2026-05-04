@@ -9,14 +9,16 @@ const BASE_URL = '/api/prokerala';
 const fetchEndpointData = async (endpoint, { date, lat, lon }) => {
   const datetime = `${date}T12:00:00+05:30`;
   const coordinates = `${lat},${lon}`;
-  const cacheKey = `${endpoint}_${date}_${String(lat).slice(0, 5)}_${String(lon).slice(0, 5)}`;
+  const cacheKey = `pk_${endpoint.replace('/', '_')}_${date}_${String(lat).slice(0, 5)}_${String(lon).slice(0, 5)}`;
 
-  // Return cached data if fresh (< 24 hours)
+  // Return cached data if fresh (< 6 hours) and valid
   try {
     const cached = localStorage.getItem(cacheKey);
     if (cached) {
       const { data, timestamp } = JSON.parse(cached);
-      if (Date.now() - timestamp < 24 * 60 * 60 * 1000) return data;
+      if (Date.now() - timestamp < 6 * 60 * 60 * 1000 && data && typeof data === 'object') {
+        return data;
+      }
     }
   } catch (_) {}
 
@@ -26,6 +28,7 @@ const fetchEndpointData = async (endpoint, { date, lat, lon }) => {
     if (!response.ok) throw new Error(`API returned ${response.status}`);
     const result = await response.json();
     const data = result.data;
+    if (!data || typeof data !== 'object') throw new Error('Invalid API response shape');
 
     try {
       localStorage.setItem(cacheKey, JSON.stringify({ data, timestamp: Date.now() }));
@@ -33,7 +36,9 @@ const fetchEndpointData = async (endpoint, { date, lat, lon }) => {
 
     return data;
   } catch (error) {
-    console.warn(`[Panchang] API unavailable for '${endpoint}', using offline calculator.`, error.message);
+    // Clear potentially corrupt cache entry
+    try { localStorage.removeItem(cacheKey); } catch (_) {}
+    console.warn(`[Panchang] API unavailable for '${endpoint}', using offline calculator. Reason: ${error.message}`);
     return null; // caller handles fallback
   }
 };
@@ -43,11 +48,11 @@ const fetchEndpointData = async (endpoint, { date, lat, lon }) => {
  */
 export const fetchPanchangData = async (params) => {
   const apiData = await fetchEndpointData('panchang/advanced', params);
-  if (apiData) return apiData;
+  if (apiData && apiData.tithi) return apiData; // validate shape
 
   // Offline fallback
-  const offline = calculatePanchang(params.date, parseFloat(params.lat), parseFloat(params.lon));
-  return offline;
+  console.log('[Panchang] Computing offline Panchang data...');
+  return calculatePanchang(params.date, parseFloat(params.lat), parseFloat(params.lon));
 };
 
 /**
@@ -55,7 +60,7 @@ export const fetchPanchangData = async (params) => {
  */
 export const fetchChoghadiyaData = async (params) => {
   const apiData = await fetchEndpointData('choghadiya', params);
-  if (apiData) return apiData;
+  if (apiData && (apiData.day_choghadiya || apiData.choghadiya)) return apiData;
 
   const offline = calculatePanchang(params.date, parseFloat(params.lat), parseFloat(params.lon));
   return offline.choghadiya;
@@ -66,7 +71,7 @@ export const fetchChoghadiyaData = async (params) => {
  */
 export const fetchHoraData = async (params) => {
   const apiData = await fetchEndpointData('hora', params);
-  if (apiData) return apiData;
+  if (apiData && (apiData.day_hora || apiData.hora)) return apiData;
 
   const offline = calculatePanchang(params.date, parseFloat(params.lat), parseFloat(params.lon));
   return offline.hora;
@@ -74,7 +79,7 @@ export const fetchHoraData = async (params) => {
 
 /**
  * Gets user's current coordinates using Geolocation API.
- * Defaults to Varanasi if fails (more spiritually appropriate!).
+ * Defaults to Varanasi if fails.
  */
 export const getCurrentCoordinates = () => {
   return new Promise((resolve) => {

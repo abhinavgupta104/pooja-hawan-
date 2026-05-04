@@ -157,8 +157,8 @@ export default function Panchang() {
         fetchChoghadiyaData(params),
         fetchHoraData(params)
       ]);
-      // Check if we got offline fallback data
-      const offline = pData?._offline === true;
+      // Show offline banner if any data came from offline calculator
+      const offline = !!(pData?._offline || !pData?.tithi?.length);
       setIsOffline(offline);
       setApiData(pData);
       setChoghadiya(cData);
