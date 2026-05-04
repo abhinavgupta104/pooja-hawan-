@@ -105,6 +105,7 @@ export default function Panchang() {
   const [hora, setHora] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isOffline, setIsOffline] = useState(false);
   const [searching, setSearching] = useState(false);
   const [activeTab, setActiveTab] = useState('panchang'); // panchang, choghadiya, hora
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -156,13 +157,16 @@ export default function Panchang() {
         fetchChoghadiyaData(params),
         fetchHoraData(params)
       ]);
+      // Check if we got offline fallback data
+      const offline = pData?._offline === true;
+      setIsOffline(offline);
       setApiData(pData);
       setChoghadiya(cData);
       setHora(hData);
       triggerSparkles();
     } catch (e) {
       console.error(e);
-      setError("Failed to fetch live data. Please ensure the backend server (npm run server) is running.");
+      setError('Unable to compute Panchang data. Please try refreshing.');
     } finally {
       setLoading(false);
     }
@@ -493,6 +497,28 @@ export default function Panchang() {
             </div>
           ) : (
             <>
+              {/* Offline Mode Banner */}
+              {isOffline && (
+                <div style={{
+                  marginBottom: '2rem',
+                  padding: '1rem 1.5rem',
+                  background: 'linear-gradient(135deg, #FFF8E1, #FFF3CD)',
+                  border: '1px solid #F6C90E',
+                  borderRadius: '14px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.75rem',
+                  fontSize: '0.9rem',
+                  color: '#7B6000'
+                }}>
+                  <Info size={18} color="#F6A623" style={{ flexShrink: 0 }} />
+                  <span>
+                    <strong>Offline Vedic Calculation</strong> — Live API data is currently unavailable. 
+                    Showing locally computed Panchang using precise astronomical algorithms. 
+                    Data is accurate for ritual planning.
+                  </span>
+                </div>
+              )}
               {/* TAB 1: PANCHANG BASICS */}
               {activeTab === 'panchang' && (
                 <div className="fade-in">
@@ -817,7 +843,7 @@ export default function Panchang() {
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))', gap: '2.5rem' }}>
                     {['Day Hora', 'Night Hora'].map((title, sectionIdx) => {
                       const data = sectionIdx === 0 ? hora.day_hora : hora.night_hora;
-                      if (!data) return null;
+                      if (!data || data.length === 0) return null;
                       return (
                         <div key={title}>
                           <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.8rem', color: 'var(--gold)', marginBottom: '1.5rem', textAlign: 'center' }}>{title}</h3>

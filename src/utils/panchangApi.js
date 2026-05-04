@@ -1,49 +1,85 @@
+import { calculatePanchang } from './panchangCalculator.js';
+
 const BASE_URL = '/api/prokerala';
 
 /**
  * Fetches data from a specific Prokerala endpoint.
+ * Falls back to offline calculator if the API is unavailable.
  */
 const fetchEndpointData = async (endpoint, { date, lat, lon }) => {
   const datetime = `${date}T12:00:00+05:30`;
   const coordinates = `${lat},${lon}`;
-  const cacheKey = `${endpoint}_${date}_${lat.slice(0, 5)}_${lon.slice(0, 5)}`;
+  const cacheKey = `${endpoint}_${date}_${String(lat).slice(0, 5)}_${String(lon).slice(0, 5)}`;
 
-  const cached = localStorage.getItem(cacheKey);
-  if (cached) {
-    const { data, timestamp } = JSON.parse(cached);
-    if (Date.now() - timestamp < 24 * 60 * 60 * 1000) return data;
-  }
+  // Return cached data if fresh (< 24 hours)
+  try {
+    const cached = localStorage.getItem(cacheKey);
+    if (cached) {
+      const { data, timestamp } = JSON.parse(cached);
+      if (Date.now() - timestamp < 24 * 60 * 60 * 1000) return data;
+    }
+  } catch (_) {}
 
   try {
     const params = new URLSearchParams({ coordinates, datetime, la: 'en' });
     const response = await fetch(`${BASE_URL}/${endpoint}?${params.toString()}`);
-    if (!response.ok) throw new Error(`Failed to fetch ${endpoint}`);
+    if (!response.ok) throw new Error(`API returned ${response.status}`);
     const result = await response.json();
-    
-    localStorage.setItem(cacheKey, JSON.stringify({
-      data: result.data,
-      timestamp: Date.now()
-    }));
+    const data = result.data;
 
-    return result.data;
+    try {
+      localStorage.setItem(cacheKey, JSON.stringify({ data, timestamp: Date.now() }));
+    } catch (_) {}
+
+    return data;
   } catch (error) {
-    console.error(`API Error (${endpoint}):`, error);
-    throw error;
+    console.warn(`[Panchang] API unavailable for '${endpoint}', using offline calculator.`, error.message);
+    return null; // caller handles fallback
   }
 };
 
-export const fetchPanchangData = (params) => fetchEndpointData('panchang/advanced', params);
-export const fetchChoghadiyaData = (params) => fetchEndpointData('choghadiya', params);
-export const fetchHoraData = (params) => fetchEndpointData('hora', params);
+/**
+ * Fetches all panchang data, with offline fallback.
+ */
+export const fetchPanchangData = async (params) => {
+  const apiData = await fetchEndpointData('panchang/advanced', params);
+  if (apiData) return apiData;
+
+  // Offline fallback
+  const offline = calculatePanchang(params.date, parseFloat(params.lat), parseFloat(params.lon));
+  return offline;
+};
+
+/**
+ * Fetches Choghadiya data with offline fallback.
+ */
+export const fetchChoghadiyaData = async (params) => {
+  const apiData = await fetchEndpointData('choghadiya', params);
+  if (apiData) return apiData;
+
+  const offline = calculatePanchang(params.date, parseFloat(params.lat), parseFloat(params.lon));
+  return offline.choghadiya;
+};
+
+/**
+ * Fetches Hora data with offline fallback.
+ */
+export const fetchHoraData = async (params) => {
+  const apiData = await fetchEndpointData('hora', params);
+  if (apiData) return apiData;
+
+  const offline = calculatePanchang(params.date, parseFloat(params.lat), parseFloat(params.lon));
+  return offline.hora;
+};
 
 /**
  * Gets user's current coordinates using Geolocation API.
- * Defaults to Delhi if fails.
+ * Defaults to Varanasi if fails (more spiritually appropriate!).
  */
 export const getCurrentCoordinates = () => {
   return new Promise((resolve) => {
     if (!navigator.geolocation) {
-      resolve({ lat: '28.6139', lon: '77.2090' }); // Delhi default
+      resolve({ lat: '25.3176', lon: '82.9739' }); // Varanasi default
       return;
     }
 
@@ -55,8 +91,9 @@ export const getCurrentCoordinates = () => {
         });
       },
       () => {
-        resolve({ lat: '28.6139', lon: '77.2090' }); // Delhi default
-      }
+        resolve({ lat: '25.3176', lon: '82.9739' }); // Varanasi default
+      },
+      { timeout: 5000 }
     );
   });
 };
