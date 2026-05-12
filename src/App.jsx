@@ -19,6 +19,7 @@ const About               = lazy(() => import('./pages/About'))
 const Contact             = lazy(() => import('./pages/Contact'))
 const ComingSoon           = lazy(() => import('./pages/ComingSoon'))
 const VirtualPuja         = lazy(() => import('./pages/VirtualPuja'))
+const Kundali             = lazy(() => import('./pages/Kundali'))
 
 function LoadingSpinner() {
   return (
@@ -66,11 +67,13 @@ export default function App() {
           <Route path="/booking"             element={<Booking />} />
           <Route path="/blog"                element={<Blog />} />
           <Route path="/numerology"          element={<Numerology />} />
+          <Route path="/kundali"             element={<Kundali />} />
           <Route path="/pandit-registration" element={<PanditRegistration />} />
           <Route path="/about"               element={<About />} />
           <Route path="/contact"             element={<Contact />} />
         </Routes>
       </Suspense>
+
     </BrowserRouter>
   )
 }

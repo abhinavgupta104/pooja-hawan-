@@ -221,7 +221,7 @@ export default function Panchang() {
     { label: 'Nakshatra', hindiLabel: 'नक्षत्र', value: getFirst(apiData.nakshatra)?.name, end: getFirst(apiData.nakshatra)?.end, icon: Star },
     { label: 'Yoga', hindiLabel: 'योग', value: getFirst(apiData.yoga)?.name, end: getFirst(apiData.yoga)?.end, icon: Sun },
     { label: 'Karana', hindiLabel: 'करण', value: Array.isArray(apiData.karana) ? apiData.karana.map(k => k.name).join(', ') : apiData.karana?.name, end: getFirst(apiData.karana)?.end, icon: Moon },
-    { label: 'Weekday', hindiLabel: 'वार', value: apiData.vaara, icon: Clock },
+    { label: 'Weekday', hindiLabel: 'वार', value: apiData.vaara || apiData.vara?.name, icon: Clock },
     { label: 'Paksha', hindiLabel: 'पक्ष', value: getFirst(apiData.tithi)?.paksha || apiData.paksha?.name, icon: Calendar },
   ] : [];
 

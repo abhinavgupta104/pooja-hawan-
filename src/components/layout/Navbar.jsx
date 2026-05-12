@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Menu, X, Phone, ChevronDown } from 'lucide-react'
+import { Menu, X, Phone, ChevronDown, MapPin } from 'lucide-react'
 import logo from '../../assets/logo.png'
 import cities from '../../data/cities.json'
 
@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { label: 'Virtual Puja', href: '/virtual-puja' },
   { label: 'Panchang', href: '/panchang' },
   { label: 'Numerology', href: '/numerology' },
+  { label: 'Kundali', href: '/kundali' },
   { label: 'Shop', href: '/shop' },
 ]
 
@@ -19,6 +20,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [selectedCity, setSelectedCity] = useState('Delhi')
   const [cityDropOpen, setCityDropOpen] = useState(false)
+  const cityDropRef = useRef(null)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -35,6 +37,18 @@ export default function Navbar() {
     }
     return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
+
+  // Close city dropdown when clicking outside
+  useEffect(() => {
+    if (!cityDropOpen) return
+    const handleClickOutside = (e) => {
+      if (cityDropRef.current && !cityDropRef.current.contains(e.target)) {
+        setCityDropOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [cityDropOpen])
 
   return (
     <>
@@ -78,49 +92,81 @@ export default function Navbar() {
           </Link>
 
           {/* Center: City selector */}
-          <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
+          <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }} className="hidden-mobile">
             <div
+              ref={cityDropRef}
               style={{ position: 'relative' }}
-              onMouseLeave={() => setCityDropOpen(false)}
             >
               <button
                 onClick={() => setCityDropOpen(o => !o)}
+                aria-haspopup="true"
+                aria-expanded={cityDropOpen}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.4rem',
+                  gap: '0.5rem',
                   fontFamily: 'var(--font-body)',
                   fontSize: '0.88rem',
-                  color: 'var(--text-body)',
-                  background: 'var(--gold-bg)',
-                  border: '1px solid var(--border)',
-                  borderRadius: '6px',
-                  padding: '0.45rem 0.9rem',
+                  fontWeight: 500,
+                  color: 'var(--text-primary)',
+                  background: 'rgba(255,253,247,0.95)',
+                  border: cityDropOpen ? '1px solid var(--gold)' : '1px solid var(--border)',
+                  borderRadius: '100px',
+                  padding: '0.5rem 1rem',
                   cursor: 'pointer',
-                  transition: 'border-color 0.2s',
+                  transition: 'all 0.2s ease',
+                  boxShadow: '0 2px 8px rgba(44,21,3,0.1)',
+                  backdropFilter: 'blur(8px)',
+                  WebkitBackdropFilter: 'blur(8px)',
                 }}
-                onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--gold)'}
-                onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--border)'}
+                onMouseEnter={e => {
+                  e.currentTarget.style.borderColor = 'var(--gold)';
+                  e.currentTarget.style.boxShadow = '0 4px 16px rgba(44,21,3,0.15)';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.borderColor = cityDropOpen ? 'var(--gold)' : 'var(--border)';
+                  e.currentTarget.style.boxShadow = '0 2px 8px rgba(44,21,3,0.1)';
+                }}
               >
-                📍 {selectedCity}
-                <ChevronDown size={14} color="var(--text-muted)" />
+                <MapPin size={15} color="var(--saffron)" />
+                <span style={{ color: 'var(--text-primary)' }}>{selectedCity}</span>
+                <ChevronDown 
+                  size={13} 
+                  color="var(--text-muted)" 
+                  style={{ 
+                    transition: 'transform 0.25s ease',
+                    transform: cityDropOpen ? 'rotate(180deg)' : 'rotate(0deg)'
+                  }} 
+                />
               </button>
 
               {cityDropOpen && (
                 <div style={{
                   position: 'absolute',
-                  top: 'calc(100% + 6px)',
+                  top: 'calc(100% + 8px)',
                   left: '50%',
                   transform: 'translateX(-50%)',
                   backgroundColor: 'var(--bg-card)',
                   border: '1px solid var(--border)',
-                  borderRadius: '8px',
+                  borderRadius: '12px',
                   boxShadow: 'var(--shadow-hover)',
                   zIndex: 1000,
-                  maxHeight: '280px',
+                  maxHeight: '320px',
                   overflowY: 'auto',
-                  minWidth: '180px',
+                  minWidth: '220px',
+                  padding: '0.5rem',
+                  animation: 'fadeIn 0.2s ease-out'
                 }}>
+                  <div style={{ 
+                    padding: '0.5rem 0.75rem', 
+                    fontSize: '0.75rem', 
+                    fontWeight: 600, 
+                    color: 'var(--text-muted)',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em'
+                  }}>
+                    Select Location
+                  </div>
                   {cities.map(c => (
                     <button
                       key={c.id}
@@ -333,6 +379,42 @@ export default function Navbar() {
             >
               Join as Pandit
             </Link>
+
+            <div style={{ marginTop: '1rem', padding: '1rem 0.5rem', background: 'var(--gold-bg)', borderRadius: '8px' }}>
+              <div style={{ 
+                fontSize: '0.75rem', 
+                fontWeight: 600, 
+                color: 'var(--text-muted)', 
+                marginBottom: '0.75rem',
+                textTransform: 'uppercase',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.4rem'
+              }}>
+                <MapPin size={12} /> Service Location
+              </div>
+              <select
+                value={selectedCity}
+                onChange={(e) => setSelectedCity(e.target.value)}
+                style={{
+                  width: '100%',
+                  padding: '0.75rem',
+                  borderRadius: '6px',
+                  border: '1px solid var(--border)',
+                  backgroundColor: 'white',
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.95rem',
+                  color: 'var(--text-primary)',
+                  outline: 'none'
+                }}
+              >
+                {cities.map(c => (
+                  <option key={c.id} value={c.name} disabled={!c.isAvailable}>
+                    {c.name} {c.isAvailable ? `(${c.state})` : '- Coming Soon'}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
 
           <div style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
