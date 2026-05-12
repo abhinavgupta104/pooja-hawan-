@@ -2,7 +2,7 @@ import { calculatePanchang } from './panchangCalculator.js';
 
 // Point completely to our own Python backend (Running on port 8080 or deployed URL)
 // Ensure you update BASE_URL to your production python backend URL when deploying.
-const BASE_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8080';
+const BASE_URL = import.meta.env.VITE_BACKEND_URL || 'https://pooja-hawan-1.onrender.com';
 
 /**
  * Fetches Panchang data securely from our in-house Python Swiss Ephemeris engine.

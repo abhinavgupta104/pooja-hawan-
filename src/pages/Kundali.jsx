@@ -5,7 +5,7 @@ import SectionLabel from '../components/common/SectionLabel';
 import NorthIndianChart from '../components/Kundali/NorthIndianChart';
 import { Loader2, Star, Sun, Moon, Zap, BookOpen, BarChart3, Grid3x3 } from 'lucide-react';
 
-const BACKEND = 'http://127.0.0.1:8080';
+const BACKEND = import.meta.env.VITE_BACKEND_URL || 'https://pooja-hawan-1.onrender.com';
 
 const PLANET_SYMBOLS = {
   Sun:'☉', Moon:'☽', Mars:'♂', Mercury:'☿', Jupiter:'♃',
