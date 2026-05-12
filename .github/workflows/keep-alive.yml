@@ -1,0 +1,15 @@
+name: Keep Render Backend Alive
+
+on:
+  schedule:
+    # Runs every 14 minutes to prevent Render free tier sleep (spins down after 15 mins)
+    - cron: "*/14 * * * *"
+  # Allows you to trigger it manually from the GitHub website if needed
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Backend to keep awake
+        run: curl -s https://pooja-hawan-1.onrender.com/ > /dev/null
