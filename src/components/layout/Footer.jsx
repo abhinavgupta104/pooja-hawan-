@@ -239,10 +239,12 @@ export default function Footer() {
               </div>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: 'rgba(255,255,255,0.65)', fontSize: '0.9rem' }}>
-              <Phone size={18} color="var(--gold)" style={{ flexShrink: 0 }} /> +91 99999 99999
+              <Phone size={18} color="var(--gold)" style={{ flexShrink: 0 }} />
+              <a href="tel:+919513733533" style={{ color: 'rgba(255,255,255,0.65)', textDecoration: 'none' }}>+91 95137 33533</a>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: 'rgba(255,255,255,0.65)', fontSize: '0.9rem' }}>
-              <Mail size={18} color="var(--gold)" style={{ flexShrink: 0 }} /> support@pujahavan.com
+              <Mail size={18} color="var(--gold)" style={{ flexShrink: 0 }} />
+              <a href="mailto:support@pujahavan.com" style={{ color: 'rgba(255,255,255,0.65)', textDecoration: 'none' }}>support@pujahavan.com</a>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: 'rgba(255,255,255,0.65)', fontSize: '0.9rem' }}>
               <Clock size={18} color="var(--gold)" style={{ flexShrink: 0 }} /> Mon–Sun, 6:00 AM – 10:00 PM

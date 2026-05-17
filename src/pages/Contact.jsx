@@ -38,7 +38,7 @@ export default function Contact() {
         </div>
 
         <div className="container-max" style={{ padding: '4rem 2rem' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '4rem', alignItems: 'start' }}>
+          <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '4rem', alignItems: 'start' }}>
             {/* Form */}
             <div>
               {submitted ? (
@@ -94,18 +94,22 @@ export default function Contact() {
                   Contact Information
                 </p>
                 {[
-                  { icon: Phone, text: '+91 99999 99999', sub: 'Mon–Sun, 6 AM – 10 PM' },
-                  { icon: Mail, text: 'support@pujahavan.com', sub: 'We respond within 24 hours' },
+                  { icon: Phone, text: '+91 95137 33533', sub: 'Mon–Sun, 6 AM – 10 PM', href: 'tel:+919513733533' },
+                  { icon: Mail, text: 'support@pujahavan.com', sub: 'We respond within 24 hours', href: 'mailto:support@pujahavan.com' },
                   { icon: MapPin, text: '119/2 CK Nagar, Parappana Agrahara, Bengaluru 560100', sub: 'South India Office' },
                   { icon: MapPin, text: 'D-9, Vyapar Marg, Sector 3, Noida 201301', sub: 'North India Office' },
                   { icon: Clock, text: '6:00 AM – 10:00 PM', sub: 'All days including holidays' },
-                ].map(({ icon: Icon, text, sub }) => (
+                ].map(({ icon: Icon, text, sub, href }) => (
                   <div key={text} style={{ display: 'flex', gap: '0.9rem', marginBottom: '1rem' }}>
                     <div className="gold-icon-bg" style={{ width: '36px', height: '36px', flexShrink: 0 }}>
                       <Icon size={16} color="var(--gold)" />
                     </div>
                     <div>
-                      <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.88rem', color: 'var(--text-body)', fontWeight: 500 }}>{text}</p>
+                      {href ? (
+                        <a href={href} style={{ fontFamily: 'var(--font-body)', fontSize: '0.88rem', color: 'var(--text-body)', fontWeight: 500, textDecoration: 'none' }}>{text}</a>
+                      ) : (
+                        <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.88rem', color: 'var(--text-body)', fontWeight: 500 }}>{text}</p>
+                      )}
                       <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.75rem', color: 'var(--text-muted)' }}>{sub}</p>
                     </div>
                   </div>
@@ -114,7 +118,7 @@ export default function Contact() {
 
               {/* WhatsApp */}
               <a
-                href="https://wa.me/919999999999"
+                href="https://wa.me/919513733533"
                 target="_blank"
                 rel="noreferrer"
                 style={{
@@ -167,6 +171,14 @@ export default function Contact() {
       </main>
       <Footer />
       <WhatsAppFloat />
+      <style>{`
+        @media (max-width: 768px) {
+          .contact-grid {
+            grid-template-columns: 1fr !important;
+            gap: 2rem !important;
+          }
+        }
+      `}</style>
     </>
   )
 }
