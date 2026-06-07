@@ -23,7 +23,7 @@ export default function AcharyaProfileBanner() {
           </p>
         </div>
 
-        <div style={{
+        <div className="acharya-inner" style={{
           backgroundColor: 'var(--bg-card)',
           borderRadius: '16px',
           border: '1px solid var(--border-gold)',

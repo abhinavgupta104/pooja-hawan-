@@ -64,7 +64,7 @@ export default function WhyUs() {
           The Puja Havan Difference
         </h2>
 
-        <div style={{
+        <div className="why-us-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
           gap: '1.5rem',

@@ -71,7 +71,7 @@ export default function Footer() {
         borderBottom: '1px solid rgba(201,168,76,0.2)', 
         padding: '2.5rem 0' 
       }}>
-        <div className="container-max" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '2rem' }}>
+        <div className="container-max footer-cta-strip" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '2rem' }}>
           <div>
             <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.8rem', color: 'var(--gold)', marginBottom: '0.4rem', fontWeight: 600 }}>
               Ready to seek divine blessings?
@@ -299,11 +299,11 @@ export default function Footer() {
         padding: '1.5rem 0',
         backgroundColor: '#111'
       }}>
-        <div className="container-max" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
+        <div className="container-max footer-bottom-bar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
           <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.4)' }}>
             © {new Date().getFullYear()} Puja Havan. All rights reserved.
           </p>
-          <div style={{ display: 'flex', gap: '2rem' }}>
+          <div className="footer-bottom-links" style={{ display: 'flex', gap: '2rem' }}>
             {['Privacy Policy', 'Terms of Service', 'Refund Policy'].map(text => (
               <a
                 key={text}

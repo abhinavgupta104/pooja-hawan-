@@ -73,9 +73,9 @@ export default function Booking() {
             </div>
           </div>
         ) : (
-          <div className="container-max" style={{ padding: '3rem 2rem' }}>
+          <div className="container-max booking-container" style={{ padding: '3rem 2rem' }}>
             {/* Progress bar */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '3rem', gap: '0.5rem' }}>
+            <div className="booking-progress" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '3rem', gap: '0.5rem' }}>
               {STEPS.map((label, i) => {
                 const stepNum = i + 1
                 const isActive = step === stepNum
@@ -89,12 +89,12 @@ export default function Booking() {
                       >
                         {isCompleted ? '✓' : stepNum}
                       </div>
-                      <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.68rem', color: isActive ? 'var(--saffron)' : 'var(--text-muted)', whiteSpace: 'nowrap' }}>
+                    <p className="step-label" style={{ fontFamily: 'var(--font-body)', fontSize: '0.68rem', color: isActive ? 'var(--saffron)' : 'var(--text-muted)', whiteSpace: 'nowrap' }}>
                         {label}
                       </p>
                     </div>
                     {i < STEPS.length - 1 && (
-                      <div style={{ width: '60px', height: '1px', backgroundColor: 'var(--border)', marginBottom: '1.25rem', flexShrink: 0 }} />
+                      <div className="booking-progress-line" style={{ width: '60px', height: '1px', backgroundColor: 'var(--border)', marginBottom: '1.25rem', flexShrink: 0 }} />
                     )}
                   </React.Fragment>
                 )
@@ -158,7 +158,7 @@ export default function Booking() {
                   <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.4rem', color: 'var(--text-primary)', marginBottom: '1.5rem' }}>
                     Location &amp; Schedule
                   </h2>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
+                  <div className="booking-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                     <div className="form-field">
                       <label className="form-label">City *</label>
                       <select className="form-input form-select" {...reg2('city')}>
@@ -183,7 +183,7 @@ export default function Booking() {
                     <textarea className="form-input" rows={3} placeholder="House no., Street, Area, Locality" {...reg2('address')} style={{ resize: 'vertical' }} />
                     {e2.address && <p style={{ color: 'var(--saffron)', fontSize: '0.78rem' }}>{e2.address.message}</p>}
                   </div>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
+                  <div className="booking-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '0.75rem' }}>
                     <div className="form-field">
                       <label className="form-label">Date *</label>
                       <input type="date" className="form-input" min={new Date().toISOString().split('T')[0]} {...reg2('date')} />
@@ -213,7 +213,7 @@ export default function Booking() {
                   <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.4rem', color: 'var(--text-primary)', marginBottom: '1.5rem' }}>
                     Your Details
                   </h2>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
+                  <div className="booking-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                     <div className="form-field">
                       <label className="form-label">Full Name *</label>
                       <input className="form-input" placeholder="Your name" {...reg3('name')} />

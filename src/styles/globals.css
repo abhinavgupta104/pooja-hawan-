@@ -553,6 +553,49 @@ body {
   }
 }
 
+/* Global section padding reduction on mobile.
+   Inline styles override CSS selectors, so we use !important
+   on the mobile breakpoints to bring padding down on all sections. */
+@media (max-width: 768px) {
+  section {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+    padding-top: 2.25rem !important;
+    padding-bottom: 2.25rem !important;
+  }
+}
+
+
+/* Responsive card grids — collapse fixed column counts so cards never
+   get squeezed below their content's min-width and overflow the viewport */
+.card-grid-3,
+.card-grid-4 {
+  min-width: 0;
+}
+
+@media (max-width: 1024px) {
+  .card-grid-3,
+  .card-grid-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .card-grid-3,
+  .card-grid-4 {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .card-grid-3 > *,
+  .card-grid-4 > * {
+    grid-column: span 1 !important;
+  }
+}
+
 /* Gold circle icon background */
 .gold-icon-bg {
   background-color: var(--gold-bg);
@@ -822,3 +865,334 @@ body {
   filter: drop-shadow(0 0 8px var(--gold));
   cursor: pointer;
 }
+
+/* ═══════════════════════════════════════════════
+   MOBILE-FIRST RESPONSIVE OVERRIDES
+   ═══════════════════════════════════════════════ */
+
+/* Touch-friendly tap targets */
+@media (max-width: 768px) {
+  /* Buttons */
+  .btn-primary,
+  .btn-secondary,
+  .btn-gold-outline {
+    min-height: 48px;
+    font-size: 0.95rem;
+    padding: 0.75rem 1.5rem;
+  }
+
+  /* Typography scale-down */
+  .hero-headline {
+    font-size: clamp(2rem, 8vw, 3.2rem);
+    line-height: 1.15;
+  }
+
+  .section-heading {
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+    line-height: 1.25;
+  }
+
+  .stats-number {
+    font-size: clamp(2rem, 7vw, 3rem);
+  }
+
+  /* Section padding */
+  .section-padding-lg {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  /* Trust strip, badges — allow wrapping */
+  .trust-strip-inner {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  /* Pricing card scale reset */
+  .pricing-featured {
+    transform: none;
+  }
+
+  /* Testimonial tilt reset */
+  .testimonial-odd,
+  .testimonial-even {
+    transform: none;
+  }
+
+  /* Float card animations off on mobile (performance) */
+  .float-card,
+  .float-card-1,
+  .float-card-2,
+  .float-card-3 {
+    animation: none;
+  }
+
+  /* Moon container scale */
+  .moon-container {
+    width: 140px;
+    height: 140px;
+  }
+
+  .moon-sphere {
+    width: 100px;
+    height: 100px;
+  }
+
+  .moon-glow {
+    width: 130px;
+    height: 130px;
+  }
+
+  /* Live indicator */
+  .live-indicator {
+    font-size: 0.6rem;
+  }
+
+  /* Step connector — hide on mobile */
+  .step-connector {
+    display: none;
+  }
+
+  /* Panchang box */
+  .panchang-box {
+    padding: 0.85rem 0.85rem 0.85rem 1rem;
+  }
+
+  /* WhatsApp float — smaller on mobile */
+  .whatsapp-float-btn {
+    width: 52px;
+    height: 52px;
+    bottom: 1.25rem;
+    right: 1.25rem;
+  }
+
+  /* Card hover effects — disable on touch */
+  .card-base:hover {
+    transform: none;
+  }
+
+  .sacred-hover:hover {
+    transform: none;
+    box-shadow: none !important;
+  }
+}
+
+/* Extra-small phones */
+@media (max-width: 480px) {
+  .container-max {
+    padding: 0 0.875rem;
+  }
+
+  .hero-headline {
+    font-size: clamp(1.75rem, 9vw, 2.5rem);
+  }
+
+  .section-heading {
+    font-size: clamp(1.4rem, 7vw, 1.9rem);
+  }
+
+  /* Full-width CTAs */
+  .btn-primary,
+  .btn-secondary,
+  .btn-gold-outline {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE LAYOUT HELPERS (used by components)
+   ═══════════════════════════════════════════════ */
+
+/* 2-col grid → 1-col on mobile */
+.grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 640px) {
+  .grid-2col {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 3-col grid → 2-col tablet → 1-col mobile */
+.grid-3col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+@media (max-width: 900px) {
+  .grid-3col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 580px) {
+  .grid-3col {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 4-col grid → 2-col tablet → 1-col mobile */
+.grid-4col {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+@media (max-width: 900px) {
+  .grid-4col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 580px) {
+  .grid-4col {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Side-by-side → stack on mobile */
+.flex-stack-mobile {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+@media (max-width: 640px) {
+  .flex-stack-mobile > * {
+    width: 100%;
+  }
+}
+
+/* Footer bottom bar */
+@media (max-width: 640px) {
+  .footer-bottom-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .footer-bottom-links {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-cta-strip {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-cta-strip .btn-primary {
+    width: auto;
+    align-self: center;
+  }
+}
+
+/* Booking form grids */
+@media (max-width: 580px) {
+  .booking-form-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .booking-container {
+    padding: 2rem 1rem !important;
+  }
+}
+
+
+/* How It Works steps → 2 cols on tablet, 1 on mobile */
+@media (max-width: 900px) {
+  .how-it-works-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .desktop-only-line {
+    display: none !important;
+  }
+}
+@media (max-width: 580px) {
+  .how-it-works-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* App download section — stack on mobile */
+@media (max-width: 768px) {
+  .app-download-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
+  .app-phone-frame {
+    display: none !important;
+  }
+}
+
+/* Why Us grid */
+@media (max-width: 900px) {
+  .why-us-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 580px) {
+  .why-us-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* AcharyaProfile banner inner */
+@media (max-width: 768px) {
+  .acharya-inner {
+    flex-direction: column !important;
+    gap: 2rem !important;
+    padding: 2rem !important;
+  }
+}
+
+/* Pandit card grid responsive override */
+@media (max-width: 640px) {
+  .pandit-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Shop grid */
+@media (max-width: 640px) {
+  .shop-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Horizontal scroll for city strip */
+.city-scroll-strip {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.city-scroll-strip::-webkit-scrollbar {
+  display: none;
+}
+
+/* Progress steps on mobile */
+@media (max-width: 480px) {
+  .booking-progress {
+    gap: 0.2rem !important;
+  }
+  .booking-progress .step-label {
+    font-size: 0.6rem !important;
+  }
+  .booking-progress-line {
+    width: 28px !important;
+  }
+}
+
+/* Navbar height adjustment */
+@media (max-width: 480px) {
+  .navbar-inner {
+    height: 58px !important;
+  }
+}
+
+/* Safe area padding for notched phones */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .whatsapp-float-btn {
+    bottom: calc(1.25rem + env(safe-area-inset-bottom));
+    right: calc(1.25rem + env(safe-area-inset-right));
+  }
+}
+

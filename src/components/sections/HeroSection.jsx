@@ -229,10 +229,26 @@ export default function HeroSection() {
       <style>{`
         @media (max-width: 900px) {
           #hero > div > div {
-            grid-template-columns: 1fr !important;
+            grid-template-columns: minmax(0, 1fr) !important;
           }
           #hero > div > div > div:last-child {
             display: none !important;
+          }
+        }
+        @media (max-width: 768px) {
+          #hero {
+            padding-top: 80px !important;
+            padding-bottom: 3rem !important;
+            min-height: auto !important;
+          }
+        }
+        @media (max-width: 480px) {
+          #hero {
+            padding-top: 70px !important;
+            padding-bottom: 2.5rem !important;
+          }
+          #hero .hero-trust-badges {
+            justify-content: flex-start;
           }
         }
       `}</style>

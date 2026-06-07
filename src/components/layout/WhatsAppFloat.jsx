@@ -7,8 +7,8 @@ export default function WhatsAppFloat() {
     <div
       style={{
         position: 'fixed',
-        bottom: '1.5rem',
-        right: '1.5rem',
+        bottom: 'calc(1.5rem + env(safe-area-inset-bottom, 0px))',
+        right: 'calc(1.5rem + env(safe-area-inset-right, 0px))',
         zIndex: 999,
         display: 'flex',
         alignItems: 'center',

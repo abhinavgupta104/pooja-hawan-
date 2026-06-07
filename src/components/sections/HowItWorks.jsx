@@ -64,7 +64,7 @@ export default function HowItWorks() {
             zIndex: 0,
           }} className="desktop-only-line" />
 
-          <div style={{
+          <div className="how-it-works-grid" style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(4, 1fr)',
             gap: '2rem',

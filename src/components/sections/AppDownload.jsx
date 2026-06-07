@@ -6,7 +6,7 @@ export default function AppDownload() {
   return (
     <section style={{ backgroundColor: 'var(--bg-page)', padding: '5rem 0' }}>
       <div className="container-max">
-        <div style={{
+        <div className="app-download-grid" style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
           gap: '4rem',
@@ -101,7 +101,7 @@ export default function AppDownload() {
           </div>
 
           {/* Right — Mock phone frame */}
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <div className="app-phone-frame" style={{ display: 'flex', justifyContent: 'center' }}>
             <div style={{
               width: '240px',
               height: '480px',
