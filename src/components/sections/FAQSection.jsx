@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import SectionLabel from '../common/SectionLabel'
 
-const FAQS = [
+export const FAQS = [
   {
     q: 'How do I book a pandit?',
     a: 'Simply select your puja type and city on our homepage, choose a date, and click "Find Pandit". Browse available pandits, view their profiles, and book instantly online. You\'ll receive a WhatsApp confirmation within minutes.',

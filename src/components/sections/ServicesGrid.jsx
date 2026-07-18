@@ -54,6 +54,7 @@ export default function ServicesGrid() {
 
         {/* Grid */}
         <div
+          className="card-grid-3"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',

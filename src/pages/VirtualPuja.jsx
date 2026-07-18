@@ -1,4 +1,6 @@
 import React from 'react'
+import Seo from '../components/Seo'
+import { PAGES, breadcrumbSchema } from '../seo/seoConfig'
 import Navbar from '../components/layout/Navbar'
 import Footer from '../components/layout/Footer'
 import WhatsAppFloat from '../components/layout/WhatsAppFloat'
@@ -9,6 +11,13 @@ import virtualBg from '../assets/virtual_puja_bg.png'
 export default function VirtualPuja() {
   return (
     <>
+      <Seo
+        {...PAGES['virtual-puja']}
+        jsonLd={breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Virtual Puja', path: '/virtual-puja' },
+        ])}
+      />
       <Navbar />
       <main style={{ paddingTop: '68px', backgroundColor: 'var(--bg-page)', minHeight: '100vh' }}>
         {/* Hero Section */}

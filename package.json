@@ -7,7 +7,10 @@
     "dev": "concurrently --kill-others-on-fail \"node server.cjs\" \"vite\" --names \"server,vite\" --prefix-colors \"yellow,cyan\"",
     "dev:vite": "vite",
     "server": "node server.cjs",
+    "sitemap": "node scripts/generate-sitemap.mjs",
+    "prebuild": "node scripts/generate-sitemap.mjs",
     "build": "vite build",
+    "build:cpanel": "node scripts/generate-sitemap.mjs && vite build && powershell -NoProfile -Command \"Compress-Archive -Path (Get-ChildItem dist -Force).FullName -DestinationPath divyarudra-frontend.zip -Force\"",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -30,6 +33,7 @@
     "date-fns": "^4.1.0",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "gsap": "^3.15.0",
     "lucide-react": "^1.8.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",

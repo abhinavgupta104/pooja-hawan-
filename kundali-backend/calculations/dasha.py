@@ -14,7 +14,7 @@ DASHA_LORDS = [
 ]
 
 TOTAL_YEARS = 120
-DAYS_PER_YEAR = 365.2425 # Julian/Gregorian average year
+DAYS_PER_YEAR = 365.25 # Standard Vimshottari year used by mainstream Vedic software
 
 def calculate_dasha(moon_longitude, birth_date):
     """

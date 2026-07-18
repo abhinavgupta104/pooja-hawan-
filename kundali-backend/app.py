@@ -4,7 +4,7 @@ import requests
 from datetime import datetime
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from geopy.geocoders import Nominatim
+from geopy.geocoders import Nominatim, Photon
 import pytz
 import swisseph as swe
 
@@ -32,6 +32,7 @@ os.environ['SSL_CERT_FILE'] = certifi.where()
 os.environ['REQUESTS_CA_BUNDLE'] = certifi.where()
 
 geolocator = Nominatim(user_agent="kundali_generator_app_v2")
+geolocator_fallback = Photon(user_agent="kundali_generator_app_v2")
 
 # ---------------------------------------------------------------------------
 # Timezone helper: replaces timezonefinder (which requires cffi/C compilation)
@@ -63,9 +64,16 @@ def _tz_from_lon(lon: float) -> str:
 def get_timezone_for_coords(lat: float, lon: float) -> str:
     """
     Get IANA timezone string for a lat/lon pair.
-    1) Try timeapi.io (free, no key needed, works offline too if cached)
-    2) Fall back to longitude-based estimate
+    1) India bounding box -> Asia/Kolkata (covers most users; avoids the
+       longitude fallback which would be off by 30 min for India)
+    2) Try timeapi.io (free, no key needed)
+    3) Fall back to longitude-based estimate
     """
+    india = _COMMON_TZ["Asia/Kolkata"]
+    if india["lat"][0] <= lat <= india["lat"][1] and india["lon"][0] <= lon <= india["lon"][1]:
+        print("[TZ] Resolved via India bounding box: Asia/Kolkata")
+        return "Asia/Kolkata"
+
     try:
         resp = requests.get(
             "https://timeapi.io/api/timezone/coordinate",
@@ -90,6 +98,10 @@ def get_timezone_for_coords(lat: float, lon: float) -> str:
     return tz_name
 
 
+@app.route('/', methods=['GET'])
+def index():
+    return jsonify({"status": "ok", "message": "Kundali API is running. Use /api/kundali or /api/panchang."})
+
 @app.route('/health', methods=['GET'])
 def health_check():
     return jsonify({"status": "ok", "timezone_method": "timeapi.io + lon-fallback"})
@@ -112,15 +124,25 @@ def generate_kundali():
 
         # 1. Geocode the place
         print(f"[{datetime.now()}] Geocoding place: {place_str}")
+        location = None
         try:
             location = geolocator.geocode(place_str, timeout=10)
-            if not location:
-                print(f"[{datetime.now()}] Geocoding failed: Place '{place_str}' not found.")
-                return jsonify({"error": "Place not found"}), 400
-            print(f"[{datetime.now()}] Resolved: {location.address} ({location.latitude}, {location.longitude})")
         except Exception as e:
-            print(f"[{datetime.now()}] Geocoding exception: {e}")
-            return jsonify({"error": f"Geocoding error: {str(e)}"}), 400
+            print(f"[{datetime.now()}] Nominatim exception: {e}")
+            
+        if not location:
+            try:
+                print(f"[{datetime.now()}] Trying Photon fallback for: {place_str}")
+                location = geolocator_fallback.geocode(place_str, timeout=10)
+            except Exception as e:
+                print(f"[{datetime.now()}] Photon exception: {e}")
+                return jsonify({"error": f"Geocoding error: {str(e)}"}), 400
+
+        if not location:
+            print(f"[{datetime.now()}] Geocoding failed: Place '{place_str}' not found.")
+            return jsonify({"error": "Place not found"}), 400
+            
+        print(f"[{datetime.now()}] Resolved: {location.address} ({location.latitude}, {location.longitude})")
 
         lat, lon = location.latitude, location.longitude
 
@@ -163,7 +185,7 @@ def generate_kundali():
 
         yogas_data = calculate_yogas(planets_data)
         navamsa_data = calculate_navamsa(lagna_data['longitude'], planets_data)
-        ashtakavarga_data = calculate_ashtakavarga(planets_data)
+        ashtakavarga_data = calculate_ashtakavarga(planets_data, lagna_data['rashi'])
 
         # Panchang details (Tithi, Vara, Yoga, Karana, Sunrise/Sunset)
         panchang_data = calculate_panchang(jd_ut, lat, lon)
@@ -269,22 +291,10 @@ def get_daily_panchang():
         h = utc_dt.hour + utc_dt.minute / 60.0 + utc_dt.second / 3600.0
         jd_ut = swe.julday(y, m, d, h)
         
-        # Retrieve base panchang from existing calculator
-        panchang_data = calculate_panchang(jd_ut, lat, lon)
-        
-        # Add basic Nakshatra explicitly for the daily widget (Moon position)
-        swe.set_sid_mode(swe.SIDM_LAHIRI)
-        moon_res, _ = swe.calc_ut(jd_ut, swe.MOON, swe.FLG_SWIEPH | swe.FLG_SIDEREAL)
-        moon_lon = moon_res[0]
-        NAKSHATRAS = ["Ashwini", "Bharani", "Krittika", "Rohini", "Mrigashira", "Ardra", "Punarvasu", "Pushya", "Ashlesha", "Magha", "Purva Phalguni", "Uttara Phalguni", "Hasta", "Chitra", "Swati", "Vishakha", "Anuradha", "Jyeshtha", "Mula", "Purva Ashadha", "Uttara Ashadha", "Shravana", "Dhanishta", "Shatabhisha", "Purva Bhadrapada", "Uttara Bhadrapada", "Revati"]
-        nakshatra_num = int(moon_lon / (360 / 27))
-        nakshatra_name = NAKSHATRAS[nakshatra_num]
-        
-        panchang_data['nakshatra'] = {
-            "name": nakshatra_name,
-            "number": nakshatra_num + 1
-        }
-        
+        # Daily panchang convention: the five limbs are the ones running at
+        # local sunrise (includes nakshatra + end times for each element)
+        panchang_data = calculate_panchang(jd_ut, lat, lon, at_sunrise=True)
+
         return jsonify({
             "status": "success",
             "data": panchang_data

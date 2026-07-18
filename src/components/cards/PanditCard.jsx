@@ -14,7 +14,9 @@ export default function PanditCard({ pandit }) {
       <div style={{ position: 'relative', marginBottom: '0.25rem' }}>
         <img
           src={pandit.photo}
-          alt={pandit.name}
+          alt={`${pandit.name} — verified pandit`}
+          loading="lazy"
+          decoding="async"
           className="pandit-photo"
           style={{ width: '80px', height: '80px' }}
           onError={e => {

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import Seo from '../components/Seo'
+import { PAGES, breadcrumbSchema } from '../seo/seoConfig'
 import Navbar from '../components/layout/Navbar'
 import Footer from '../components/layout/Footer'
 import WhatsAppFloat from '../components/layout/WhatsAppFloat'
@@ -54,6 +56,13 @@ export default function Booking() {
 
   return (
     <>
+      <Seo
+        {...PAGES.booking}
+        jsonLd={breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Book a Puja', path: '/booking' },
+        ])}
+      />
       <Navbar />
       <main style={{ paddingTop: '68px', minHeight: '100vh', backgroundColor: 'var(--bg-page)' }}>
         {submitted ? (

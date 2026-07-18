@@ -1,5 +1,7 @@
 import React from 'react'
 import { useParams, Link } from 'react-router-dom'
+import Seo from '../components/Seo'
+import { SITE, absoluteUrl, breadcrumbSchema } from '../seo/seoConfig'
 import Navbar from '../components/layout/Navbar'
 import Footer from '../components/layout/Footer'
 import WhatsAppFloat from '../components/layout/WhatsAppFloat'
@@ -14,6 +16,12 @@ export default function PanditProfile() {
   if (!pandit) {
     return (
       <>
+        <Seo
+          title="Pandit Not Found | Puja Havan"
+          description="This pandit profile could not be found. Browse all verified pandits on Puja Havan."
+          path="/pandits"
+          noindex
+        />
         <Navbar />
         <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '68px' }}>
           <div style={{ textAlign: 'center' }}>
@@ -28,8 +36,49 @@ export default function PanditProfile() {
 
   const services = servicesData.filter(s => pandit.specializations.includes(s.name))
 
+  const panditTitle = `${pandit.name} — Verified Pandit in ${pandit.city} | Puja Havan`
+  const panditDesc = `Book ${pandit.name}, a verified pandit in ${pandit.city} with ${pandit.experience}+ years of experience. Specialises in ${pandit.specializations.slice(0, 3).join(', ')}. Rated ${pandit.rating}★ by ${pandit.reviewCount}+ devotees.`
+  const panditJsonLd = [
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'Pandits', path: '/pandits' },
+      { name: pandit.name, path: `/pandit/${pandit.id}` },
+    ]),
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: pandit.name,
+      jobTitle: pandit.certifications || 'Vedic Pandit',
+      description: pandit.bio,
+      image: absoluteUrl(pandit.photo),
+      url: absoluteUrl(`/pandit/${pandit.id}`),
+      knowsLanguage: pandit.languages,
+      alumniOf: pandit.education,
+      worksFor: { '@id': `${SITE.url}/#organization` },
+      address: { '@type': 'PostalAddress', addressLocality: pandit.city, addressCountry: 'IN' },
+      ...(pandit.reviewCount
+        ? {
+            aggregateRating: {
+              '@type': 'AggregateRating',
+              ratingValue: pandit.rating,
+              reviewCount: pandit.reviewCount,
+              bestRating: 5,
+            },
+          }
+        : {}),
+    },
+  ]
+
   return (
     <>
+      <Seo
+        title={panditTitle}
+        description={panditDesc}
+        path={`/pandit/${pandit.id}`}
+        image={pandit.photo}
+        type="profile"
+        jsonLd={panditJsonLd}
+      />
       <Navbar />
       <main style={{ paddingTop: '68px', backgroundColor: 'var(--bg-page)', minHeight: '100vh' }}>
         {/* Profile hero */}

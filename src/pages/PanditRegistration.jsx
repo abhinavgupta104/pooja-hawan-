@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import Seo from '../components/Seo'
+import { PAGES, breadcrumbSchema } from '../seo/seoConfig'
 import Navbar from '../components/layout/Navbar'
 import Footer from '../components/layout/Footer'
 import WhatsAppFloat from '../components/layout/WhatsAppFloat'
@@ -60,6 +62,13 @@ export default function PanditRegistration() {
 
   return (
     <>
+      <Seo
+        {...PAGES['pandit-registration']}
+        jsonLd={breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Register as a Pandit', path: '/pandit-registration' },
+        ])}
+      />
       <Navbar />
       <main style={{ paddingTop: '68px', backgroundColor: 'var(--bg-page)', minHeight: '100vh' }}>
         {/* Header */}

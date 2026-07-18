@@ -1,0 +1,27 @@
+{
+  "name": "Puja Havan — Book Verified Pandits",
+  "short_name": "Puja Havan",
+  "description": "Book verified, experienced pandits online for Puja, Havan, Homa & Samskaras across India.",
+  "start_url": "/?utm_source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FAF5EC",
+  "theme_color": "#7B1C1C",
+  "lang": "en-IN",
+  "categories": ["lifestyle", "religion", "shopping"],
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

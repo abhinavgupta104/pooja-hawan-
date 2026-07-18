@@ -1,10 +1,27 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { Menu, X, Phone, ChevronDown, MapPin } from 'lucide-react'
 import logo from '../../assets/logo.png'
 import cities from '../../data/cities.json'
 
+// Primary links always visible in desktop nav
 const NAV_LINKS = [
+  { label: 'Services', href: '/services' },
+  { label: 'Puja', href: '/puja' },
+  { label: 'E-Puja', href: '/e-puja' },
+  { label: 'Shop', href: '/shop' },
+]
+
+// Grouped under a "Tools" dropdown to reduce crowding
+const TOOLS_LINKS = [
+  { label: 'Panchang', href: '/panchang', icon: '📅' },
+  { label: 'Numerology', href: '/numerology', icon: '🔢' },
+  { label: 'Kundali', href: '/kundali', icon: '♈' },
+  { label: 'Virtual Puja', href: '/virtual-puja', icon: '👓' },
+]
+
+// All links for mobile sheet
+const ALL_MOBILE_LINKS = [
   { label: 'Services', href: '/services' },
   { label: 'Puja', href: '/puja' },
   { label: 'E-Puja', href: '/e-puja' },
@@ -20,7 +37,9 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [selectedCity, setSelectedCity] = useState('Delhi')
   const [cityDropOpen, setCityDropOpen] = useState(false)
+  const [toolsOpen, setToolsOpen] = useState(false)
   const cityDropRef = useRef(null)
+  const toolsDropRef = useRef(null)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -49,6 +68,18 @@ export default function Navbar() {
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [cityDropOpen])
+
+  // Close tools dropdown when clicking outside
+  useEffect(() => {
+    if (!toolsOpen) return
+    const handleClickOutside = (e) => {
+      if (toolsDropRef.current && !toolsDropRef.current.contains(e.target)) {
+        setToolsOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [toolsOpen])
 
   return (
     <>
@@ -216,25 +247,98 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Nav Links */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.75rem' }} className="hidden-mobile">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }} className="hidden-mobile">
             {NAV_LINKS.map(link => (
-              <Link
+              <NavLink
                 key={link.href}
                 to={link.href}
-                style={{
+                style={({ isActive }) => ({
                   fontFamily: 'var(--font-body)',
                   fontSize: '0.88rem',
-                  color: 'var(--text-body)',
+                  color: isActive ? 'var(--maroon)' : 'var(--text-body)',
                   textDecoration: 'none',
-                  fontWeight: 400,
+                  fontWeight: isActive ? 600 : 400,
+                  borderBottom: isActive ? '2px solid var(--saffron)' : '2px solid transparent',
+                  paddingBottom: '2px',
                   transition: 'color 0.2s',
-                }}
-                onMouseEnter={e => e.currentTarget.style.color = 'var(--maroon)'}
-                onMouseLeave={e => e.currentTarget.style.color = 'var(--text-body)'}
+                })}
               >
                 {link.label}
-              </Link>
+              </NavLink>
             ))}
+
+            {/* Tools dropdown */}
+            <div ref={toolsDropRef} style={{ position: 'relative' }}>
+              <button
+                onClick={() => setToolsOpen(o => !o)}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.3rem',
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.88rem',
+                  color: toolsOpen ? 'var(--maroon)' : 'var(--text-body)',
+                  fontWeight: toolsOpen ? 600 : 400,
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  padding: 0,
+                  transition: 'color 0.2s',
+                }}
+              >
+                Tools
+                <ChevronDown
+                  size={13}
+                  color="var(--text-muted)"
+                  style={{
+                    transition: 'transform 0.25s ease',
+                    transform: toolsOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                  }}
+                />
+              </button>
+              {toolsOpen && (
+                <div style={{
+                  position: 'absolute',
+                  top: 'calc(100% + 12px)',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  backgroundColor: 'var(--bg-card)',
+                  border: '1px solid var(--border)',
+                  borderRadius: '12px',
+                  boxShadow: 'var(--shadow-hover)',
+                  zIndex: 1000,
+                  minWidth: '180px',
+                  padding: '0.5rem',
+                  animation: 'fadeIn 0.18s ease-out',
+                }}>
+                  {TOOLS_LINKS.map(t => (
+                    <NavLink
+                      key={t.href}
+                      to={t.href}
+                      onClick={() => setToolsOpen(false)}
+                      style={({ isActive }) => ({
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.6rem',
+                        padding: '0.55rem 0.9rem',
+                        fontFamily: 'var(--font-body)',
+                        fontSize: '0.88rem',
+                        color: isActive ? 'var(--saffron)' : 'var(--text-body)',
+                        backgroundColor: isActive ? 'var(--gold-bg)' : 'transparent',
+                        textDecoration: 'none',
+                        borderRadius: '6px',
+                        fontWeight: isActive ? 600 : 400,
+                        transition: 'background 0.15s',
+                      })}
+                      onMouseEnter={e => { e.currentTarget.style.backgroundColor = 'var(--gold-bg)' }}
+                      onMouseLeave={e => { e.currentTarget.style.backgroundColor = '' }}
+                    >
+                      <span>{t.icon}</span> {t.label}
+                    </NavLink>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Right CTAs */}
@@ -287,10 +391,7 @@ export default function Navbar() {
               Contact Us
             </a>
 
-            <Link to="/booking" className="btn-primary" style={{ fontSize: '0.85rem', padding: '0.55rem 1.2rem', display: 'none' }} id="cta-desktop">
-              Book a Puja
-            </Link>
-            <Link to="/booking" className="btn-primary" style={{ fontSize: '0.85rem', padding: '0.55rem 1.2rem' }}>
+            <Link to="/booking" className="btn-primary" style={{ fontSize: '0.85rem', padding: '0.55rem 1.2rem' }} id="cta-book-puja">
               Book a Puja
             </Link>
 
@@ -338,24 +439,25 @@ export default function Navbar() {
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-            {NAV_LINKS.map(link => (
-              <Link
+            {ALL_MOBILE_LINKS.map(link => (
+              <NavLink
                 key={link.href}
                 to={link.href}
                 onClick={() => setMobileOpen(false)}
-                style={{
+                style={({ isActive }) => ({
                   fontFamily: 'var(--font-body)',
                   fontSize: '1rem',
-                  color: 'var(--text-body)',
+                  color: isActive ? 'var(--saffron)' : 'var(--text-body)',
                   textDecoration: 'none',
                   padding: '0.75rem 0.5rem',
                   borderBottom: '1px solid var(--border)',
                   display: 'block',
+                  fontWeight: isActive ? 600 : 400,
                   transition: 'color 0.2s',
-                }}
+                })}
               >
                 {link.label}
-              </Link>
+              </NavLink>
             ))}
             <Link
               to="/about"

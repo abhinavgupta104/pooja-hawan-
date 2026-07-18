@@ -1,4 +1,6 @@
 import React from 'react'
+import Seo from '../components/Seo'
+import { PAGES } from '../seo/seoConfig'
 import Navbar from '../components/layout/Navbar'
 import Footer from '../components/layout/Footer'
 import WhatsAppFloat from '../components/layout/WhatsAppFloat'
@@ -6,6 +8,7 @@ import WhatsAppFloat from '../components/layout/WhatsAppFloat'
 export default function ComingSoon() {
   return (
     <>
+      <Seo {...PAGES['e-puja']} noindex />
       <Navbar />
       <main style={{ 
         paddingTop: '68px', 

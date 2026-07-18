@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import Seo from '../components/Seo';
+import { PAGES, breadcrumbSchema } from '../seo/seoConfig';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import SectionLabel from '../components/common/SectionLabel';
 import NorthIndianChart from '../components/Kundali/NorthIndianChart';
-import { Loader2, Star, Sun, Moon, Zap, BookOpen, BarChart3, Grid3x3 } from 'lucide-react';
+import { Loader2, Star, Sun, Moon, Zap, BookOpen, BarChart3, Grid3x3, Wifi, WifiOff, CheckCircle } from 'lucide-react';
+import { useBackendWarmup } from '../hooks/useBackendWarmup';
 
-const BACKEND = import.meta.env.VITE_BACKEND_URL || 'https://pooja-hawan-1.onrender.com';
+const BACKEND = import.meta.env.VITE_BACKEND_URL || 'https://kundali-backend-408824487148.asia-south1.run.app';
 
 const PLANET_SYMBOLS = {
   Sun:'☉', Moon:'☽', Mars:'♂', Mercury:'☿', Jupiter:'♃',
@@ -17,12 +20,103 @@ const STATUS_COLOR = {
   'Own Sign':'#2563eb', 'Neutral':'#6b7280'
 };
 
+// ─── Warmup Banner ────────────────────────────────────────────────────────────
+function WarmupBanner({ status, elapsed }) {
+  const progress = Math.min((elapsed / 45_000) * 100, 95); // 45 s estimated max
+
+  const STEPS = [
+    { label: 'Connecting to server…',     threshold: 0    },
+    { label: 'Server is waking up…',       threshold: 5000 },
+    { label: 'Loading Vedic algorithms…',  threshold: 15000 },
+    { label: 'Preparing chart engine…',    threshold: 28000 },
+    { label: 'Almost ready…',              threshold: 38000 },
+  ];
+  const currentStep = [...STEPS].reverse().find(s => elapsed >= s.threshold) || STEPS[0];
+
+  if (status === 'idle') return null;
+  if (status === 'ready') return (
+    <div style={{
+      display: 'flex', alignItems: 'center', gap: '0.65rem',
+      padding: '0.6rem 1rem',
+      background: 'linear-gradient(135deg, #ecfdf5, #d1fae5)',
+      border: '1px solid #6ee7b7',
+      borderRadius: 10, marginBottom: '1.25rem',
+      fontSize: '0.82rem', fontFamily: 'var(--font-body)', color: '#065f46',
+      animation: 'fadeIn 0.4s ease',
+    }}>
+      <CheckCircle size={16} color="#10b981" style={{ flexShrink: 0 }} />
+      <span><strong>Server ready</strong> — Kundali calculation is available. (warmed up in {(elapsed / 1000).toFixed(1)}s)</span>
+    </div>
+  );
+  if (status === 'error') return (
+    <div style={{
+      display: 'flex', alignItems: 'center', gap: '0.65rem',
+      padding: '0.6rem 1rem',
+      background: '#fff7ed', border: '1px solid #fed7aa',
+      borderRadius: 10, marginBottom: '1.25rem',
+      fontSize: '0.82rem', fontFamily: 'var(--font-body)', color: '#92400e',
+    }}>
+      <WifiOff size={16} color="#f97316" style={{ flexShrink: 0 }} />
+      <span><strong>Server may be slow.</strong> You can still submit — it will respond once it finishes waking up.</span>
+    </div>
+  );
+
+  return (
+    <div style={{
+      padding: '0.9rem 1.1rem',
+      background: 'linear-gradient(135deg, var(--gold-bg), #fffdf7)',
+      border: '1px solid var(--border-gold)',
+      borderRadius: 12, marginBottom: '1.25rem',
+      fontFamily: 'var(--font-body)',
+    }}>
+      {/* Header row */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.6rem' }}>
+        <Wifi size={15} color="var(--gold)" style={{ flexShrink: 0, animation: 'pulse 1.5s ease-in-out infinite' }} />
+        <span style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--maroon)' }}>
+          {currentStep.label}
+        </span>
+        <span style={{ marginLeft: 'auto', fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+          {(elapsed / 1000).toFixed(0)}s
+        </span>
+      </div>
+
+      {/* Progress bar */}
+      <div style={{
+        height: 5, borderRadius: 99,
+        background: 'rgba(212,175,55,0.2)',
+        overflow: 'hidden',
+      }}>
+        <div style={{
+          height: '100%',
+          width: `${progress}%`,
+          background: 'linear-gradient(90deg, var(--gold), var(--saffron))',
+          borderRadius: 99,
+          transition: 'width 0.5s ease',
+        }} />
+      </div>
+
+      {/* Sub-text */}
+      <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)', marginTop: '0.45rem', marginBottom: 0 }}>
+        Our server runs on Render's free tier and sleeps when inactive. This happens only on first load — subsequent requests are instant.
+      </p>
+    </div>
+  );
+}
+
+// ─── Main Page ─────────────────────────────────────────────────────────────────
 export default function Kundali() {
   const [form, setForm] = useState({ name:'', date:'', time:'', place:'' });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
   const [tab, setTab] = useState('chart');
+
+  // Ping backend on mount so it wakes up while the user fills out the form
+  const { status: warmupStatus, elapsed: warmupElapsed } = useBackendWarmup(
+    `${BACKEND}/health`,
+    { timeout: 60_000 }
+  );
+  const serverReady = warmupStatus === 'ready' || warmupStatus === 'error';
 
   const generate = async (e) => {
     e.preventDefault();
@@ -55,6 +149,13 @@ export default function Kundali() {
 
   return (
     <>
+      <Seo
+        {...PAGES.kundali}
+        jsonLd={breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Free Kundali', path: '/kundali' },
+        ])}
+      />
       <Navbar />
       <main style={{ paddingTop:68, background:'var(--bg-page)', minHeight:'100vh' }}>
         {/* Hero */}
@@ -76,6 +177,8 @@ export default function Kundali() {
             {/* ── Form ── */}
             <div style={{ flex:'1 1 300px', background:'var(--bg-card)', padding:'2rem', borderRadius:12,
               border:'1px solid var(--border)', boxShadow:'var(--shadow-card)', position:'sticky', top:80 }}>
+              {/* Server warmup status banner */}
+              <WarmupBanner status={warmupStatus} elapsed={warmupElapsed} />
               <h2 style={{ fontFamily:'var(--font-heading)', color:'var(--maroon)', marginBottom:'1.5rem', fontSize:'1.25rem' }}>
                 Enter Birth Details
               </h2>
@@ -94,12 +197,24 @@ export default function Kundali() {
                 <Field label="Place of Birth">
                   <input type="text" required value={form.place} onChange={e=>setForm({...form,place:e.target.value})} style={inp} placeholder="e.g. Mumbai, India" />
                 </Field>
-                <button type="submit" disabled={loading} style={{
-                  width:'100%', padding:'0.9rem', background:'var(--maroon)', color:'#fff',
-                  border:'none', borderRadius:8, cursor:'pointer', fontFamily:'var(--font-heading)',
-                  fontSize:'1rem', display:'flex', alignItems:'center', justifyContent:'center', gap:'0.5rem', marginTop:'0.5rem'
+                <button type="submit" disabled={loading || warmupStatus === 'warming'} style={{
+                  width:'100%', padding:'0.9rem',
+                  background: warmupStatus === 'warming' ? 'var(--text-muted)' : 'var(--maroon)',
+                  color:'#fff',
+                  border:'none', borderRadius:8,
+                  cursor: warmupStatus === 'warming' ? 'not-allowed' : 'pointer',
+                  fontFamily:'var(--font-heading)',
+                  fontSize:'1rem', display:'flex', alignItems:'center', justifyContent:'center', gap:'0.5rem', marginTop:'0.5rem',
+                  transition: 'background 0.3s ease',
+                  opacity: warmupStatus === 'warming' ? 0.7 : 1,
                 }}>
-                  {loading ? <><Loader2 size={16} className="spinner"/>Calculating…</> : '✦ Generate Kundali'}
+                  {loading ? (
+                    <><Loader2 size={16} className="spinner" />Calculating…</>
+                  ) : warmupStatus === 'warming' ? (
+                    <><Loader2 size={16} className="spinner" />Server Waking Up…</>
+                  ) : (
+                    '✦ Generate Kundali'
+                  )}
                 </button>
               </form>
 

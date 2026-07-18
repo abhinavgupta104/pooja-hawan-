@@ -1,0 +1,8 @@
+# Puja Havan — robots.txt
+# Allow full crawling. Thin/utility pages (e-puja "coming soon")
+# are excluded from the index via a per-page noindex meta tag,
+# so they must remain crawlable here for that tag to be seen.
+User-agent: *
+Allow: /
+
+Sitemap: https://pujahavan.com/sitemap.xml

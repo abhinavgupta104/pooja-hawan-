@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import Seo from '../components/Seo'
+import { PAGES, breadcrumbSchema } from '../seo/seoConfig'
 import Navbar from '../components/layout/Navbar'
 import Footer from '../components/layout/Footer'
 import WhatsAppFloat from '../components/layout/WhatsAppFloat'
@@ -26,6 +28,13 @@ export default function Pandits() {
 
   return (
     <>
+      <Seo
+        {...PAGES.pandits}
+        jsonLd={breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Pandits', path: '/pandits' },
+        ])}
+      />
       <Navbar />
       <main style={{ paddingTop: '68px', minHeight: '100vh', backgroundColor: 'var(--bg-page)' }}>
         {/* Header */}
@@ -100,7 +109,7 @@ export default function Pandits() {
             Showing {filtered.length} pandit{filtered.length !== 1 ? 's' : ''}
           </p>
           {filtered.length > 0 ? (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.25rem' }}>
+            <div className="card-grid-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.25rem' }}>
               {filtered.map(p => <PanditCard key={p.id} pandit={p} />)}
             </div>
           ) : (

@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import Seo from '../components/Seo'
+import { PAGES, breadcrumbSchema } from '../seo/seoConfig'
 import Navbar from '../components/layout/Navbar'
 import Footer from '../components/layout/Footer'
 import WhatsAppFloat from '../components/layout/WhatsAppFloat'
@@ -13,6 +15,13 @@ const EPUJA_SERVICES = servicesData.filter(s =>
 export default function EPuja() {
   return (
     <>
+      <Seo
+        {...PAGES.puja}
+        jsonLd={breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Online Puja', path: '/puja' },
+        ])}
+      />
       <Navbar />
       <main style={{ paddingTop: '68px', backgroundColor: 'var(--bg-page)', minHeight: '100vh' }}>
         {/* Hero */}

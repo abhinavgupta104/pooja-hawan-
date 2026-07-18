@@ -1,6 +1,7 @@
 import React from 'react'
 import { BadgeCheck, Languages, Package, Monitor, DollarSign, Clock } from 'lucide-react'
 import SectionLabel from '../common/SectionLabel'
+import { useScrollReveal } from '../../hooks/useScrollReveal'
 
 const FEATURES = [
   {
@@ -36,8 +37,9 @@ const FEATURES = [
 ]
 
 export default function WhyUs() {
+  const { ref, isVisible } = useScrollReveal()
   return (
-    <section style={{ backgroundColor: 'var(--bg-section-alt)', padding: '5rem 0', position: 'relative', overflow: 'hidden' }}>
+    <section ref={ref} style={{ backgroundColor: 'var(--bg-section-alt)', padding: '5rem 0', position: 'relative', overflow: 'hidden' }}>
       {/* Background mandala */}
       <div aria-hidden style={{
         position: 'absolute',
@@ -64,18 +66,22 @@ export default function WhyUs() {
           The Puja Havan Difference
         </h2>
 
-        <div className="why-us-grid" style={{
+        <div className="why-us-grid card-grid-3" style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
           gap: '1.5rem',
         }}>
-          {FEATURES.map(f => {
+          {FEATURES.map((f, idx) => {
             const Icon = f.icon
             return (
               <div
                 key={f.title}
                 className="card-base"
-                style={{ padding: '1.75rem' }}
+                style={{
+                  padding: '1.75rem',
+                  opacity: isVisible ? 1 : 0,
+                  transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
+                  transition: `opacity 0.5s ease ${idx * 80}ms, transform 0.5s ease ${idx * 80}ms`,
+                }}
               >
                 <div className="gold-icon-bg" style={{ width: '48px', height: '48px', marginBottom: '1rem' }}>
                   <Icon size={22} color="var(--gold)" />

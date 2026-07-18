@@ -1,6 +1,7 @@
 import React from 'react'
 import { Search, UserCheck, CreditCard, Home } from 'lucide-react'
 import SectionLabel from '../common/SectionLabel'
+import { useScrollReveal } from '../../hooks/useScrollReveal'
 
 const STEPS = [
   {
@@ -30,8 +31,9 @@ const STEPS = [
 ]
 
 export default function HowItWorks() {
+  const { ref, isVisible } = useScrollReveal()
   return (
-    <section style={{ backgroundColor: 'var(--bg-page)', padding: '5rem 0', position: 'relative', overflow: 'hidden' }}>
+    <section ref={ref} style={{ backgroundColor: 'var(--bg-page)', padding: '5rem 0', position: 'relative', overflow: 'hidden' }}>
       {/* Watermark mandala */}
       <div aria-hidden style={{ position: 'absolute', left: '-150px', top: '50%', transform: 'translateY(-50%)', opacity: 0.04, pointerEvents: 'none' }}>
         <svg viewBox="0 0 500 500" width="500" height="500" fill="none">
@@ -81,6 +83,9 @@ export default function HowItWorks() {
                     flexDirection: 'column',
                     alignItems: 'flex-start',
                     gap: '1rem',
+                    opacity: isVisible ? 1 : 0,
+                    transform: isVisible ? 'translateY(0)' : 'translateY(28px)',
+                    transition: `opacity 0.55s ease ${i * 100}ms, transform 0.55s ease ${i * 100}ms`,
                   }}
                 >
                   {/* Step circle with number */}

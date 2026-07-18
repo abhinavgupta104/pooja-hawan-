@@ -1,0 +1,25 @@
+# Upload filter for `gcloud run deploy --source`
+# NOTE: unlike .gitignore, this deliberately INCLUDES ephe/*.se1 —
+# the Swiss Ephemeris data files are required at runtime.
+
+.gcloudignore
+.git
+.gitignore
+
+# Virtual environments (huge, rebuilt in the container)
+venv/
+venv_win_new/
+
+# Python build artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Local-only files
+test_geocode.py
+fly.toml
+.idea/
+.vscode/
+*.swp

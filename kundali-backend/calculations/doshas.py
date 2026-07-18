@@ -9,14 +9,27 @@ def calculate_doshas(planets_data):
     Calculate Mangal Dosha and Kaal Sarp Dosha based on natal chart.
     """
     doshas = []
-    
-    # Mangal Dosha
-    mars_house = planets_data['Mars']['house']
-    if mars_house in [1, 4, 7, 8, 12]:
+
+    # Mangal Dosha — Mars in houses 1, 2, 4, 7, 8 or 12 counted from the
+    # Lagna or from the Moon (the standard references used by matchmakers).
+    MANGLIK_HOUSES = {1, 2, 4, 7, 8, 12}
+    mars_sign = int(planets_data['Mars']['longitude'] // 30)
+    moon_sign = int(planets_data['Moon']['longitude'] // 30)
+
+    mars_house_lagna = planets_data['Mars']['house']
+    mars_house_moon = ((mars_sign - moon_sign) % 12) + 1
+
+    manglik_from = []
+    if mars_house_lagna in MANGLIK_HOUSES:
+        manglik_from.append(f"Lagna ({mars_house_lagna} house)")
+    if mars_house_moon in MANGLIK_HOUSES:
+        manglik_from.append(f"Moon ({mars_house_moon} house)")
+
+    if manglik_from:
         doshas.append({
             "name": "Mangal Dosha",
             "presence": True,
-            "description": f"Mars is placed in the {mars_house} house. This forms Manglik Dosha, indicating a need for careful relationship matching."
+            "description": f"Mars is Manglik-placed from: {', '.join(manglik_from)}. This forms Mangal Dosha, indicating a need for careful relationship matching."
         })
     else:
         doshas.append({
@@ -24,22 +37,10 @@ def calculate_doshas(planets_data):
             "presence": False,
             "description": "No Mangal Dosha present in the birth chart."
         })
-        
-    # Kaal Sarp Dosha
-    # Check if all 7 planets are between Rahu and Ketu
-    # One simple way is to check the distance.
-    # The maximum distance between any of the 7 planets and Rahu, and between the planets and Ketu.
-    # Actually, the simplest check is: are all planets contained within one half of the zodiac split by the Rahu/Ketu axis?
-    rahu_long = planets_data['Rahu']['longitude']
-    
-    all_hemmed = True
-    for p in ['Sun', 'Moon', 'Mars', 'Mercury', 'Jupiter', 'Venus', 'Saturn']:
-        long = planets_data[p]['longitude']
-        diff = (long - rahu_long) % 360
-        # If any planet is more than 180 degrees away from Rahu, they are not all on the same side.
-        # Wait! They must ALL be strictly < 180, OR they must ALL be strictly > 180.
-        if not all_hemmed: break
 
+    # Kaal Sarp Dosha
+    # All 7 planets contained within one half of the zodiac split by the Rahu/Ketu axis.
+    rahu_long = planets_data['Rahu']['longitude']
     diffs = [(planets_data[p]['longitude'] - rahu_long) % 360 for p in ['Sun', 'Moon', 'Mars', 'Mercury', 'Jupiter', 'Venus', 'Saturn']]
     
     all_less_than_180 = all(d < 180 for d in diffs)

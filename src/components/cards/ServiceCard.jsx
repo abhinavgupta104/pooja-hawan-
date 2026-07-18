@@ -1,16 +1,26 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Clock, ArrowRight } from 'lucide-react'
+import {
+  Clock, ArrowRight, AlertCircle, Baby, BookOpen, Briefcase, Building2,
+  Coins, Droplets, Feather, Flame, Gift, Globe, Heart, Home, Sparkles,
+  Star, Utensils, Zap,
+} from 'lucide-react'
 import { formatPrice } from '../../lib/utils'
-import * as LucideIcons from 'lucide-react'
+
+// Named map instead of `import * as` — a star import drags the entire
+// lucide-react library (~600 KB) into the shared chunk
+const SERVICE_ICONS = {
+  AlertCircle, Baby, BookOpen, Briefcase, Building2, Coins, Droplets,
+  Feather, Flame, Gift, Globe, Heart, Home, Sparkles, Star, Utensils, Zap,
+}
 
 export default function ServiceCard({ service, featured = false, index = 0 }) {
-  const IconComponent = LucideIcons[service.icon] || LucideIcons.Star
+  const IconComponent = SERVICE_ICONS[service.icon] || Star
 
   if (featured) {
     return (
       <div
-        className="card-base"
+        className="card-base card-featured"
         style={{
           gridColumn: 'span 2',
           display: 'flex',
@@ -40,7 +50,7 @@ export default function ServiceCard({ service, featured = false, index = 0 }) {
         </div>
 
         {/* Left: visual */}
-        <div style={{
+        <div className="card-featured-media" style={{
           width: '40%',
           background: service.image ? `url(${service.image}) center/cover no-repeat` : 'linear-gradient(135deg, var(--gold-bg) 0%, var(--bg-section-alt) 100%)',
           display: 'flex',
@@ -125,6 +135,19 @@ export default function ServiceCard({ service, featured = false, index = 0 }) {
             Book Now <ArrowRight size={15} />
           </Link>
         </div>
+
+        <style>{`
+          @media (max-width: 640px) {
+            .card-featured {
+              grid-column: span 1 !important;
+              flex-direction: column !important;
+            }
+            .card-featured-media {
+              width: 100% !important;
+              min-height: 200px;
+            }
+          }
+        `}</style>
       </div>
     )
   }
@@ -151,9 +174,11 @@ export default function ServiceCard({ service, featured = false, index = 0 }) {
           border: '1px solid var(--gold-muted)',
           flexShrink: 0,
         }}>
-          <img 
-            src={service.image} 
-            alt={service.name} 
+          <img
+            src={service.image}
+            alt={`${service.name} — ${service.shortDesc || 'puja service'}`}
+            loading="lazy"
+            decoding="async"
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
         </div>

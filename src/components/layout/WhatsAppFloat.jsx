@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 
+const WA_GREEN = '#25D366'
+const WA_GREEN_DARK = '#1da851'
+
 export default function WhatsAppFloat() {
   const [hovered, setHovered] = useState(false)
 
@@ -43,24 +46,24 @@ export default function WhatsAppFloat() {
           width: '54px',
           height: '54px',
           borderRadius: '50%',
-          backgroundColor: 'var(--gold)',
+          backgroundColor: hovered ? WA_GREEN_DARK : WA_GREEN,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          boxShadow: 'var(--shadow-hover)',
+          boxShadow: `0 4px 20px rgba(37,211,102,0.4)`,
           textDecoration: 'none',
           transition: 'transform 0.2s ease, background-color 0.2s ease',
           transform: hovered ? 'scale(1.08)' : 'scale(1)',
         }}
         aria-label="Chat with us on WhatsApp"
       >
-        {/* Pulse ring */}
+        {/* Pulse rings — green to match WhatsApp brand */}
         <span
           style={{
             position: 'absolute',
             inset: '-4px',
             borderRadius: '50%',
-            backgroundColor: 'var(--gold)',
+            backgroundColor: WA_GREEN,
             opacity: 0.35,
             animation: 'pulseRing 2s ease-out infinite',
             zIndex: -1,
@@ -71,7 +74,7 @@ export default function WhatsAppFloat() {
             position: 'absolute',
             inset: '-10px',
             borderRadius: '50%',
-            backgroundColor: 'var(--gold)',
+            backgroundColor: WA_GREEN,
             opacity: 0.15,
             animation: 'pulseRing 2s ease-out infinite',
             animationDelay: '0.6s',

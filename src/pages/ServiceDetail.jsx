@@ -1,5 +1,7 @@
 import React from 'react'
 import { useParams, Link } from 'react-router-dom'
+import Seo from '../components/Seo'
+import { serviceSchema, breadcrumbSchema } from '../seo/seoConfig'
 import Navbar from '../components/layout/Navbar'
 import Footer from '../components/layout/Footer'
 import WhatsAppFloat from '../components/layout/WhatsAppFloat'
@@ -41,6 +43,12 @@ export default function ServiceDetail() {
   if (!service) {
     return (
       <>
+        <Seo
+          title="Puja Not Found | Puja Havan"
+          description="This puja could not be found. Browse all Vedic puja and havan services on Puja Havan."
+          path="/services"
+          noindex
+        />
         <Navbar />
         <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '68px' }}>
           <div style={{ textAlign: 'center' }}>
@@ -63,8 +71,27 @@ export default function ServiceDetail() {
     .filter(s => s.category === service.category && s.id !== service.id)
     .slice(0, 4)
 
+  const serviceTitle = `${service.name} — Book Online from ₹${service.startingPrice} | Puja Havan`
+  const serviceDesc = `${service.shortDesc}. Book ${service.name} (${service.duration}) online with verified pandits from ₹${service.startingPrice}. Samagri included, transparent pricing.`
+
   return (
     <>
+      <Seo
+        title={serviceTitle}
+        description={serviceDesc}
+        path={`/service/${service.slug}`}
+        image={service.image}
+        type="product"
+        keywords={`${service.name}, book ${service.name} online, ${service.category} puja, ${service.hindiName}`}
+        jsonLd={[
+          serviceSchema(service),
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Services', path: '/services' },
+            { name: service.name, path: `/service/${service.slug}` },
+          ]),
+        ]}
+      />
       <Navbar />
       <main style={{ paddingTop: '68px', backgroundColor: 'var(--bg-page)' }}>
         {/* Hero */}

@@ -22,18 +22,19 @@ export default function HeroOptInForm() {
 
   return (
     <div
-      className="anim-fade-up anim-delay-3"
       style={{
-        backgroundColor: 'var(--bg-card)',
-        border: '1.5px solid var(--gold-muted)',
-        borderRadius: '12px',
+        backgroundColor: 'rgba(255, 254, 250, 0.85)',
+        backdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)',
+        border: '1px solid var(--border-gold)',
+        borderRadius: 'var(--radius-card)',
         padding: '1.5rem',
         boxShadow: 'var(--shadow-warm)',
         marginBottom: '1.5rem',
         maxWidth: '560px',
       }}
     >
-      <p style={{ fontFamily: 'var(--font-heading)', fontSize: '0.85rem', letterSpacing: '0.12em', color: 'var(--text-gold)', textTransform: 'uppercase', marginBottom: '1rem' }}>
+      <p className="section-label" style={{ marginBottom: '1rem' }}>
         Get Free Vedic Consultation
       </p>
 
@@ -44,7 +45,7 @@ export default function HeroOptInForm() {
         </div>
       ) : (
         <form onSubmit={handleSubmit}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '0.75rem' }}>
+          <div className="optin-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '0.75rem' }}>
             <div className="form-field">
               <label className="form-label" htmlFor="optin-name">Full Name</label>
               <input
@@ -71,7 +72,7 @@ export default function HeroOptInForm() {
             </div>
           </div>
           
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '0.75rem', alignItems: 'end', marginBottom: '1rem' }}>
+          <div className="optin-row" style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '0.75rem', alignItems: 'end', marginBottom: '1rem' }}>
             <div className="form-field">
               <label className="form-label" htmlFor="optin-interest">I am interested in</label>
               <select
@@ -111,6 +112,18 @@ export default function HeroOptInForm() {
           </label>
         </form>
       )}
+
+      <style>{`
+        @media (max-width: 480px) {
+          .optin-row {
+            grid-template-columns: 1fr !important;
+          }
+          .optin-row .btn-primary {
+            width: 100%;
+            justify-content: center;
+          }
+        }
+      `}</style>
     </div>
   )
 }

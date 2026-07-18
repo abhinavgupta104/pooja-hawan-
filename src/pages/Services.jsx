@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import Seo from '../components/Seo'
+import { PAGES, breadcrumbSchema } from '../seo/seoConfig'
 import Navbar from '../components/layout/Navbar'
 import Footer from '../components/layout/Footer'
 import WhatsAppFloat from '../components/layout/WhatsAppFloat'
@@ -17,6 +19,13 @@ export default function Services() {
 
   return (
     <>
+      <Seo
+        {...PAGES.services}
+        jsonLd={breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Services', path: '/services' },
+        ])}
+      />
       <Navbar />
       <main style={{ paddingTop: '68px', minHeight: '100vh', backgroundColor: 'var(--bg-page)' }}>
         {/* Header */}
@@ -60,7 +69,7 @@ export default function Services() {
           </div>
 
           {/* Services grid — all standard size */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.25rem' }}>
+          <div className="card-grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.25rem' }}>
             {filtered.map((service, i) => (
               <ServiceCard key={service.id} service={service} featured={false} index={i} />
             ))}

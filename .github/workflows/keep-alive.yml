@@ -1,8 +1,9 @@
-name: Keep Render Backend Alive
+name: Keep Backend Warm
 
 on:
   schedule:
-    # Runs every 14 minutes to prevent Render free tier sleep (spins down after 15 mins)
+    # Ping every 14 minutes so the Cloud Run instance stays warm
+    # (Cloud Run scales to zero after ~15 min idle; a warm instance avoids cold starts)
     - cron: "*/14 * * * *"
   # Allows you to trigger it manually from the GitHub website if needed
   workflow_dispatch:
@@ -12,4 +13,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Ping Backend to keep awake
-        run: curl -s https://pooja-hawan-1.onrender.com/ > /dev/null
+        run: curl -s https://kundali-backend-408824487148.asia-south1.run.app/health > /dev/null

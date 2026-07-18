@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import Seo from '../components/Seo'
+import { PAGES, breadcrumbSchema } from '../seo/seoConfig'
 import Navbar from '../components/layout/Navbar'
 import Footer from '../components/layout/Footer'
 import SectionLabel from '../components/common/SectionLabel'
@@ -289,6 +291,13 @@ export default function Panchang() {
 
   return (
     <>
+      <Seo
+        {...PAGES.panchang}
+        jsonLd={breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Panchang', path: '/panchang' },
+        ])}
+      />
       <Navbar />
       <main style={{ paddingTop: '68px', backgroundColor: 'var(--bg-page)', minHeight: '100vh' }}>
         {/* Hero Section */}

@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import Seo from '../components/Seo'
+import { PAGES, breadcrumbSchema } from '../seo/seoConfig'
 import Navbar from '../components/layout/Navbar'
 import Footer from '../components/layout/Footer'
 import WhatsAppFloat from '../components/layout/WhatsAppFloat'
@@ -39,6 +41,13 @@ export default function Shop() {
 
   return (
     <>
+      <Seo
+        {...PAGES.shop}
+        jsonLd={breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Shop', path: '/shop' },
+        ])}
+      />
       <Navbar />
       <main style={{ paddingTop: '68px', backgroundColor: 'var(--bg-page)', minHeight: '100vh' }}>
         {/* Success toast */}
@@ -170,7 +179,7 @@ export default function Shop() {
             ))}
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.25rem' }}>
+          <div className="card-grid-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.25rem' }}>
             {filtered.map(item => (
               <div key={item.id} className="card-base" style={{ padding: '1.25rem', opacity: item.inStock ? 1 : 0.65 }}>
                 {/* Image placeholder */}

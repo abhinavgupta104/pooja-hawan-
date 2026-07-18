@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
     <!-- Favicon — dedicated square icon (diya symbol) -->
     <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />
@@ -10,33 +11,197 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-
-    <!-- SEO Meta Tags -->
+    <!-- ── Primary SEO (per-route values are updated at runtime by <Seo />) ── -->
     <title>Puja Havan — Book Verified Pandits for Puja, Havan & Homa in India</title>
-    <meta name="description" content="India's most trusted platform to book verified, experienced pandits for Puja, Havan, Homa & Samskaras. 20,000+ pandits across 50+ cities. Instant booking, transparent pricing, samagri included." />
-    <meta name="keywords" content="puja booking, pandit booking, book pandit online, havan, homa, satyanarayan puja, griha pravesh, pandit near me" />
+    <meta name="description" content="Book verified, experienced pandits online for Puja, Havan, Homa & Samskaras across India. Transparent pricing, samagri included, same-day booking. Trusted by 1 Lakh+ families." />
+    <meta name="keywords" content="book pandit online, puja booking, havan, homa, satyanarayan puja, griha pravesh, pandit near me, online puja" />
     <meta name="author" content="Puja Havan" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://pujahavan.com/" />
 
-    <!-- Open Graph / Social sharing -->
+    <!-- Language / region signals -->
+    <meta name="geo.region" content="IN" />
+    <meta name="geo.placename" content="India" />
+
+    <!-- ── Open Graph / social sharing (absolute URLs required) ── -->
+    <meta property="og:site_name" content="Puja Havan" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Puja Havan — Book Verified Pandits Online" />
-    <meta property="og:description" content="Book experienced, verified pandits for puja, havan and homa. 20,000+ pandits across 50+ Indian cities." />
-    <meta property="og:image" content="/logo.png" />
-    <meta property="og:url" content="https://pujahavan.com" />
+    <meta property="og:title" content="Puja Havan — Book Verified Pandits for Puja, Havan & Homa" />
+    <meta property="og:description" content="Book experienced, verified pandits for puja, havan and homa across India. Transparent pricing, samagri included, same-day booking." />
+    <meta property="og:image" content="https://pujahavan.com/logo.png" />
+    <meta property="og:url" content="https://pujahavan.com/" />
+    <meta property="og:locale" content="en_IN" />
 
-    <!-- Twitter Card -->
+    <!-- ── Twitter Card ── -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Puja Havan — Book Verified Pandits Online" />
-    <meta name="twitter:description" content="Book experienced, verified pandits for puja, havan and homa. 20,000+ pandits across 50+ Indian cities." />
-    <meta name="twitter:image" content="/logo.png" />
+    <meta name="twitter:description" content="Book experienced, verified pandits for puja, havan and homa across India." />
+    <meta name="twitter:image" content="https://pujahavan.com/logo.png" />
 
-    <!-- Theme color (browser chrome on mobile) -->
+    <!-- Theme + PWA -->
     <meta name="theme-color" content="#7B1C1C" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- ── Performance: connect early to third-party origins ── -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://kundali-backend-408824487148.asia-south1.run.app" />
+    <link rel="preconnect" href="https://kundali-backend-408824487148.asia-south1.run.app" crossorigin />
+
+    <!-- ── Fonts: load without blocking render (was a CSS @import) ── -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Tiro+Devanagari+Sanskrit&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Tiro+Devanagari+Sanskrit&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Tiro+Devanagari+Sanskrit&display=swap"
+      />
+    </noscript>
+
+    <!-- ── Global structured data (visible to every crawler) ── -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://pujahavan.com/#organization",
+          "name": "Puja Havan",
+          "legalName": "Puja Havan",
+          "url": "https://pujahavan.com/",
+          "logo": "https://pujahavan.com/logo.png",
+          "image": "https://pujahavan.com/logo.png",
+          "email": "support@pujahavan.com",
+          "telephone": "+91-95137-33533",
+          "description": "India's trusted platform to book verified, experienced pandits for Puja, Havan, Homa and Samskaras with transparent pricing and samagri included.",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+91-95137-33533",
+            "contactType": "customer service",
+            "email": "support@pujahavan.com",
+            "areaServed": "IN",
+            "availableLanguage": ["en", "hi"]
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://pujahavan.com/#website",
+          "url": "https://pujahavan.com/",
+          "name": "Puja Havan",
+          "publisher": { "@id": "https://pujahavan.com/#organization" },
+          "inLanguage": "en-IN",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://pujahavan.com/services?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://pujahavan.com/#office-noida",
+          "name": "Puja Havan — Head Office",
+          "url": "https://pujahavan.com/",
+          "telephone": "+91-95137-33533",
+          "email": "support@pujahavan.com",
+          "image": "https://pujahavan.com/logo.png",
+          "priceRange": "₹₹",
+          "parentOrganization": { "@id": "https://pujahavan.com/#organization" },
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "D-9, Vyapar Marg, Sector 3",
+            "addressLocality": "Noida",
+            "addressRegion": "Uttar Pradesh",
+            "postalCode": "201301",
+            "addressCountry": "IN"
+          },
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+            "opens": "06:00",
+            "closes": "22:00"
+          }
+        },
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://pujahavan.com/#office-bengaluru",
+          "name": "Puja Havan — South Zonal Office",
+          "url": "https://pujahavan.com/",
+          "telephone": "+91-95137-33533",
+          "image": "https://pujahavan.com/logo.png",
+          "priceRange": "₹₹",
+          "parentOrganization": { "@id": "https://pujahavan.com/#organization" },
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "119/2 CK Nagar, Parappana Agrahara",
+            "addressLocality": "Bengaluru",
+            "addressRegion": "Karnataka",
+            "postalCode": "560100",
+            "addressCountry": "IN"
+          }
+        },
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://pujahavan.com/#office-hooghly",
+          "name": "Puja Havan — East Zonal Office",
+          "url": "https://pujahavan.com/",
+          "telephone": "+91-95137-33533",
+          "image": "https://pujahavan.com/logo.png",
+          "priceRange": "₹₹",
+          "parentOrganization": { "@id": "https://pujahavan.com/#organization" },
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "A-9, 303, D2, Subhash Nagar Housing Complex, Rishra",
+            "addressLocality": "Hooghly",
+            "addressRegion": "West Bengal",
+            "postalCode": "712203",
+            "addressCountry": "IN"
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- Fallback for crawlers/users without JavaScript -->
+    <noscript>
+      <div style="max-width:720px;margin:0 auto;padding:2rem;font-family:system-ui,sans-serif;color:#221204;">
+        <h1>Puja Havan — Book Verified Pandits for Puja, Havan &amp; Homa</h1>
+        <p>
+          Puja Havan is India's trusted platform to book verified, experienced pandits
+          for Puja, Havan, Homa and Samskaras — with transparent pricing and samagri
+          included. Please enable JavaScript to use the full experience.
+        </p>
+        <nav aria-label="Site links">
+          <ul>
+            <li><a href="/services">Puja &amp; Havan Services</a></li>
+            <li><a href="/pandits">Find a Pandit</a></li>
+            <li><a href="/puja">Online Puja</a></li>
+            <li><a href="/panchang">Daily Panchang</a></li>
+            <li><a href="/kundali">Free Kundali</a></li>
+            <li><a href="/numerology">Numerology</a></li>
+            <li><a href="/shop">Samagri Shop</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
+        <p>Call us: <a href="tel:+919513733533">+91 95137 33533</a> · Email: <a href="mailto:support@pujahavan.com">support@pujahavan.com</a></p>
+      </div>
+    </noscript>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

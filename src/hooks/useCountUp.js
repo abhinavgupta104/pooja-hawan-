@@ -17,7 +17,9 @@ export function useCountUp(target, duration = 1500, start = false) {
       
       // Ease-out cubic
       const eased = 1 - Math.pow(1 - progress, 3)
-      const current = Math.round(startValue + (target - startValue) * eased)
+      // Preserve one decimal for targets like 4.9 (otherwise they'd show as 5)
+      const decimals = Number.isInteger(target) ? 0 : 1
+      const current = parseFloat((startValue + (target - startValue) * eased).toFixed(decimals))
       
       setCount(current)
       

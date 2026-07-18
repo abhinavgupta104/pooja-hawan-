@@ -12,15 +12,26 @@ export default function Testimonials() {
           Trusted by Families Across India
         </h2>
 
-        {/* Cards grid with overflow peek */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '1.5rem',
-          paddingBottom: '1rem',
-        }}>
+        {/* Responsive grid — card-grid-3 collapses to 2-col on tablet, 1-col on mobile */}
+        <div
+          className="card-grid-3"
+          style={{
+            display: 'grid',
+            gap: '1.5rem',
+            paddingBottom: '1rem',
+          }}
+        >
           {testimonialsData.slice(0, 6).map((t, i) => (
-            <TestimonialCard key={t.id} testimonial={t} index={i} />
+            <div
+              key={t.id}
+              style={{
+                animation: `fadeSlideUp 0.5s ease forwards`,
+                animationDelay: `${i * 80}ms`,
+                opacity: 0,
+              }}
+            >
+              <TestimonialCard testimonial={t} index={i} />
+            </div>
           ))}
         </div>
 

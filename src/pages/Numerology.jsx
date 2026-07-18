@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import Seo from '../components/Seo'
+import { PAGES, breadcrumbSchema } from '../seo/seoConfig'
 import Navbar from '../components/layout/Navbar'
 import Footer from '../components/layout/Footer'
 import SectionLabel from '../components/common/SectionLabel'
@@ -99,6 +101,8 @@ export default function Numerology() {
         kuaNum = 4 + yearSum
       }
       kuaNum = reduceToSingleDigit(kuaNum)
+      // Kua 5 does not exist in the classical system: males take 2, females take 8
+      if (kuaNum === 5) kuaNum = gender === 'male' ? 2 : 8
 
       setDriver(driverNum)
       setConductor(conductorNum)
@@ -144,6 +148,13 @@ export default function Numerology() {
 
   return (
     <>
+      <Seo
+        {...PAGES.numerology}
+        jsonLd={breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Numerology', path: '/numerology' },
+        ])}
+      />
       <Navbar />
       <main style={{ paddingTop: '68px', backgroundColor: 'var(--bg-page)', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         <div style={{ backgroundColor: 'var(--gold-bg)', padding: '4rem 0', borderBottom: '1px solid var(--border)' }}>
