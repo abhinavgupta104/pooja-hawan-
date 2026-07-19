@@ -10,7 +10,7 @@
     "sitemap": "node scripts/generate-sitemap.mjs",
     "prebuild": "node scripts/generate-sitemap.mjs",
     "build": "vite build",
-    "build:cpanel": "node scripts/generate-sitemap.mjs && vite build && powershell -NoProfile -Command \"Compress-Archive -Path (Get-ChildItem dist -Force).FullName -DestinationPath divyarudra-frontend.zip -Force\"",
+    "build:cpanel": "node scripts/generate-sitemap.mjs && vite build && powershell -NoProfile -Command \"Compress-Archive -Path (Get-ChildItem dist -Force).FullName -DestinationPath pujahavan-frontend.zip -Force\"",
     "lint": "eslint .",
     "preview": "vite preview"
   },
