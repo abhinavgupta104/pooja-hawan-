@@ -53,9 +53,15 @@ const SEO_LINKS = [
 ]
 
 const OFFICES = [
-  { label: 'Head Office', lines: ['D-9, Vyapar Marg, Sector 3', 'Noida, Uttar Pradesh 201301'] },
-  { label: 'Zonal Office · South', lines: ['119/2 CK Nagar, Parappana Agrahara', 'Bengaluru, Karnataka 560100'] },
-  { label: 'Zonal Office · East', lines: ['A-9, 303, D2, Subhash Nagar Housing Complex', 'Rishra, Hooghly, West Bengal 712203'] },
+  {
+    label: 'Registered Office',
+    lines: [
+      'NUCLEUSAI Automation Pvt. Ltd.',
+      'Unit 603-604, 6th Floor, Tower B, Bhutani Alphathum',
+      'Sector 90, NEPZ Post Office, Noida',
+      'Gautam Buddha Nagar 201305, Uttar Pradesh',
+    ],
+  },
 ]
 
 const headingStyle = {
@@ -257,8 +263,8 @@ export default function Footer() {
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', paddingTop: '1.25rem', borderTop: '1px solid rgba(223, 190, 106, 0.12)' }}>
-            <a href="tel:+919513733533" className="footer-link" style={{ display: 'flex', alignItems: 'center', gap: '0.7rem', color: 'rgba(248, 239, 220, 0.7)', textDecoration: 'none', fontSize: '0.93rem', transition: 'color 0.25s ease' }}>
-              <Phone size={15} color="var(--gold-muted)" /> +91 95137 33533
+            <a href="tel:+919670955055" className="footer-link" style={{ display: 'flex', alignItems: 'center', gap: '0.7rem', color: 'rgba(248, 239, 220, 0.7)', textDecoration: 'none', fontSize: '0.93rem', transition: 'color 0.25s ease' }}>
+              <Phone size={15} color="var(--gold-muted)" /> +91 96709 55055
             </a>
             <a href="mailto:support@pujahavan.com" className="footer-link" style={{ display: 'flex', alignItems: 'center', gap: '0.7rem', color: 'rgba(248, 239, 220, 0.7)', textDecoration: 'none', fontSize: '0.93rem', transition: 'color 0.25s ease' }}>
               <Mail size={15} color="var(--gold-muted)" /> support@pujahavan.com

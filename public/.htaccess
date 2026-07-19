@@ -13,6 +13,9 @@
   RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
   RewriteRule ^ https://pujahavan.com%{REQUEST_URI} [L,R=301]
 
+  # Never SPA-fallback for build assets: a missing hashed chunk must 404
+  # (returning index.html as JS breaks stale tabs silently).
+  RewriteCond %{REQUEST_URI} !^/assets/
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule . /index.html [L]

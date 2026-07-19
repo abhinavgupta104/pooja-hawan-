@@ -1,6 +1,7 @@
 // ─────────────────────────────────────────────────────────────
 //  Generates public/sitemap.xml from the known routes + services
-//  data. Runs automatically before `npm run build` (prebuild hook).
+//  data, including image entries for pooja posters (Google Images).
+//  Runs automatically before `npm run build` (prebuild hook).
 //    node scripts/generate-sitemap.mjs
 // ─────────────────────────────────────────────────────────────
 import { readFileSync, writeFileSync } from 'node:fs'
@@ -12,7 +13,10 @@ const ROOT = resolve(__dirname, '..')
 const SITE_URL = 'https://pujahavan.com'
 const today = new Date().toISOString().split('T')[0]
 
-// Static, indexable routes (path, priority, changefreq)
+const xmlEscape = (s = '') =>
+  s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+
+// Static, indexable routes → { path, priority, changefreq }
 const staticRoutes = [
   ['/', '1.0', 'daily'],
   ['/services', '0.9', 'weekly'],
@@ -28,32 +32,44 @@ const staticRoutes = [
   ['/about', '0.6', 'yearly'],
   ['/contact', '0.6', 'yearly'],
   ['/pandit-registration', '0.6', 'monthly'],
-]
+].map(([path, priority, changefreq]) => ({ path, priority, changefreq }))
 
-// Service detail pages from the services dataset
+// Service detail pages from the services dataset (with poster image when present)
 const services = JSON.parse(
   readFileSync(resolve(ROOT, 'src/data/services.json'), 'utf-8'),
 )
-const serviceRoutes = services.map((s) => [`/service/${s.slug}`, '0.8', 'monthly'])
+const serviceRoutes = services.map((s) => ({
+  path: `/service/${s.slug}`,
+  priority: '0.8',
+  changefreq: 'monthly',
+  image: s.poster || s.image
+    ? { loc: `${SITE_URL}${s.poster || s.image}`, title: `${s.name} — ${s.hindiName || 'Puja Havan'}` }
+    : null,
+}))
 
 const urls = [...staticRoutes, ...serviceRoutes]
 
 const body = urls
-  .map(
-    ([path, priority, changefreq]) => `  <url>
-    <loc>${SITE_URL}${path === '/' ? '/' : path}</loc>
+  .map((u) => {
+    const img = u.image
+      ? `\n    <image:image>\n      <image:loc>${xmlEscape(u.image.loc)}</image:loc>\n      <image:title>${xmlEscape(u.image.title)}</image:title>\n    </image:image>`
+      : ''
+    return `  <url>
+    <loc>${SITE_URL}${u.path === '/' ? '/' : u.path}</loc>
     <lastmod>${today}</lastmod>
-    <changefreq>${changefreq}</changefreq>
-    <priority>${priority}</priority>
-  </url>`,
-  )
+    <changefreq>${u.changefreq}</changefreq>
+    <priority>${u.priority}</priority>${img}
+  </url>`
+  })
   .join('\n')
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${body}
 </urlset>
 `
 
 writeFileSync(resolve(ROOT, 'public/sitemap.xml'), xml)
-console.log(`✓ sitemap.xml generated with ${urls.length} URLs`)
+const imgCount = urls.filter((u) => u.image).length
+console.log(`✓ sitemap.xml generated with ${urls.length} URLs (${imgCount} with images)`)

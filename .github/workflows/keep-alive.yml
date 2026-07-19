@@ -2,9 +2,10 @@ name: Keep Backend Warm
 
 on:
   schedule:
-    # Ping every 14 minutes so the Cloud Run instance stays warm
-    # (Cloud Run scales to zero after ~15 min idle; a warm instance avoids cold starts)
-    - cron: "*/14 * * * *"
+    # Every 10 minutes. Cloud Run scales to zero after ~15 min idle and
+    # GitHub cron can fire several minutes late, so */10 keeps a safety
+    # margin that */14 did not.
+    - cron: "*/10 * * * *"
   # Allows you to trigger it manually from the GitHub website if needed
   workflow_dispatch:
 
@@ -13,4 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Ping Backend to keep awake
-        run: curl -s https://kundali-backend-408824487148.asia-south1.run.app/health > /dev/null
+        # Retry a couple of times in case the ping itself hits a cold start
+        run: |
+          curl -s --retry 3 --retry-delay 5 --max-time 60 \
+            https://kundali-backend-408824487148.asia-south1.run.app/health > /dev/null
+          echo "pinged at $(date -u)"

@@ -19,5 +19,7 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
   CMD curl -f http://localhost:8080/health || exit 1
 
 # Run with gunicorn — honor Cloud Run's $PORT (defaults to 8080),
-# 60s timeout since geocoding of unusual places can be slow
-CMD exec gunicorn --bind 0.0.0.0:${PORT:-8080} --workers 2 --threads 4 --timeout 60 app:app
+# 60s timeout since geocoding of unusual places can be slow.
+# --preload imports the app once in the master before forking workers,
+# roughly halving cold-start CPU work vs each worker importing separately.
+CMD exec gunicorn --bind 0.0.0.0:${PORT:-8080} --workers 2 --threads 4 --preload --timeout 60 app:app

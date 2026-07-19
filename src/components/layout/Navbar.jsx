@@ -345,7 +345,7 @@ export default function Navbar() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
             {/* WhatsApp */}
             <a
-              href="https://wa.me/919513733533"
+              href="https://wa.me/919670955055"
               target="_blank"
               rel="noreferrer"
               style={{
@@ -524,7 +524,7 @@ export default function Navbar() {
               Book a Puja
             </Link>
             <a
-              href="https://wa.me/919513733533"
+              href="https://wa.me/919670955055"
               target="_blank"
               rel="noreferrer"
               style={{

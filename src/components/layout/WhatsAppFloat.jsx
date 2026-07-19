@@ -36,7 +36,7 @@ export default function WhatsAppFloat() {
       )}
 
       <a
-        href="https://wa.me/919513733533"
+        href="https://wa.me/919670955055"
         target="_blank"
         rel="noreferrer"
         onMouseEnter={() => setHovered(true)}

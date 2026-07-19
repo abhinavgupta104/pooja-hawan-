@@ -103,10 +103,9 @@ export default function Contact() {
                   Contact Information
                 </p>
                 {[
-                  { icon: Phone, text: '+91 95137 33533', sub: 'Mon–Sun, 6 AM – 10 PM', href: 'tel:+919513733533' },
+                  { icon: Phone, text: '+91 96709 55055', sub: 'Mon–Sun, 6 AM – 10 PM', href: 'tel:+919670955055' },
                   { icon: Mail, text: 'support@pujahavan.com', sub: 'We respond within 24 hours', href: 'mailto:support@pujahavan.com' },
-                  { icon: MapPin, text: '119/2 CK Nagar, Parappana Agrahara, Bengaluru 560100', sub: 'South India Office' },
-                  { icon: MapPin, text: 'D-9, Vyapar Marg, Sector 3, Noida 201301', sub: 'North India Office' },
+                  { icon: MapPin, text: 'Unit 603-604, 6th Floor, Tower B, Bhutani Alphathum, Sector 90, Noida, Gautam Buddha Nagar 201305, Uttar Pradesh', sub: 'NUCLEUSAI Automation Pvt. Ltd. — Registered Office' },
                   { icon: Clock, text: '6:00 AM – 10:00 PM', sub: 'All days including holidays' },
                 ].map(({ icon: Icon, text, sub, href }) => (
                   <div key={text} style={{ display: 'flex', gap: '0.9rem', marginBottom: '1rem' }}>
@@ -127,7 +126,7 @@ export default function Contact() {
 
               {/* WhatsApp */}
               <a
-                href="https://wa.me/919513733533"
+                href="https://wa.me/919670955055"
                 target="_blank"
                 rel="noreferrer"
                 style={{
@@ -165,13 +164,12 @@ export default function Contact() {
                 fontFamily: 'var(--font-body)',
                 color: 'var(--text-muted)',
               }}>
-                <div style={{ marginBottom: '1.5rem' }}>
-                  <p style={{ fontWeight: 600, color: 'var(--maroon)', fontSize: '0.85rem' }}>SOUTH INDIA OFFICE</p>
-                  📍 119/2 CK Nagar, Parappana Agrahara<br />Bengaluru, Karnataka 560100
-                </div>
                 <div>
-                  <p style={{ fontWeight: 600, color: 'var(--maroon)', fontSize: '0.85rem' }}>NORTH INDIA OFFICE</p>
-                  📍 D-9, Vyapar Marg, Sector 3<br />Noida, Uttar Pradesh 201301
+                  <p style={{ fontWeight: 600, color: 'var(--maroon)', fontSize: '0.85rem' }}>REGISTERED OFFICE</p>
+                  📍 NUCLEUSAI Automation Pvt. Ltd.<br />
+                  Unit 603-604, 6th Floor, Tower B, Bhutani Alphathum,<br />
+                  Sector 90, NEPZ Post Office, Noida,<br />
+                  Gautam Buddha Nagar 201305, Uttar Pradesh
                 </div>
               </div>
             </div>

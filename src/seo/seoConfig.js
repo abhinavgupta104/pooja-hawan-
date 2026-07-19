@@ -9,14 +9,14 @@ export const SITE_URL = 'https://pujahavan.com'
 
 export const SITE = {
   name: 'Puja Havan',
-  legalName: 'Puja Havan',
+  legalName: 'NUCLEUSAI Automation Private Limited',
   url: SITE_URL,
   // Default social share image (absolute URL required by OG/Twitter).
   defaultImage: `${SITE_URL}/logo.png`,
   twitterHandle: '@pujahavan',
   locale: 'en_IN',
   themeColor: '#7B1C1C',
-  phone: '+91-95137-33533',
+  phone: '+91-96709-55055',
   email: 'support@pujahavan.com',
   foundingLocation: 'India',
   sameAs: [
@@ -27,30 +27,14 @@ export const SITE = {
   ],
 }
 
-/** Physical offices — powers LocalBusiness structured data. */
+/** Registered office — powers LocalBusiness structured data. */
 export const OFFICES = [
   {
-    name: 'Puja Havan — Head Office',
-    streetAddress: 'D-9, Vyapar Marg, Sector 3',
+    name: 'NUCLEUSAI Automation Private Limited',
+    streetAddress: 'Unit 603-604, 6th Floor, Tower B, Bhutani Alphathum, Sector 90, NEPZ Post Office',
     addressLocality: 'Noida',
     addressRegion: 'Uttar Pradesh',
-    postalCode: '201301',
-    addressCountry: 'IN',
-  },
-  {
-    name: 'Puja Havan — South Zonal Office',
-    streetAddress: '119/2 CK Nagar, Parappana Agrahara',
-    addressLocality: 'Bengaluru',
-    addressRegion: 'Karnataka',
-    postalCode: '560100',
-    addressCountry: 'IN',
-  },
-  {
-    name: 'Puja Havan — East Zonal Office',
-    streetAddress: 'A-9, 303, D2, Subhash Nagar Housing Complex, Rishra',
-    addressLocality: 'Hooghly',
-    addressRegion: 'West Bengal',
-    postalCode: '712203',
+    postalCode: '201305',
     addressCountry: 'IN',
   },
 ]

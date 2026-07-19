@@ -28,7 +28,8 @@
       "Popular",
       "Festival"
     ],
-    "image": "/images/gods/vishnu.png"
+    "image": "/images/gods/vishnu.png",
+    "poster": "/images/poojas/satyanarayan-puja.jpg"
   },
   {
     "id": "griha-pravesh",
@@ -59,7 +60,8 @@
       "Sanskar",
       "Home"
     ],
-    "image": "/images/gods/vastu_purush.png"
+    "image": "/images/gods/vastu_purush.png",
+    "poster": "/images/poojas/griha-pravesh.jpg"
   },
   {
     "id": "ganesh-puja",
@@ -121,7 +123,8 @@
       "Daily",
       "Shiva"
     ],
-    "image": "/images/gods/shiva.png"
+    "image": "/images/gods/shiva.png",
+    "poster": "/images/poojas/rudrabhishek.jpg"
   },
   {
     "id": "navgraha-havan",
@@ -152,7 +155,8 @@
       "Dosha Nivaran",
       "Havan"
     ],
-    "image": "/images/gods/navgraha.png"
+    "image": "/images/gods/navgraha.png",
+    "poster": "/images/poojas/navgraha-havan.jpg"
   },
   {
     "id": "lakshmi-puja",
@@ -183,7 +187,8 @@
       "Festival",
       "Prosperity"
     ],
-    "image": "/images/gods/lakshmi.png"
+    "image": "/images/gods/lakshmi.png",
+    "poster": "/images/poojas/lakshmi-puja.jpg"
   },
   {
     "id": "mahamrityunjay-jaap",
@@ -214,7 +219,8 @@
       "Daily",
       "Health"
     ],
-    "image": "/images/gods/shiva.png"
+    "image": "/images/gods/shiva.png",
+    "poster": "/images/poojas/mahamrityunjay-jaap.jpg"
   },
   {
     "id": "namkaran-sanskar",
@@ -245,7 +251,8 @@
       "Sanskar",
       "Baby"
     ],
-    "image": "/images/gods/brahma.png"
+    "image": "/images/gods/brahma.png",
+    "poster": "/images/poojas/namkaran-sanskar.jpg"
   },
   {
     "id": "vivah-puja",
@@ -276,7 +283,8 @@
       "Sanskar",
       "Wedding"
     ],
-    "image": "/images/gods/ram.png"
+    "image": "/images/gods/ram.png",
+    "poster": "/images/poojas/vivah-puja.jpg"
   },
   {
     "id": "vastu-shanti",
@@ -307,7 +315,8 @@
       "Dosha Nivaran",
       "Vastu"
     ],
-    "image": "/images/gods/vastu_purush.png"
+    "image": "/images/gods/vastu_purush.png",
+    "poster": "/images/poojas/vastu-shanti.jpg"
   },
   {
     "id": "kaal-sarp-dosh",
@@ -337,7 +346,8 @@
     "tags": [
       "Dosha Nivaran"
     ],
-    "image": "/images/gods/shiva.png"
+    "image": "/images/gods/shiva.png",
+    "poster": "/images/poojas/kaal-sarp-dosh.jpg"
   },
   {
     "id": "pitru-dosh-nivaran",
@@ -429,7 +439,8 @@
       "Sanskar",
       "Business"
     ],
-    "image": "/images/gods/ganesha.png"
+    "image": "/images/gods/ganesha.png",
+    "poster": "/images/poojas/office-opening-puja.jpg"
   },
   {
     "id": "birthday-puja",
@@ -459,7 +470,8 @@
     "tags": [
       "Daily"
     ],
-    "image": "/images/gods/surya.png"
+    "image": "/images/gods/surya.png",
+    "poster": "/images/poojas/birthday-puja.jpg"
   },
   {
     "id": "durga-puja",
@@ -551,7 +563,8 @@
       "Festival",
       "Diwali"
     ],
-    "image": "/images/gods/lakshmi.png"
+    "image": "/images/gods/lakshmi.png",
+    "poster": "/images/poojas/diwali-puja.jpg"
   },
   {
     "id": "ganesh-chaturthi-puja",
@@ -581,7 +594,8 @@
     "tags": [
       "Festival"
     ],
-    "image": "/images/gods/ganesha.png"
+    "image": "/images/gods/ganesha.png",
+    "poster": "/images/poojas/ganesh-chaturthi-puja.jpg"
   },
   {
     "id": "annaprashan-puja",
@@ -612,6 +626,7 @@
       "Sanskar",
       "Baby"
     ],
-    "image": "/images/gods/krishna.png"
+    "image": "/images/gods/krishna.png",
+    "poster": "/images/poojas/annaprashan-puja.jpg"
   }
 ]

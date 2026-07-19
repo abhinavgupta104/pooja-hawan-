@@ -1,6 +1,7 @@
 import React from 'react'
 import { useParams, Link } from 'react-router-dom'
 import Seo from '../components/Seo'
+import PoojaPoster from '../components/PoojaPoster'
 import { serviceSchema, breadcrumbSchema } from '../seo/seoConfig'
 import Navbar from '../components/layout/Navbar'
 import Footer from '../components/layout/Footer'
@@ -80,7 +81,7 @@ export default function ServiceDetail() {
         title={serviceTitle}
         description={serviceDesc}
         path={`/service/${service.slug}`}
-        image={service.image}
+        image={service.poster || service.image}
         type="product"
         keywords={`${service.name}, book ${service.name} online, ${service.category} puja, ${service.hindiName}`}
         jsonLd={[
@@ -93,25 +94,62 @@ export default function ServiceDetail() {
         ]}
       />
       <Navbar />
+      <style>{`
+        @media (max-width: 860px) {
+          .service-hero-grid { grid-template-columns: 1fr !important; gap: 2.25rem !important; }
+          .service-hero-poster { order: -1; max-width: 400px !important; }
+        }
+      `}</style>
       <main style={{ paddingTop: '68px', backgroundColor: 'var(--bg-page)' }}>
         {/* Hero */}
         <div style={{ backgroundColor: 'var(--bg-section-alt)', padding: '4rem 0', borderBottom: '1px solid var(--border)' }}>
           <div className="container-max">
-            <span className="service-badge" style={{ marginBottom: '1rem', display: 'inline-flex' }}>{service.category}</span>
-            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: 'var(--text-primary)', marginBottom: '0.4rem', lineHeight: 1.1 }}>
-              {service.name}
-            </h1>
-            <p className="devanagari-sub" style={{ fontSize: '1rem', marginBottom: '1rem' }}>{service.hindiName}</p>
-            <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-body)', fontSize: '1rem', maxWidth: '560px', lineHeight: 1.7 }}>
-              {service.description}
-            </p>
-            <div style={{ display: 'flex', gap: '2rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.875rem', color: 'var(--text-muted)' }}>
-                <Clock size={16} color="var(--gold)" /> Duration: {service.duration}
+            <div
+              className="service-hero-grid"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: service.poster ? 'minmax(0, 1.05fr) minmax(0, 0.95fr)' : '1fr',
+                gap: '3.5rem',
+                alignItems: 'center',
+              }}
+            >
+              {/* Text column */}
+              <div>
+                <span className="service-badge" style={{ marginBottom: '1rem', display: 'inline-flex' }}>{service.category}</span>
+                <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: 'var(--text-primary)', marginBottom: '0.4rem', lineHeight: 1.1 }}>
+                  {service.name}
+                </h1>
+                <p className="devanagari-sub" style={{ fontSize: '1rem', marginBottom: '1rem' }}>{service.hindiName}</p>
+                <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-body)', fontSize: '1rem', maxWidth: '560px', lineHeight: 1.7 }}>
+                  {service.description}
+                </p>
+                <div style={{ display: 'flex', gap: '2rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.875rem', color: 'var(--text-muted)' }}>
+                    <Clock size={16} color="var(--gold)" /> Duration: {service.duration}
+                  </div>
+                  <div style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', color: 'var(--saffron)', fontWeight: 600 }}>
+                    Starting from {formatPrice(service.startingPrice)}
+                  </div>
+                </div>
+                <Link
+                  to="/booking"
+                  className="btn-primary"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem', marginTop: '1.75rem' }}
+                >
+                  Book This Puja <ArrowRight size={16} />
+                </Link>
               </div>
-              <div style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', color: 'var(--saffron)', fontWeight: 600 }}>
-                Starting from {formatPrice(service.startingPrice)}
-              </div>
+
+              {/* Poster column */}
+              {service.poster && (
+                <div className="service-hero-poster" style={{ maxWidth: '460px', justifySelf: 'center', width: '100%' }}>
+                  <PoojaPoster
+                    src={service.poster}
+                    alt={`${service.name} (${service.hindiName}) — puja booking by Puja Havan`}
+                    eager
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>

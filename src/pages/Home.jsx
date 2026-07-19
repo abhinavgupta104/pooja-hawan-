@@ -8,7 +8,7 @@ import WhatsAppFloat from '../components/layout/WhatsAppFloat'
 import Reveal from '../components/common/Reveal'
 import HeroSection from '../components/sections/HeroSection'
 import TrustStrip from '../components/sections/TrustStrip'
-import ServicesGrid from '../components/sections/ServicesGrid'
+import PoojaGallery from '../components/sections/PoojaGallery'
 import EPujaBanner from '../components/sections/EPujaBanner'
 import DigitalExperiences from '../components/sections/DigitalExperiences'
 import HowItWorks from '../components/sections/HowItWorks'
@@ -17,7 +17,6 @@ import PanchangWidget from '../components/sections/PanchangWidget'
 import Testimonials from '../components/sections/Testimonials'
 import SamagriCTA from '../components/sections/SamagriCTA'
 import WhyUs from '../components/sections/WhyUs'
-import AcharyaProfileBanner from '../components/sections/AcharyaProfileBanner'
 import FAQSection from '../components/sections/FAQSection'
 import LotusDivider from '../components/common/LotusDivider'
 
@@ -36,8 +35,18 @@ export default function Home() {
         {/* Sec 2: Trust Strip */}
         <TrustStrip />
 
-        {/* Sec 3: Services */}
-        <Reveal><ServicesGrid /></Reveal>
+        {/* Sec 3: Services (curated poster preview — full list on /services) */}
+        <Reveal>
+          <PoojaGallery
+            eyebrow="OUR SERVICES"
+            heading="Sacred Puja &amp; Havan Services"
+            intro="Book authentic Vedic ceremonies performed by verified pandits — samagri included, transparent pricing. Explore our most-booked poojas below."
+            limit={8}
+            preferPosters
+            showViewAll
+            background="var(--bg-section-alt)"
+          />
+        </Reveal>
 
         {/* Sec 4: Puja Banner */}
         <Reveal><EPujaBanner /></Reveal>
@@ -68,10 +77,7 @@ export default function Home() {
         {/* Sec 11: Why Us */}
         <Reveal><WhyUs /></Reveal>
 
-        {/* Sec 12: Featured Pandit */}
-        <Reveal><AcharyaProfileBanner /></Reveal>
-
-        {/* Sec 13: FAQ */}
+        {/* Sec 12: FAQ */}
         <Reveal><FAQSection /></Reveal>
       </main>
       <Footer />
