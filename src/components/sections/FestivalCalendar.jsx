@@ -13,8 +13,14 @@ export default function FestivalCalendar() {
     }
   }
 
-  // Sort by date
-  const sorted = [...festivalsData].sort((a, b) => new Date(a.date) - new Date(b.date))
+  // Only show festivals from today onward, soonest first.
+  // (If the year has run out of dates, fall back to the full list
+  // so the section is never empty before the data is refreshed.)
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
+  const byDate = [...festivalsData].sort((a, b) => new Date(a.date) - new Date(b.date))
+  const upcoming = byDate.filter(f => new Date(f.date) >= today)
+  const sorted = upcoming.length > 0 ? upcoming : byDate
 
   return (
     <section style={{ backgroundColor: 'var(--bg-page)', padding: '5rem 0' }}>

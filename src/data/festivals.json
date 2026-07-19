@@ -10,7 +10,7 @@
   },
   {
     "id": 2,
-    "date": "2026-01-29",
+    "date": "2026-01-23",
     "name": "Vasant Panchami",
     "hindiName": "वसंत पंचमी",
     "hinduMonth": "Magh",
@@ -19,7 +19,16 @@
   },
   {
     "id": 3,
-    "date": "2026-02-17",
+    "date": "2026-01-25",
+    "name": "Ratha Saptami",
+    "hindiName": "रथ सप्तमी",
+    "hinduMonth": "Magh",
+    "description": "Worship of the Sun God on his chariot. Bathing in sacred rivers is especially auspicious.",
+    "suggestedPuja": "navgraha-havan"
+  },
+  {
+    "id": 4,
+    "date": "2026-02-15",
     "name": "Maha Shivratri",
     "hindiName": "महाशिवरात्रि",
     "hinduMonth": "Phalguna",
@@ -27,7 +36,7 @@
     "suggestedPuja": "rudrabhishek"
   },
   {
-    "id": 4,
+    "id": 5,
     "date": "2026-03-04",
     "name": "Holi",
     "hindiName": "होली",
@@ -36,8 +45,8 @@
     "suggestedPuja": "satyanarayan-puja"
   },
   {
-    "id": 5,
-    "date": "2026-03-22",
+    "id": 6,
+    "date": "2026-03-19",
     "name": "Ugadi / Gudi Padwa",
     "hindiName": "उगादि / गुड़ी पड़वा",
     "hinduMonth": "Chaitra",
@@ -45,8 +54,8 @@
     "suggestedPuja": "griha-pravesh"
   },
   {
-    "id": 6,
-    "date": "2026-03-30",
+    "id": 7,
+    "date": "2026-03-26",
     "name": "Ram Navami",
     "hindiName": "राम नवमी",
     "hinduMonth": "Chaitra",
@@ -54,8 +63,8 @@
     "suggestedPuja": "sundarkand-path"
   },
   {
-    "id": 7,
-    "date": "2026-04-06",
+    "id": 8,
+    "date": "2026-04-02",
     "name": "Hanuman Jayanti",
     "hindiName": "हनुमान जयंती",
     "hinduMonth": "Chaitra",
@@ -63,7 +72,7 @@
     "suggestedPuja": "sundarkand-path"
   },
   {
-    "id": 8,
+    "id": 9,
     "date": "2026-04-14",
     "name": "Baisakhi",
     "hindiName": "बैसाखी",
@@ -72,8 +81,8 @@
     "suggestedPuja": "satyanarayan-puja"
   },
   {
-    "id": 9,
-    "date": "2026-05-05",
+    "id": 10,
+    "date": "2026-04-19",
     "name": "Akshaya Tritiya",
     "hindiName": "अक्षय तृतीया",
     "hinduMonth": "Vaishakh",
@@ -81,17 +90,17 @@
     "suggestedPuja": "lakshmi-puja"
   },
   {
-    "id": 10,
-    "date": "2026-06-01",
-    "name": "Vat Savitri Purnima",
-    "hindiName": "वट सावित्री पूर्णिमा",
+    "id": 11,
+    "date": "2026-05-16",
+    "name": "Vat Savitri Vrat",
+    "hindiName": "वट सावित्री व्रत",
     "hinduMonth": "Jyeshtha",
     "description": "Married women observe this vrat for the longevity of their husbands, worshipping the Banyan tree.",
     "suggestedPuja": "satyanarayan-puja"
   },
   {
-    "id": 11,
-    "date": "2026-07-14",
+    "id": 12,
+    "date": "2026-07-29",
     "name": "Guru Purnima",
     "hindiName": "गुरु पूर्णिमा",
     "hinduMonth": "Ashadha",
@@ -99,8 +108,17 @@
     "suggestedPuja": "saraswati-puja"
   },
   {
-    "id": 12,
-    "date": "2026-08-09",
+    "id": 13,
+    "date": "2026-08-03",
+    "name": "First Shravan Somvar",
+    "hindiName": "पहला श्रावण सोमवार",
+    "hinduMonth": "Shravana",
+    "description": "Mondays of Shravan month are especially sacred for Shiva worship and Rudrabhishek.",
+    "suggestedPuja": "rudrabhishek"
+  },
+  {
+    "id": 14,
+    "date": "2026-08-17",
     "name": "Nag Panchami",
     "hindiName": "नाग पंचमी",
     "hinduMonth": "Shravana",
@@ -108,8 +126,8 @@
     "suggestedPuja": "kaal-sarp-dosh"
   },
   {
-    "id": 13,
-    "date": "2026-08-17",
+    "id": 15,
+    "date": "2026-08-28",
     "name": "Raksha Bandhan",
     "hindiName": "रक्षा बंधन",
     "hinduMonth": "Shravana",
@@ -117,8 +135,8 @@
     "suggestedPuja": "satyanarayan-puja"
   },
   {
-    "id": 14,
-    "date": "2026-08-21",
+    "id": 16,
+    "date": "2026-09-04",
     "name": "Janmashtami",
     "hindiName": "जन्माष्टमी",
     "hinduMonth": "Bhadrapada",
@@ -126,125 +144,8 @@
     "suggestedPuja": "satyanarayan-puja"
   },
   {
-    "id": 15,
-    "date": "2026-08-25",
-    "name": "Ganesh Chaturthi",
-    "hindiName": "गणेश चतुर्थी",
-    "hinduMonth": "Bhadrapada",
-    "description": "10-day celebration of Lord Ganesha's birth. Grand pandal worship and processions.",
-    "suggestedPuja": "ganesh-chaturthi-puja"
-  },
-  {
-    "id": 16,
-    "date": "2026-09-24",
-    "name": "Navratri (Sharad)",
-    "hindiName": "शारदीय नवरात्रि",
-    "hinduMonth": "Ashwin",
-    "description": "Nine nights of Goddess Durga worship with fasting, dandiya dance, and elaborate decorations.",
-    "suggestedPuja": "durga-puja"
-  },
-  {
     "id": 17,
-    "date": "2026-10-02",
-    "name": "Dussehra (Vijayadashami)",
-    "hindiName": "दशहरा",
-    "hinduMonth": "Ashwin",
-    "description": "Celebration of Rama's victory over Ravana. Burning of Ravana effigy and Ayudha Puja.",
-    "suggestedPuja": "durga-puja"
-  },
-  {
-    "id": 18,
-    "date": "2026-10-18",
-    "name": "Karva Chauth",
-    "hindiName": "करवा चौथ",
-    "hinduMonth": "Kartik",
-    "description": "Married women fast from sunrise to moonrise for the health and longevity of their husbands.",
-    "suggestedPuja": "satyanarayan-puja"
-  },
-  {
-    "id": 19,
-    "date": "2026-10-22",
-    "name": "Dhanteras",
-    "hindiName": "धनतेरस",
-    "hinduMonth": "Kartik",
-    "description": "Day of wealth and prosperity. Purchasing gold and silver is considered auspicious.",
-    "suggestedPuja": "lakshmi-puja"
-  },
-  {
-    "id": 20,
-    "date": "2026-10-24",
-    "name": "Diwali",
-    "hindiName": "दीवाली",
-    "hinduMonth": "Kartik",
-    "description": "The festival of lights. Lakshmi puja is performed on this night for wealth and prosperity.",
-    "suggestedPuja": "diwali-puja"
-  },
-  {
-    "id": 21,
-    "date": "2026-10-26",
-    "name": "Bhai Dooj",
-    "hindiName": "भाई दूज",
-    "hinduMonth": "Kartik",
-    "description": "Sisters pray for their brothers' long life and wellbeing on this auspicious day.",
-    "suggestedPuja": "satyanarayan-puja"
-  },
-  {
-    "id": 22,
-    "date": "2026-10-29",
-    "name": "Chhath Puja",
-    "hindiName": "छठ पूजा",
-    "hinduMonth": "Kartik",
-    "description": "4-day worship of the Sun God. Performed at riverbanks at sunrise and sunset.",
-    "suggestedPuja": "satyanarayan-puja"
-  },
-  {
-    "id": 23,
-    "date": "2026-11-05",
-    "name": "Dev Uthani Ekadashi",
-    "hindiName": "देव उठानी एकादशी",
-    "hinduMonth": "Kartik",
-    "description": "Lord Vishnu's awakening from Yoganidra. The auspicious period for weddings begins.",
-    "suggestedPuja": "satyanarayan-puja"
-  },
-  {
-    "id": 24,
-    "date": "2026-11-19",
-    "name": "Guru Nanak Jayanti",
-    "hindiName": "गुरु नानक जयंती",
-    "hinduMonth": "Kartik",
-    "description": "Birthday of Guru Nanak Dev Ji, the first Sikh Guru. Celebrated with prayers and langar.",
-    "suggestedPuja": "satyanarayan-puja"
-  },
-  {
-    "id": 25,
-    "date": "2026-12-03",
-    "name": "Vivah Panchami",
-    "hindiName": "विवाह पंचमी",
-    "hinduMonth": "Margashirsha",
-    "description": "Anniversary of the divine wedding of Lord Rama and Goddess Sita. Very auspicious for marriages.",
-    "suggestedPuja": "vivah-puja"
-  },
-  {
-    "id": 26,
-    "date": "2026-12-25",
-    "name": "Gita Jayanti",
-    "hindiName": "गीता जयंती",
-    "hinduMonth": "Margashirsha",
-    "description": "Day Lord Krishna spoke the Bhagavad Gita to Arjuna on the battlefield of Kurukshetra.",
-    "suggestedPuja": "sundarkand-path"
-  },
-  {
-    "id": 27,
-    "date": "2026-01-01",
-    "name": "Makar Rashi Surya Sankranti",
-    "hindiName": "मकर राशि सूर्य संक्रांति",
-    "hinduMonth": "Paush",
-    "description": "The sun's entry into Makar (Capricorn). Auspicious for charity and sacred bathing.",
-    "suggestedPuja": "navgraha-havan"
-  },
-  {
-    "id": 28,
-    "date": "2026-09-06",
+    "date": "2026-09-14",
     "name": "Hartalika Teej",
     "hindiName": "हरतालिका तीज",
     "hinduMonth": "Bhadrapada",
@@ -252,21 +153,111 @@
     "suggestedPuja": "satyanarayan-puja"
   },
   {
-    "id": 29,
-    "date": "2026-02-11",
-    "name": "Ratha Saptami",
-    "hindiName": "रथ सप्तमी",
-    "hinduMonth": "Magh",
-    "description": "Worship of the Sun God on his chariot. Bathing in sacred rivers is especially auspicious.",
-    "suggestedPuja": "navgraha-havan"
+    "id": 18,
+    "date": "2026-09-14",
+    "name": "Ganesh Chaturthi",
+    "hindiName": "गणेश चतुर्थी",
+    "hinduMonth": "Bhadrapada",
+    "description": "10-day celebration of Lord Ganesha's birth. Grand pandal worship and processions.",
+    "suggestedPuja": "ganesh-chaturthi-puja"
   },
   {
-    "id": 30,
-    "date": "2026-08-06",
-    "name": "Shravani Somvar",
-    "hindiName": "श्रावणी सोमवार",
-    "hinduMonth": "Shravana",
-    "description": "Mondays of Shravan month are especially sacred for Shiva worship and Rudrabhishek.",
-    "suggestedPuja": "rudrabhishek"
+    "id": 19,
+    "date": "2026-10-11",
+    "name": "Navratri (Sharad)",
+    "hindiName": "शारदीय नवरात्रि",
+    "hinduMonth": "Ashwin",
+    "description": "Nine nights of Goddess Durga worship with fasting, dandiya dance, and elaborate decorations.",
+    "suggestedPuja": "durga-puja"
+  },
+  {
+    "id": 20,
+    "date": "2026-10-20",
+    "name": "Dussehra (Vijayadashami)",
+    "hindiName": "दशहरा",
+    "hinduMonth": "Ashwin",
+    "description": "Celebration of Rama's victory over Ravana. Burning of Ravana effigy and Ayudha Puja.",
+    "suggestedPuja": "durga-puja"
+  },
+  {
+    "id": 21,
+    "date": "2026-10-29",
+    "name": "Karva Chauth",
+    "hindiName": "करवा चौथ",
+    "hinduMonth": "Kartik",
+    "description": "Married women fast from sunrise to moonrise for the health and longevity of their husbands.",
+    "suggestedPuja": "satyanarayan-puja"
+  },
+  {
+    "id": 22,
+    "date": "2026-11-06",
+    "name": "Dhanteras",
+    "hindiName": "धनतेरस",
+    "hinduMonth": "Kartik",
+    "description": "Day of wealth and prosperity. Purchasing gold and silver is considered auspicious.",
+    "suggestedPuja": "lakshmi-puja"
+  },
+  {
+    "id": 23,
+    "date": "2026-11-08",
+    "name": "Diwali",
+    "hindiName": "दीवाली",
+    "hinduMonth": "Kartik",
+    "description": "The festival of lights. Lakshmi puja is performed on this night for wealth and prosperity.",
+    "suggestedPuja": "diwali-puja"
+  },
+  {
+    "id": 24,
+    "date": "2026-11-11",
+    "name": "Bhai Dooj",
+    "hindiName": "भाई दूज",
+    "hinduMonth": "Kartik",
+    "description": "Sisters pray for their brothers' long life and wellbeing on this auspicious day.",
+    "suggestedPuja": "satyanarayan-puja"
+  },
+  {
+    "id": 25,
+    "date": "2026-11-15",
+    "name": "Chhath Puja",
+    "hindiName": "छठ पूजा",
+    "hinduMonth": "Kartik",
+    "description": "4-day worship of the Sun God. Performed at riverbanks at sunrise and sunset.",
+    "suggestedPuja": "satyanarayan-puja"
+  },
+  {
+    "id": 26,
+    "date": "2026-11-20",
+    "name": "Dev Uthani Ekadashi",
+    "hindiName": "देव उठानी एकादशी",
+    "hinduMonth": "Kartik",
+    "description": "Lord Vishnu's awakening from Yoganidra. The auspicious period for weddings begins.",
+    "suggestedPuja": "satyanarayan-puja"
+  },
+  {
+    "id": 27,
+    "date": "2026-11-24",
+    "name": "Guru Nanak Jayanti",
+    "hindiName": "गुरु नानक जयंती",
+    "hinduMonth": "Kartik",
+    "description": "Birthday of Guru Nanak Dev Ji, the first Sikh Guru, on Kartik Purnima. Celebrated with prayers and langar.",
+    "suggestedPuja": "satyanarayan-puja"
+  },
+  {
+    "id": 28,
+    "date": "2026-12-14",
+    "name": "Vivah Panchami",
+    "hindiName": "विवाह पंचमी",
+    "hinduMonth": "Margashirsha",
+    "description": "Anniversary of the divine wedding of Lord Rama and Goddess Sita. Very auspicious for marriages.",
+    "suggestedPuja": "vivah-puja"
+  },
+  {
+    "id": 29,
+    "date": "2026-12-20",
+    "name": "Gita Jayanti",
+    "hindiName": "गीता जयंती",
+    "hinduMonth": "Margashirsha",
+    "description": "Day Lord Krishna spoke the Bhagavad Gita to Arjuna on the battlefield of Kurukshetra.",
+    "suggestedPuja": "sundarkand-path"
   }
 ]
