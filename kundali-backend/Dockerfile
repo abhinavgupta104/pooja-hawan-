@@ -18,8 +18,15 @@ EXPOSE 8080
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
   CMD curl -f http://localhost:8080/health || exit 1
 
-# Run with gunicorn — honor Cloud Run's $PORT (defaults to 8080),
-# 60s timeout since geocoding of unusual places can be slow.
+# Run with gunicorn — honor Cloud Run's $PORT (defaults to 8080).
 # --preload imports the app once in the master before forking workers,
 # roughly halving cold-start CPU work vs each worker importing separately.
-CMD exec gunicorn --bind 0.0.0.0:${PORT:-8080} --workers 2 --threads 4 --preload --timeout 60 app:app
+# 2 workers x 8 threads = 16 concurrent requests, matched to the Cloud Run
+# containerConcurrency setting so requests aren't queued behind a full pool.
+# --timeout 60 covers the worst case where an unknown place needs a remote
+# geocode; cached and table-backed lookups return in milliseconds.
+CMD exec gunicorn --bind 0.0.0.0:${PORT:-8080} \
+    --workers 2 --threads 8 --preload \
+    --timeout 60 --graceful-timeout 30 --keep-alive 65 \
+    --access-logfile - --error-logfile - \
+    app:app
