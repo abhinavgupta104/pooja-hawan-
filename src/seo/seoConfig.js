@@ -27,6 +27,26 @@ export const SITE = {
   ],
 }
 
+/** Effective date shown on the legal/policy pages. Bump when they change. */
+export const LAST_UPDATED = '19 July 2026'
+
+/**
+ * Operating company behind the Puja Havan brand.
+ * Used by the legal/policy pages so the disclosure stays in one place.
+ */
+export const LEGAL_ENTITY = {
+  brand: 'Puja Havan',
+  domain: 'pujahavan.com',
+  name: 'NUCLEUSAI Automation Private Limited',
+  shortName: 'NUCLEUSAI Automation',
+  address:
+    'Unit 603-604, 6th Floor, Tower B, Bhutani Alphathum, Sector 90, NEPZ Post Office, Noida, Gautam Buddha Nagar 201305, Uttar Pradesh, India',
+  email: 'support@pujahavan.com',
+  phoneDisplay: '+91 96709 55055',
+  phoneHref: '+919670955055',
+  jurisdiction: 'Gautam Buddha Nagar, Uttar Pradesh',
+}
+
 /** Registered office — powers LocalBusiness structured data. */
 export const OFFICES = [
   {
@@ -162,8 +182,43 @@ export const PAGES = {
     path: '/contact',
     title: 'Contact Puja Havan — Support & Booking Help',
     description:
-      'Get in touch with Puja Havan for booking help, custom pujas or support. Call +91 95137 33533 or email support@pujahavan.com. We’re here 6 AM–10 PM daily.',
+      'Get in touch with Puja Havan for booking help, custom pujas or support. Call +91 96709 55055 or email support@pujahavan.com. We’re here 6 AM–10 PM daily.',
     keywords: 'contact puja havan, puja booking support, customer care',
+  },
+  'privacy-policy': {
+    path: '/privacy-policy',
+    title: 'Privacy Policy | Puja Havan',
+    description:
+      'How NUCLEUSAI Automation Private Limited collects, uses, stores and protects your personal data on Puja Havan, and the rights you have over it.',
+    keywords: 'privacy policy, data protection, puja havan privacy',
+  },
+  'terms-of-service': {
+    path: '/terms-of-service',
+    title: 'Terms of Service | Puja Havan',
+    description:
+      'The terms governing your use of Puja Havan — bookings, pandit services, payments, user conduct, liability and dispute resolution.',
+    keywords: 'terms of service, terms and conditions, puja havan terms',
+  },
+  'refund-policy': {
+    path: '/refund-policy',
+    title: 'Refund & Cancellation Policy | Puja Havan',
+    description:
+      'Puja Havan cancellation windows and refund amounts, pandit no-show protection, samagri and rescheduling rules, and how long refunds take.',
+    keywords: 'refund policy, cancellation policy, puja booking refund',
+  },
+  'cookie-policy': {
+    path: '/cookie-policy',
+    title: 'Cookie Policy | Puja Havan',
+    description:
+      'What cookies and local storage Puja Havan uses, why we use them, and how you can control or disable them in your browser.',
+    keywords: 'cookie policy, cookies, tracking, puja havan',
+  },
+  'responsible-disclosure': {
+    path: '/responsible-disclosure',
+    title: 'Responsible Disclosure Policy | Puja Havan',
+    description:
+      'Report a security vulnerability in Puja Havan safely. Our scope, safe-harbour commitment, reporting process and response timelines.',
+    keywords: 'responsible disclosure, vulnerability disclosure, security policy, bug report',
   },
 }
 

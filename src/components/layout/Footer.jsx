@@ -316,14 +316,22 @@ export default function Footer() {
       {/* ── Bottom bar ─────────────────────────────── */}
       <div style={{ borderTop: '1px solid rgba(223, 190, 106, 0.08)', padding: '1.4rem 0', backgroundColor: '#140A03', position: 'relative', zIndex: 1 }}>
         <div className="container-max footer-bottom-bar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
-          <p style={{ fontSize: '0.83rem', color: 'rgba(248, 239, 220, 0.35)', margin: 0 }}>
+          <p style={{ fontSize: '0.83rem', color: 'rgba(248, 239, 220, 0.35)', margin: 0, lineHeight: 1.7 }}>
             © {new Date().getFullYear()} Puja Havan. All rights reserved. &nbsp;·&nbsp; Crafted with 🪔 in India
+            <br />
+            A brand of <strong style={{ color: 'rgba(248, 239, 220, 0.5)', fontWeight: 600 }}>NUCLEUSAI Automation Private Limited</strong>
           </p>
-          <div className="footer-bottom-links" style={{ display: 'flex', gap: '1.75rem', alignItems: 'center' }}>
-            {['Privacy Policy', 'Terms of Service', 'Refund Policy'].map(text => (
-              <a key={text} href="#" className="footer-seo-link" style={{ fontSize: '0.83rem', color: 'rgba(248, 239, 220, 0.38)', textDecoration: 'none', transition: 'color 0.2s' }}>
-                {text}
-              </a>
+          <div className="footer-bottom-links" style={{ display: 'flex', gap: '1.75rem', alignItems: 'center', flexWrap: 'wrap' }}>
+            {[
+              { label: 'Privacy Policy', to: '/privacy-policy' },
+              { label: 'Terms of Service', to: '/terms-of-service' },
+              { label: 'Refund Policy', to: '/refund-policy' },
+              { label: 'Cookie Policy', to: '/cookie-policy' },
+              { label: 'Responsible Disclosure', to: '/responsible-disclosure' },
+            ].map(({ label, to }) => (
+              <Link key={to} to={to} className="footer-seo-link" style={{ fontSize: '0.83rem', color: 'rgba(248, 239, 220, 0.38)', textDecoration: 'none', transition: 'color 0.2s' }}>
+                {label}
+              </Link>
             ))}
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}

@@ -46,6 +46,11 @@ const Contact             = lazyWithRetry(() => import('./pages/Contact'))
 const ComingSoon          = lazyWithRetry(() => import('./pages/ComingSoon'))
 const VirtualPuja         = lazyWithRetry(() => import('./pages/VirtualPuja'))
 const Kundali             = lazyWithRetry(() => import('./pages/Kundali'))
+const PrivacyPolicy       = lazyWithRetry(() => import('./pages/PrivacyPolicy'))
+const TermsOfService      = lazyWithRetry(() => import('./pages/TermsOfService'))
+const RefundPolicy        = lazyWithRetry(() => import('./pages/RefundPolicy'))
+const CookiePolicy        = lazyWithRetry(() => import('./pages/CookiePolicy'))
+const ResponsibleDisclosure = lazyWithRetry(() => import('./pages/ResponsibleDisclosure'))
 
 function LoadingSpinner() {
   return (
@@ -143,6 +148,13 @@ export default function App() {
             <Route path="/pandit-registration" element={<PanditRegistration />} />
             <Route path="/about"               element={<About />} />
             <Route path="/contact"             element={<Contact />} />
+
+            {/* Legal / policy pages */}
+            <Route path="/privacy-policy"          element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service"        element={<TermsOfService />} />
+            <Route path="/refund-policy"           element={<RefundPolicy />} />
+            <Route path="/cookie-policy"           element={<CookiePolicy />} />
+            <Route path="/responsible-disclosure"  element={<ResponsibleDisclosure />} />
           </Routes>
         </Suspense>
       </RouteErrorBoundary>

@@ -32,6 +32,11 @@ const staticRoutes = [
   ['/about', '0.6', 'yearly'],
   ['/contact', '0.6', 'yearly'],
   ['/pandit-registration', '0.6', 'monthly'],
+  ['/privacy-policy', '0.3', 'yearly'],
+  ['/terms-of-service', '0.3', 'yearly'],
+  ['/refund-policy', '0.4', 'yearly'],
+  ['/cookie-policy', '0.3', 'yearly'],
+  ['/responsible-disclosure', '0.3', 'yearly'],
 ].map(([path, priority, changefreq]) => ({ path, priority, changefreq }))
 
 // Service detail pages from the services dataset (with poster image when present)

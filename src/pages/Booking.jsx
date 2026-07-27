@@ -288,7 +288,9 @@ export default function Booking() {
                     )}
                   </div>
                   <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.78rem', color: 'var(--text-muted)', marginBottom: '1.25rem', lineHeight: 1.6 }}>
-                    By confirming, you agree to our Terms of Service and Refund Policy. Payment will be processed by Razorpay.
+                    By confirming, you agree to our{' '}
+                    <Link to="/terms-of-service" style={{ color: 'var(--maroon)' }}>Terms of Service</Link> and{' '}
+                    <Link to="/refund-policy" style={{ color: 'var(--maroon)' }}>Refund Policy</Link>. Payment will be processed by Razorpay.
                   </p>
                   <div style={{ display: 'flex', gap: '0.75rem' }}>
                     <button onClick={() => setStep(3)} className="btn-secondary" style={{ flex: '0 0 auto' }}>← Edit</button>
