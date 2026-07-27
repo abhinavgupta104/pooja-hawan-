@@ -42,6 +42,9 @@
     <meta name="theme-color" content="#7B1C1C" />
     <link rel="manifest" href="/site.webmanifest" />
 
+    <!-- Hero artwork is the LCP element — fetch it alongside the HTML -->
+    <link rel="preload" as="image" href="/images/poojas/hero/satyanarayan-puja.jpg" fetchpriority="high" />
+
     <!-- ── Performance: connect early to third-party origins ── -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

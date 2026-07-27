@@ -7,6 +7,9 @@ import HeroOptInForm from './HeroOptInForm'
 
 gsap.registerPlugin(ScrollTrigger)
 
+// Pre-cropped, resized artwork (~115 KB) — light enough to be the LCP image.
+const HERO_POSTER = '/images/poojas/hero/satyanarayan-puja.jpg'
+
 const FLOAT_CARDS = [
   { key: 'rating', emoji: '⭐', value: '4.9★', valueColor: 'var(--text-gold)', label: 'Average Rating', pos: { top: '56px', left: '12px' } },
   { key: 'price', emoji: '🪔', value: '₹999', valueColor: 'var(--saffron)', label: 'Onwards per Puja', pos: { right: '18px', top: '46%' } },
@@ -42,6 +45,12 @@ export default function HeroSection() {
           '-=0.6'
         )
         .fromTo('[data-hero="mandala"]', { scale: 0.86, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.4, ease: 'power2.out' }, 0.2)
+        .fromTo(
+          '[data-hero="poster"]',
+          { scale: 0.94, opacity: 0, y: 18 },
+          { scale: 1, opacity: 1, y: 0, duration: 1, ease: 'power3.out' },
+          0.35
+        )
 
       // ---- Gentle perpetual float on the stat cards ----
       gsap.utils.toArray('[data-hero="card"]').forEach((card, i) => {
@@ -185,6 +194,32 @@ export default function HeroSection() {
               across 50+ cities in India.
             </p>
 
+            {/* Mobile artwork — the desktop visual column is hidden below
+                900px, so without this phones get a wall of text. Sits between
+                the promise and the form so the page reads: claim → proof → act. */}
+            <div className="hero-mobile-poster" style={{ display: 'none', marginBottom: '1.75rem' }}>
+              <div
+                style={{
+                  position: 'relative',
+                  borderRadius: '18px',
+                  overflow: 'hidden',
+                  border: '1px solid var(--border-gold)',
+                  boxShadow: 'var(--shadow-warm)',
+                  maxWidth: '420px',
+                }}
+              >
+                <img
+                  src={HERO_POSTER}
+                  alt="Satyanarayan Puja being performed with full samagri by a verified Puja Havan pandit"
+                  width="620"
+                  height="510"
+                  fetchPriority="high"
+                  decoding="async"
+                  style={{ width: '100%', height: 'auto', display: 'block' }}
+                />
+              </div>
+            </div>
+
             {/* Opt-In Form */}
             <div data-hero="form" style={{ opacity: 0 }}>
               <HeroOptInForm />
@@ -248,12 +283,12 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* RIGHT COLUMN — Mandala + floating cards */}
+          {/* RIGHT COLUMN — real ceremony artwork over a slow-turning mandala */}
           <div
             className="hero-right"
             style={{
               position: 'relative',
-              height: '560px',
+              minHeight: '560px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -261,15 +296,42 @@ export default function HeroSection() {
           >
             <div
               data-hero="mandala-wrap"
-              style={{ position: 'absolute', right: '-70px', width: '560px', height: '560px' }}
+              style={{ position: 'absolute', right: '-70px', width: '560px', height: '560px', pointerEvents: 'none' }}
             >
               <div data-hero="mandala" style={{ width: '100%', height: '100%', opacity: 0 }}>
                 <MandalaBg
                   size={560}
-                  opacity={0.3}
+                  opacity={0.22}
                   style={{ position: 'relative', width: '100%', height: '100%' }}
                 />
               </div>
+            </div>
+
+            {/* Hero artwork. Pre-cropped and resized (~115 KB) so it can be the
+                LCP element without the weight of the full-size poster. */}
+            <div
+              data-hero="poster"
+              style={{
+                position: 'relative',
+                zIndex: 5,
+                width: '100%',
+                maxWidth: '392px',
+                borderRadius: '20px',
+                overflow: 'hidden',
+                border: '1px solid var(--border-gold)',
+                boxShadow: '0 18px 50px rgba(80, 20, 8, 0.20), 0 2px 8px rgba(80, 20, 8, 0.08)',
+                opacity: 0,
+              }}
+            >
+              <img
+                src={HERO_POSTER}
+                alt="Satyanarayan Puja being performed with full samagri by a verified Puja Havan pandit"
+                width="620"
+                height="510"
+                fetchPriority="high"
+                decoding="async"
+                style={{ width: '100%', height: 'auto', display: 'block' }}
+              />
             </div>
 
             {FLOAT_CARDS.map(card => (
@@ -302,15 +364,64 @@ export default function HeroSection() {
             ))}
           </div>
         </div>
+
+        {/* Scroll cue — the hero fills the viewport on desktop, so signal
+            that the page continues. Hidden on mobile where the fold is
+            short enough that content is already visibly cut off. */}
+        <a href="#trust-strip" className="hero-scroll-cue" aria-label="Scroll to see more">
+          <span>Explore</span>
+          <span className="hero-scroll-cue-line" aria-hidden />
+        </a>
       </div>
 
       <style>{`
+        .hero-scroll-cue {
+          position: absolute;
+          left: 50%;
+          bottom: 1.75rem;
+          transform: translateX(-50%);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.5rem;
+          text-decoration: none;
+          font-family: var(--font-body);
+          font-size: 0.68rem;
+          letter-spacing: 0.22em;
+          text-transform: uppercase;
+          color: var(--text-muted);
+          opacity: 0.75;
+          transition: opacity 0.3s ease;
+          z-index: 3;
+        }
+        .hero-scroll-cue:hover { opacity: 1; }
+        .hero-scroll-cue-line {
+          width: 1px;
+          height: 34px;
+          background: linear-gradient(180deg, var(--gold), transparent);
+        }
+        @media (prefers-reduced-motion: no-preference) {
+          .hero-scroll-cue-line { animation: heroCue 2.2s ease-in-out infinite; transform-origin: top; }
+        }
+        @keyframes heroCue {
+          0%, 100% { transform: scaleY(0.45); opacity: 0.5; }
+          50%      { transform: scaleY(1);    opacity: 1; }
+        }
+        @media (max-width: 900px) {
+          .hero-scroll-cue { display: none; }
+        }
+
         @media (max-width: 900px) {
           #hero .hero-grid {
             grid-template-columns: minmax(0, 1fr) !important;
           }
+          /* The desktop visual column (absolute-positioned float cards over a
+             560px mandala) doesn't reflow; the mobile poster replaces it. */
           #hero .hero-right {
             display: none !important;
+          }
+          .hero-mobile-poster {
+            display: block !important;
           }
           .hero-mobile-stats {
             display: flex !important;

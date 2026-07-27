@@ -11,6 +11,7 @@ const STATS = [
 export default function TrustStrip() {
   return (
     <div
+      id="trust-strip"
       className="stats-dark"
       style={{
         background:
