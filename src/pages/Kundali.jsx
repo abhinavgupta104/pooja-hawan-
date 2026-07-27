@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { flushSync } from 'react-dom';
 import Seo from '../components/Seo';
 import { PAGES, breadcrumbSchema } from '../seo/seoConfig';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import SectionLabel from '../components/common/SectionLabel';
 import NorthIndianChart from '../components/Kundali/NorthIndianChart';
-import { Loader2, Star, Sun, Moon, Zap, BookOpen, BarChart3, Grid3x3, Wifi, WifiOff, CheckCircle } from 'lucide-react';
+import { Loader2, Star, Sun, Moon, Zap, BookOpen, BarChart3, Grid3x3, Wifi, WifiOff, CheckCircle, Download } from 'lucide-react';
 import { useBackendWarmup } from '../hooks/useBackendWarmup';
 
 const BACKEND = import.meta.env.VITE_BACKEND_URL || 'https://kundali-backend-408824487148.asia-south1.run.app';
@@ -110,6 +111,17 @@ export default function Kundali() {
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
   const [tab, setTab] = useState('chart');
+  // While true every tab panel is rendered, so the saved PDF contains the
+  // full reading rather than only the tab that happens to be open.
+  const [printing, setPrinting] = useState(false);
+
+  const downloadPdf = () => {
+    // flushSync commits the "render every panel" update synchronously, so the
+    // print dialog captures the complete chart rather than the current tab.
+    flushSync(() => setPrinting(true));
+    window.print();
+    setPrinting(false);
+  };
 
   // Ping backend on mount so it wakes up while the user fills out the form
   const { status: warmupStatus, elapsed: warmupElapsed } = useBackendWarmup(
@@ -171,11 +183,11 @@ export default function Kundali() {
           </div>
         </div>
 
-        <div className="container-max" style={{ padding:'2.5rem 1.5rem' }}>
-          <div style={{ display:'flex', flexWrap:'wrap', gap:'2.5rem', alignItems:'flex-start' }}>
+        <div className="container-max tool-shell" style={{ padding:'2.5rem 1.5rem' }}>
+          <div className="tool-columns" style={{ display:'flex', flexWrap:'wrap', gap:'2.5rem', alignItems:'flex-start' }}>
 
             {/* ── Form ── */}
-            <div style={{ flex:'1 1 300px', background:'var(--bg-card)', padding:'2rem', borderRadius:12,
+            <div className="tool-card no-print" style={{ flex:'1 1 300px', background:'var(--bg-card)', padding:'2rem', borderRadius:12,
               border:'1px solid var(--border)', boxShadow:'var(--shadow-card)', position:'sticky', top:80 }}>
               {/* Server warmup status banner */}
               <WarmupBanner status={warmupStatus} elapsed={warmupElapsed} />
@@ -249,9 +261,41 @@ export default function Kundali() {
               )}
 
               {data && (
-                <div style={{ background:'var(--bg-card)', borderRadius:12, border:'1px solid var(--border)', overflow:'hidden' }}>
+                <div className="print-area print-all-panels" style={{ background:'var(--bg-card)', borderRadius:12, border:'1px solid var(--border)', overflow:'hidden' }}>
+                  {/* Result header — name + PDF action. The heading is hidden
+                      on screen (the hero already names the page) but gives the
+                      printed sheet a proper title. */}
+                  <div style={{
+                    display:'flex', alignItems:'center', justifyContent:'space-between',
+                    gap:'1rem', flexWrap:'wrap',
+                    padding:'1rem 1.25rem', borderBottom:'1px solid var(--border)',
+                  }}>
+                    <div style={{ minWidth:0 }}>
+                      <p style={{ fontFamily:'var(--font-heading)', fontSize:'1.02rem', color:'var(--maroon)', fontWeight:600, lineHeight:1.25 }}>
+                        {form.name ? `${form.name}'s Kundali` : 'Your Kundali'}
+                      </p>
+                      <p style={{ fontFamily:'var(--font-body)', fontSize:'0.78rem', color:'var(--text-muted)', marginTop:2 }}>
+                        {[form.date, form.time, data.meta?.place_resolved].filter(Boolean).join(' · ')}
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={downloadPdf}
+                      className="no-print"
+                      style={{
+                        display:'inline-flex', alignItems:'center', gap:'0.45rem',
+                        padding:'0.6rem 1.1rem', borderRadius:999,
+                        border:'1.5px solid var(--border-gold)', background:'var(--gold-bg)',
+                        color:'var(--maroon)', fontFamily:'var(--font-body)', fontSize:'0.85rem',
+                        fontWeight:600, cursor:'pointer', flexShrink:0, minHeight:44,
+                      }}
+                    >
+                      <Download size={15} /> Download PDF
+                    </button>
+                  </div>
+
                   {/* Tab bar */}
-                  <div style={{ display:'flex', overflowX:'auto', borderBottom:'1px solid var(--border)', background:'var(--gold-bg)' }}>
+                  <div className="tool-tabs" style={{ display:'flex', overflowX:'auto', borderBottom:'1px solid var(--border)', background:'var(--gold-bg)' }}>
                     {TABS.map(t => (
                       <button key={t.id} onClick={()=>setTab(t.id)} style={{
                         padding:'0.75rem 1rem', border:'none', background:'none', cursor:'pointer',
@@ -269,8 +313,8 @@ export default function Kundali() {
                   <div style={{ padding:'1.5rem' }}>
 
                     {/* CHART TAB */}
-                    {tab==='chart' && (
-                      <div>
+                    {(tab==='chart' || printing) && (
+                      <div className="tool-panel">
                         <SH>Birth Chart (Rasi — D1)</SH>
                         <p style={{ fontSize:'0.82rem', color:'var(--text-muted)', marginBottom:'1rem' }}>
                           North Indian style · Lahiri Ayanamsa · Whole Sign houses · <span style={{color:'#c0392b',fontWeight:700}}>La</span> = Lagna · ® = Retrograde
@@ -283,8 +327,8 @@ export default function Kundali() {
                     )}
 
                     {/* PLANETS TAB */}
-                    {tab==='planets' && (
-                      <div>
+                    {(tab==='planets' || printing) && (
+                      <div className="tool-panel">
                         <SH>Planetary Positions</SH>
                         <div style={{ overflowX:'auto' }}>
                           <table style={tbl}>
@@ -321,8 +365,8 @@ export default function Kundali() {
                     )}
 
                     {/* PANCHANG TAB */}
-                    {tab==='panchang' && data.panchang && (
-                      <div>
+                    {(tab==='panchang' || printing) && data.panchang && (
+                      <div className="tool-panel">
                         <SH>Panchang at Birth</SH>
                         <table style={tbl}>
                           <tbody>
@@ -343,8 +387,8 @@ export default function Kundali() {
                     )}
 
                     {/* DASHA TAB */}
-                    {tab==='dasha' && data.dasha && (
-                      <div>
+                    {(tab==='dasha' || printing) && data.dasha && (
+                      <div className="tool-panel">
                         <SH>Vimshottari Dasha</SH>
                         {data.dasha.current_mahadasha && (
                           <div style={{ padding:'1rem', background:'#fff3e0', borderRadius:8, marginBottom:'1.5rem', border:'1px solid #ffe0b2' }}>
@@ -391,8 +435,8 @@ export default function Kundali() {
                     )}
 
                     {/* AVAKHADA TAB */}
-                    {tab==='avakhada' && data.avakhada && (
-                      <div>
+                    {(tab==='avakhada' || printing) && data.avakhada && (
+                      <div className="tool-panel">
                         <SH>Avakhada Chakra</SH>
                         <p style={{ fontSize:'0.83rem', color:'var(--text-muted)', marginBottom:'1rem' }}>
                           Core Vedic identifiers derived from Moon's position at birth.
@@ -416,8 +460,8 @@ export default function Kundali() {
                     )}
 
                     {/* YOGAS & DOSHAS TAB */}
-                    {tab==='yogas' && (
-                      <div>
+                    {(tab==='yogas' || printing) && (
+                      <div className="tool-panel">
                         <SH>Yogas Detected</SH>
                         {data.yogas?.length ? (
                           <div style={{ display:'flex', flexDirection:'column', gap:'0.8rem', marginBottom:'2rem' }}>
@@ -454,8 +498,8 @@ export default function Kundali() {
                     )}
 
                     {/* ASHTAKAVARGA TAB */}
-                    {tab==='ashtaka' && data.ashtakavarga && (
-                      <div>
+                    {(tab==='ashtaka' || printing) && data.ashtakavarga && (
+                      <div className="tool-panel">
                         <SH>Ashtakavarga — Bindu Table</SH>
                         <p style={{ fontSize:'0.83rem', color:'var(--text-muted)', marginBottom:'1rem' }}>
                           Bindus (benefic points) for each planet across all 12 signs. Higher = stronger.

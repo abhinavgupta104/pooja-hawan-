@@ -1253,3 +1253,199 @@ body {
   }
 }
 
+
+/* ═══════════════════════════════════════════════
+   MOBILE LAYOUT HARDENING
+   Most page layouts are written as inline styles, which CSS can only
+   override with !important. These attribute selectors collapse the
+   fixed multi-column grids and over-wide flex bases that otherwise
+   force horizontal scrolling on phones — without touching every file.
+   ═══════════════════════════════════════════════ */
+
+/* Nothing should scroll the page sideways.
+   Scoped to small screens on purpose: `overflow-x: hidden` on an ancestor
+   silently disables `position: sticky` for descendants, and the Kundali
+   form relies on sticky at desktop widths. On mobile that sidebar is
+   already unstuck (see the rule below), so clipping is safe here. */
+@media (max-width: 900px) {
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+}
+
+/* Media never overflows its container */
+img, svg, video, canvas {
+  max-width: 100%;
+}
+
+@media (max-width: 900px) {
+  /* Wide fixed grids → two columns */
+  [style*="repeat(4, 1fr)"],
+  [style*="repeat(5, 1fr)"],
+  [style*="repeat(6, 1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* auto-fit tracks with a min wider than the viewport are the single
+     biggest cause of sideways scroll — collapse them to one column */
+  [style*="minmax(280px"],
+  [style*="minmax(300px"],
+  [style*="minmax(320px"],
+  [style*="minmax(400px"],
+  [style*="minmax(450px"],
+  [style*="minmax(500px"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Flex children with a large min-width can't shrink; let them */
+  [style*="min-width: 280px"],
+  [style*="min-width: 300px"],
+  [style*="min-width: 320px"],
+  [style*="min-width: 400px"],
+  [style*="min-width: 450px"] {
+    min-width: 0 !important;
+  }
+
+  /* A sticky sidebar is unhelpful once columns stack */
+  [style*="position: sticky"] {
+    position: static !important;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Three-column grids → single column.
+     .keep-columns opts an element out (e.g. the Lo Shu magic square,
+     whose 3x3 shape carries meaning and must not reflow). */
+  [style*="repeat(3, 1fr)"]:not(.keep-columns),
+  [style*="repeat(4, 1fr)"]:not(.keep-columns),
+  [style*="repeat(5, 1fr)"]:not(.keep-columns),
+  [style*="repeat(6, 1fr)"]:not(.keep-columns) {
+    grid-template-columns: 1fr !important;
+  }
+
+  [style*="repeat(2, 1fr)"]:not(.keep-columns) {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Tighter rhythm so content isn't mostly padding */
+  .container-max {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+/* Any table that declares a min-width gets a scrollable parent instead
+   of blowing out the page */
+.table-scroll,
+[style*="overflow-x: auto"],
+[style*="overflowX: auto"] {
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 768px) {
+  table[style*="min-width"] {
+    font-size: 0.82rem;
+  }
+}
+
+/* ── Tool pages: Kundali / Numerology / Panchang ── */
+@media (max-width: 768px) {
+  .tool-shell {
+    padding: 1.5rem 1rem !important;
+  }
+  .tool-columns {
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+  }
+  .tool-card {
+    padding: 1.25rem !important;
+  }
+  /* Horizontally scrollable tab strips get momentum + no scrollbar */
+  .tool-tabs {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .tool-tabs::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Form controls: 16px prevents iOS Safari zooming on focus */
+@media (max-width: 768px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+  input[type="date"],
+  input[type="time"] {
+    min-height: 44px;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   PRINT / SAVE-AS-PDF
+   Used by the Kundali "Download PDF" action. Strips the site chrome so
+   the printed sheet contains only the chart and its readings.
+   ═══════════════════════════════════════════════ */
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  nav, footer,
+  .no-print,
+  .whatsapp-float-btn,
+  .tool-tabs {
+    display: none !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  main {
+    padding-top: 0 !important;
+  }
+
+  .print-area {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Show every tab panel in the printed copy, not just the active one */
+  .print-all-panels .tool-panel {
+    display: block !important;
+    page-break-inside: avoid;
+    margin-bottom: 1.25rem;
+  }
+
+  .print-page-break {
+    page-break-before: always;
+  }
+
+  table {
+    page-break-inside: avoid;
+    border-collapse: collapse !important;
+  }
+
+  a[href]::after {
+    content: "";
+  }
+}
+
+/* Two-column layouts written as explicit fr pairs also need to stack.
+   ('1fr auto' is deliberately excluded — it's used for label/value rows
+   that should stay side by side.) */
+@media (max-width: 640px) {
+  [style*="grid-template-columns: 1fr 1fr"]:not(.keep-columns),
+  [style*="grid-template-columns: 1.2fr 1fr"]:not(.keep-columns) {
+    grid-template-columns: 1fr !important;
+  }
+}

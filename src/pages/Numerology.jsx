@@ -306,17 +306,22 @@ export default function Numerology() {
 
             {/* Grid Display Section */}
             <div style={{ flex: '2 1 400px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
-                gap: '0.5rem',
-                backgroundColor: 'var(--gold)',
-                padding: '0.5rem',
-                borderRadius: '8px',
-                width: '100%',
-                maxWidth: '400px',
-                boxShadow: 'var(--shadow-card)'
-              }}>
+              <div
+                /* keep-columns: the Lo Shu square's 3x3 shape is meaningful —
+                   it must not reflow to one column on small screens */
+                className="keep-columns"
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(3, 1fr)',
+                  gap: '0.5rem',
+                  backgroundColor: 'var(--gold)',
+                  padding: '0.5rem',
+                  borderRadius: '8px',
+                  width: '100%',
+                  maxWidth: '400px',
+                  boxShadow: 'var(--shadow-card)'
+                }}
+              >
                 {LO_SHU_LAYOUT.map((row, rowIndex) => (
                   row.map((baseNumber, colIndex) => {
                     // Check if this number exists in our mapped data
