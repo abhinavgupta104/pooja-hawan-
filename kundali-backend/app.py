@@ -25,6 +25,7 @@ from geo import GeocodingError, cache_stats, geocode, resolve_timezone
 from leads import LeadError, create_lead, delete_lead, list_leads, update_status
 from admin_auth import require_admin
 from notify import send_lead_alert
+import analytics
 
 # ---------------------------------------------------------------------------
 # Logging — JSON lines so Cloud Logging picks up severity and fields properly
@@ -124,6 +125,8 @@ def error(message: str, status: int = 400, **extra):
 @app.before_request
 def _guard():
     g.started = time.time()
+    if request.path == "/api/pageview":
+        return None  # counted below under its own limit
     if request.path.startswith("/api/") and request.method != "OPTIONS":
         if _rate_limited():
             log.warning("Rate limit exceeded", extra={"extra_fields": {"ip": _client_ip()}})
@@ -464,6 +467,44 @@ def admin_delete_lead(lead_id):
         log.exception("Admin lead delete failed")
         return error("Could not delete the lead.", 500)
     return jsonify({"status": "success"})
+
+
+# ---------------------------------------------------------------------------
+# Traffic — anonymous aggregate counters (no cookies, no IPs stored)
+# ---------------------------------------------------------------------------
+
+
+@app.route("/api/pageview", methods=["POST"])
+def track_pageview():
+    """Public, fire-and-forget. Always 204 so the browser never sees an error."""
+    try:
+        if analytics.is_bot(request.headers.get("User-Agent")):
+            return ("", 204)
+        payload = request.get_json(silent=True) or {}
+        path = str(payload.get("path") or "/")[:200]
+        if path.startswith("/admin"):
+            return ("", 204)  # never count our own dashboard
+        analytics.record_view(
+            path=path,
+            referrer=str(payload.get("referrer") or "")[:300],
+            new_session=bool(payload.get("newSession")),
+        )
+    except Exception:
+        log.exception("pageview tracking failed")
+    return ("", 204)
+
+
+@app.route("/api/admin/traffic", methods=["GET"])
+@require_admin
+def admin_traffic():
+    try:
+        days = max(1, min(int(request.args.get("days", 30)), 365))
+        return jsonify({"status": "success", "traffic": analytics.summary(days)})
+    except ValueError:
+        return error("Invalid days parameter.", 400)
+    except Exception:
+        log.exception("traffic summary failed")
+        return error("Could not load traffic stats.", 500)
 
 
 if __name__ == "__main__":

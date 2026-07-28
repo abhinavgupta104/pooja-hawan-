@@ -59,6 +59,16 @@ export async function fetchLeads(token, { type, status, limit = 200 } = {}) {
   return body.leads || []
 }
 
+/** Admin: anonymous traffic summary (views, sessions, top pages/referrers). */
+export async function fetchTraffic(token, days = 30) {
+  const res = await fetch(`${BACKEND}/api/admin/traffic?days=${days}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+  const body = await res.json().catch(() => ({}))
+  if (!res.ok) throw new Error(body.error || 'Could not load traffic stats.')
+  return body.traffic
+}
+
 /** Admin: update a lead's workflow status. */
 export async function updateLeadStatus(token, id, status) {
   const res = await fetch(`${BACKEND}/api/admin/leads/${id}`, {

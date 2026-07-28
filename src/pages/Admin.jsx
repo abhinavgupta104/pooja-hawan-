@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import Seo from '../components/Seo'
 import { getFirebaseAuth, isConfigured } from '../utils/firebaseClient'
-import { fetchLeads, updateLeadStatus, deleteLead } from '../utils/leadsApi'
-import { TrendChart, TypeMixChart, TopPoojasChart } from '../components/admin/LeadCharts'
+import { fetchLeads, fetchTraffic, updateLeadStatus, deleteLead } from '../utils/leadsApi'
+import { TrendChart, TypeMixChart, TopPoojasChart, TrafficChart, RankedList } from '../components/admin/LeadCharts'
 import { SERIES, buildDailySeries, relativeTime, formatWhen } from '../components/admin/leadChartData'
 
 const TYPES = [
@@ -61,6 +61,7 @@ export default function Admin() {
   const [expanded, setExpanded] = useState(null)
   // One timestamp per load keeps every derived value pure and consistent.
   const [now, setNow] = useState(() => Date.now())
+  const [traffic, setTraffic] = useState(null)
 
   useEffect(() => {
     if (!isConfigured) return
@@ -81,14 +82,20 @@ export default function Admin() {
     setLoadError('')
     try {
       const token = await user.getIdToken()
-      setLeads(await fetchLeads(token, { limit: 500 }))
+      const [leadRows, trafficSummary] = await Promise.all([
+        fetchLeads(token, { limit: 500 }),
+        // Traffic is a bonus panel — never let it break the leads view.
+        fetchTraffic(token, range || 30).catch(() => null),
+      ])
+      setLeads(leadRows)
+      setTraffic(trafficSummary)
       setNow(Date.now())
     } catch (err) {
       setLoadError(err.message)
     } finally {
       setLoading(false)
     }
-  }, [user])
+  }, [user, range])
 
   // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { load() }, [load])
@@ -272,6 +279,29 @@ export default function Admin() {
             <Stat label="Confirmed rate" value={`${conversion}%`} />
           </div>
 
+          {/* ── Traffic ── */}
+          <div className="admin-chart-grid" style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: '1.25rem', marginBottom: '1.75rem' }}>
+            <Card title="Site traffic" sub={`Anonymous counts · last ${range || 30} days`}>
+              <div style={{ display: 'flex', gap: '2rem', marginBottom: '0.9rem', flexWrap: 'wrap' }}>
+                <InlineStat label="Page views" value={traffic ? traffic.views.toLocaleString('en-IN') : '—'} />
+                <InlineStat label="Visits" value={traffic ? traffic.sessions.toLocaleString('en-IN') : '—'} />
+                <InlineStat
+                  label="Leads per 100 visits"
+                  value={traffic && traffic.sessions ? ((visible.length / traffic.sessions) * 100).toFixed(1) : '—'}
+                />
+              </div>
+              <TrafficChart series={traffic?.series || []} />
+            </Card>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              <Card title="Top pages" sub="Most visited">
+                <RankedList rows={traffic?.topPaths || []} emptyText="No page views yet." labelFor={prettyPath} />
+              </Card>
+              <Card title="Traffic sources" sub="Where visitors came from">
+                <RankedList rows={traffic?.topReferrers || []} emptyText="No referrers yet." labelFor={prettyRef} />
+              </Card>
+            </div>
+          </div>
+
           {/* ── Charts ── */}
           <div className="admin-chart-grid" style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: '1.25rem', marginBottom: '1.75rem' }}>
             <Card title="Leads over time" sub={range ? `Last ${range} days` : 'Last 30 days'}>
@@ -388,6 +418,28 @@ const S = {
   linkBtn: { background: 'none', border: 'none', color: 'var(--text-muted)', fontFamily: 'var(--font-body)', fontSize: '0.82rem', textDecoration: 'underline', cursor: 'pointer', padding: 0, alignSelf: 'center' },
   linkBtnInline: { background: 'none', border: 'none', color: 'var(--maroon)', cursor: 'pointer', fontFamily: 'var(--font-body)', fontSize: '0.82rem', textDecoration: 'underline', padding: 0 },
   filterLabel: { fontFamily: 'var(--font-body)', fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-muted)', marginBottom: '0.4rem' },
+}
+
+// Backend stores map keys sanitised (slashes/dots are illegal) — restore them.
+function prettyPath(key) {
+  if (key === 'root' || key === '_') return '/ (home)'
+  // Runs of underscores stand in for a separator, so collapse them to one slash
+  // (otherwise "service__slug" renders as "/service//slug").
+  return '/' + key.replace(/^_+|_+$/g, '').replace(/_+/g, '/')
+}
+function prettyRef(key) {
+  if (key === 'direct') return 'Direct / typed'
+  if (key === 'internal') return 'Own site'
+  return key.replace(/_/g, '.')
+}
+
+function InlineStat({ label, value }) {
+  return (
+    <div>
+      <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{label}</p>
+      <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.35rem', fontWeight: 600, color: 'var(--text-primary)', lineHeight: 1.2 }}>{value}</p>
+    </div>
+  )
 }
 
 function Shell({ children }) {

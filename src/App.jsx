@@ -1,5 +1,6 @@
-import React, { Suspense, lazy } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import React, { Suspense, lazy, useEffect } from 'react'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { trackPageview } from './utils/trackPageview'
 import './styles/globals.css'
 
 // ── Stale-deployment recovery ─────────────────────────────────
@@ -125,9 +126,17 @@ class RouteErrorBoundary extends React.Component {
   }
 }
 
+/** Counts each route change. Renders nothing. */
+function PageviewTracker() {
+  const { pathname } = useLocation()
+  useEffect(() => { trackPageview(pathname) }, [pathname])
+  return null
+}
+
 export default function App() {
   return (
     <BrowserRouter>
+      <PageviewTracker />
       <RouteErrorBoundary>
         <Suspense fallback={<LoadingSpinner />}>
           <Routes>

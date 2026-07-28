@@ -47,13 +47,39 @@ export default function CookiePolicy() {
               </td>
               <td>Cleared when you close the tab</td>
             </tr>
+            <tr>
+              <td><code>pujahavan:session-counted</code></td>
+              <td>Session storage (strictly necessary)</td>
+              <td>
+                A single flag so one browsing session is counted once in our visitor totals.
+                It holds no identifier and cannot be used to recognise you on a later visit.
+              </td>
+              <td>Cleared when you close the tab</td>
+            </tr>
           </tbody>
         </table>
       </div>
 
       <p>
-        That is the only item we set ourselves. It contains no personal information and no
-        identifier — just a flag.
+        Those are the only two items we set ourselves. Neither contains personal information
+        or an identifier — each is just a flag.
+      </p>
+
+      <h3>Our visitor statistics</h3>
+      <p>
+        We count how many pages are viewed, which pages are most popular and which website
+        referred you, so we can see whether the site is useful. This runs on our own servers
+        and is deliberately built to be anonymous:
+      </p>
+      <ul>
+        <li>We store <strong>daily totals only</strong> — never a record of an individual visit.</li>
+        <li>We do <strong>not</strong> store your IP address, and we do not use a cookie or any identifier to recognise you.</li>
+        <li>We record only the bare hostname of the referring site (for example &ldquo;google.com&rdquo;), never the full address you came from.</li>
+        <li>Nothing collected can be linked back to you, so there is nothing here to export or delete on request.</li>
+      </ul>
+      <p>
+        Because this cannot identify anyone, it does not require your consent — and there is no
+        third-party analytics provider receiving your data.
       </p>
 
       <h3>Location permission</h3>
@@ -84,11 +110,12 @@ export default function CookiePolicy() {
         details.
       </p>
 
-      <h2>4. If we add analytics later</h2>
+      <h2>4. If we add third-party analytics later</h2>
       <p>
-        We may add privacy-respecting analytics in future to understand which pages are useful.
-        If we do, we will update this page first, list what is set, and — where the law requires
-        consent — ask for it before any non-essential cookie is placed.
+        Our current visitor statistics are anonymous and run on our own servers, as described
+        above. If we ever add a third-party analytics service that sets cookies or collects
+        identifiable data, we will update this page first, list exactly what is set, and ask
+        for your consent before any non-essential cookie is placed.
       </p>
 
       <h2>5. How to control cookies</h2>

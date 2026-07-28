@@ -212,6 +212,113 @@ export function TopPoojasChart({ leads, limit = 5 }) {
   )
 }
 
+// ── Traffic: views vs sessions over time (2 series → legend) ──
+export function TrafficChart({ series, height = 190 }) {
+  const [hover, setHover] = useState(null)
+  if (!series?.length) return <Empty>No traffic recorded yet.</Empty>
+
+  const W = 720
+  const H = height
+  const pad = { top: 14, right: 16, bottom: 26, left: 38 }
+  const plotW = W - pad.left - pad.right
+  const plotH = H - pad.top - pad.bottom
+
+  const max = Math.max(1, ...series.map((d) => d.views))
+  const top = niceCeilEven(max)
+  const x = (i) => pad.left + (series.length === 1 ? plotW / 2 : (i * plotW) / (series.length - 1))
+  const y = (v) => pad.top + plotH - (v / top) * plotH
+  const pathFor = (key) => series.map((d, i) => `${i === 0 ? 'M' : 'L'}${x(i)},${y(d[key])}`).join(' ')
+
+  const VIEWS = SERIES.booking.color   // slot 1
+  const SESSIONS = SERIES.enquiry.color // slot 2
+  const ticks = [0, top / 2, top]
+
+  const onMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    const px = ((e.clientX - rect.left) / rect.width) * W
+    const i = Math.round(((px - pad.left) / plotW) * (series.length - 1))
+    setHover(i >= 0 && i < series.length ? i : null)
+  }
+
+  const dayLabel = (s) => new Date(`${s}T00:00:00`).toLocaleDateString('en-IN', { day: '2-digit', month: 'short' })
+
+  return (
+    <figure style={{ margin: 0 }}>
+      <svg
+        viewBox={`0 0 ${W} ${H}`} width="100%" height={H} role="img"
+        aria-label={`Page views and sessions per day. Peak ${max} views.`}
+        onMouseMove={onMove} onMouseLeave={() => setHover(null)}
+        style={{ display: 'block', overflow: 'visible' }}
+      >
+        {ticks.map((t) => (
+          <g key={t}>
+            <line x1={pad.left} x2={W - pad.right} y1={y(t)} y2={y(t)} stroke={INK.grid} strokeWidth="1" />
+            <text x={pad.left - 8} y={y(t) + 4} textAnchor="end" fontSize="11" fill={INK.muted} style={{ fontVariantNumeric: 'tabular-nums' }}>{t}</text>
+          </g>
+        ))}
+
+        <path d={`${pathFor('views')} L${x(series.length - 1)},${pad.top + plotH} L${x(0)},${pad.top + plotH} Z`} fill={VIEWS} opacity="0.10" />
+        <path d={pathFor('views')} fill="none" stroke={VIEWS} strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
+        <path d={pathFor('sessions')} fill="none" stroke={SESSIONS} strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
+
+        {[0, Math.floor((series.length - 1) / 2), series.length - 1].map((i) => (
+          <text key={i} x={x(i)} y={H - 6} fontSize="11" fill={INK.muted}
+            textAnchor={i === 0 ? 'start' : i === series.length - 1 ? 'end' : 'middle'}>
+            {dayLabel(series[i].date)}
+          </text>
+        ))}
+
+        {hover !== null && (
+          <g pointerEvents="none">
+            <line x1={x(hover)} x2={x(hover)} y1={pad.top} y2={pad.top + plotH} stroke={INK.muted} strokeWidth="1" />
+            <circle cx={x(hover)} cy={y(series[hover].views)} r="5" fill={VIEWS} stroke={INK.surface} strokeWidth="2" />
+            <circle cx={x(hover)} cy={y(series[hover].sessions)} r="5" fill={SESSIONS} stroke={INK.surface} strokeWidth="2" />
+          </g>
+        )}
+      </svg>
+
+      {/* Legend — mandatory for two series */}
+      <div style={{ display: 'flex', gap: '1.25rem', marginTop: '0.6rem', flexWrap: 'wrap' }}>
+        {[['Page views', VIEWS], ['Visits', SESSIONS]].map(([label, c]) => (
+          <span key={label} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontFamily: 'var(--font-body)', fontSize: '0.8rem', color: INK.secondary }}>
+            <span style={{ width: '14px', height: '2px', background: c, flexShrink: 0 }} />{label}
+          </span>
+        ))}
+        {hover !== null && (
+          <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.8rem', color: INK.secondary, marginLeft: 'auto' }}>
+            <strong style={{ color: INK.primary }}>{dayLabel(series[hover].date)}</strong>{' · '}
+            {series[hover].views} views · {series[hover].sessions} visits
+          </span>
+        )}
+      </div>
+    </figure>
+  )
+}
+
+// ── Simple ranked list (top pages / referrers) ───────────────
+export function RankedList({ rows, emptyText, labelFor }) {
+  if (!rows?.length) return <Empty>{emptyText}</Empty>
+  const max = Math.max(...rows.map((r) => r.count))
+  const color = SERIES.booking.color
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+      {rows.map((r) => (
+        <div key={r.name} style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr auto', alignItems: 'center', gap: '0.7rem' }}>
+          <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.8rem', color: INK.secondary, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+            {labelFor ? labelFor(r.name) : r.name}
+          </span>
+          <span style={{ display: 'block', height: '12px', background: 'var(--gold-bg)', borderRadius: '3px', overflow: 'hidden' }}>
+            <span style={{ display: 'block', width: `${(r.count / max) * 100}%`, height: '100%', background: color, borderRadius: '0 4px 4px 0' }} />
+          </span>
+          <strong style={{ fontFamily: 'var(--font-body)', fontSize: '0.8rem', color: INK.primary, fontVariantNumeric: 'tabular-nums', minWidth: '2rem', textAlign: 'right' }}>
+            {r.count}
+          </strong>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 function Empty({ children }) {
   return (
     <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.85rem', color: INK.muted, margin: 0, padding: '1.5rem 0', textAlign: 'center' }}>
