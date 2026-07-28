@@ -474,14 +474,6 @@ export default function Navbar() {
               Contact Us
             </a>
 
-            <Link
-              to="/pandit-registration"
-              onClick={() => setMobileOpen(false)}
-              style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', color: 'var(--text-body)', textDecoration: 'none', padding: '0.75rem 0.5rem', borderBottom: '1px solid var(--border)', display: 'block' }}
-            >
-              Join as Pandit
-            </Link>
-
             <div style={{ marginTop: '1rem', padding: '1rem 0.5rem', background: 'var(--gold-bg)', borderRadius: '8px' }}>
               <div style={{ 
                 fontSize: '0.75rem', 

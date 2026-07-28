@@ -33,7 +33,6 @@ export default function PrivacyPolicy() {
         <li><strong>Booking details</strong> — your name, phone number, email address, service address, puja type, preferred date and any instructions you add.</li>
         <li><strong>Birth details for astrology tools</strong> — date, time and place of birth that you enter to generate a Kundali or numerology report.</li>
         <li><strong>Enquiries</strong> — anything you send us through the contact form, WhatsApp or email.</li>
-        <li><strong>Pandit applications</strong> — if you register as a pandit, your qualifications, experience, identity documents and references.</li>
       </ul>
 
       <h3>b. Information collected automatically</h3>

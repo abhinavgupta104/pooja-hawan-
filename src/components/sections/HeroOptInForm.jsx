@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 
 export default function HeroOptInForm() {
+  // Consent must start UNCHECKED — DPDP Act s.6(1) requires a clear
+  // affirmative action; a pre-ticked box is not valid consent.
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     interest: '',
-    consent: true
+    consent: false
   })
 
   const [submitted, setSubmitted] = useState(false)
@@ -16,7 +18,7 @@ export default function HeroOptInForm() {
     setSubmitted(true)
     setTimeout(() => {
       setSubmitted(false)
-      setFormData({ name: '', phone: '', interest: '', consent: true })
+      setFormData({ name: '', phone: '', interest: '', consent: false })
     }, 4000)
   }
 

@@ -7,7 +7,7 @@ const FEATURES = [
   {
     icon: BadgeCheck,
     title: 'Verified & Experienced Pandits',
-    desc: 'Every pandit is background-verified, Aadhaar-validated, and has a minimum of 5 years of experience.',
+    desc: 'Every pandit is identity-verified against government photo ID, with their Vedic credentials and experience checked before listing.',
   },
   {
     icon: Languages,

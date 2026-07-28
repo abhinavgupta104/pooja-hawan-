@@ -9,7 +9,7 @@ export const FAQS = [
   },
   {
     q: 'Are all the pandits verified?',
-    a: 'Yes, every pandit on our platform undergoes a rigorous 3-step verification process: Aadhaar identity verification, academic credential check (Vedic qualifications), and a rating-based quality review. Less than 15% of applicants are accepted.',
+    a: 'Yes. Every pandit on our platform is verified before being listed — we check government-issued photo ID, confirm their Vedic academic credentials, and review their experience and references before approving them.',
   },
   {
     q: 'What if I need a pandit who speaks my language?',

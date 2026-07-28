@@ -164,13 +164,6 @@ export const PAGES = {
     keywords:
       'kundali, free kundali, janam kundali, birth chart, horoscope, vedic astrology, kundli online',
   },
-  'pandit-registration': {
-    path: '/pandit-registration',
-    title: 'Register as a Pandit — Grow Your Bookings | Puja Havan',
-    description:
-      'Are you an experienced pandit or purohit? Register on Puja Havan to receive verified puja bookings from families across India and grow your practice.',
-    keywords: 'pandit registration, join as pandit, register purohit, pandit jobs',
-  },
   about: {
     path: '/about',
     title: 'About Puja Havan — India’s Trusted Puja Platform',

@@ -40,7 +40,6 @@ const Shop                = lazyWithRetry(() => import('./pages/Shop'))
 const Booking             = lazyWithRetry(() => import('./pages/Booking'))
 const Blog                = lazyWithRetry(() => import('./pages/Blog'))
 const Numerology          = lazyWithRetry(() => import('./pages/Numerology'))
-const PanditRegistration  = lazyWithRetry(() => import('./pages/PanditRegistration'))
 const About               = lazyWithRetry(() => import('./pages/About'))
 const Contact             = lazyWithRetry(() => import('./pages/Contact'))
 const ComingSoon          = lazyWithRetry(() => import('./pages/ComingSoon'))
@@ -145,7 +144,6 @@ export default function App() {
             <Route path="/blog"                element={<Blog />} />
             <Route path="/numerology"          element={<Numerology />} />
             <Route path="/kundali"             element={<Kundali />} />
-            <Route path="/pandit-registration" element={<PanditRegistration />} />
             <Route path="/about"               element={<About />} />
             <Route path="/contact"             element={<Contact />} />
 
