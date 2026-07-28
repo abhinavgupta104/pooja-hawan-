@@ -73,13 +73,22 @@ export default function PrivacyPolicy() {
         <li><strong>Business transfers</strong> — if our business is merged or acquired, your data may transfer to the successor entity under this same policy.</li>
       </ul>
 
-      <h2>5. Data retention</h2>
+      <h2>5. Where your data is stored, and for how long</h2>
       <p>
-        We keep booking and transaction records for as long as needed to provide the service and
-        to meet statutory accounting and tax requirements (generally up to eight years). Enquiry
-        messages are kept for up to two years. Birth details submitted to the astrology tools are
-        processed to generate your chart and are not used for any other purpose; where a report is
-        generated without an account, the calculation is not retained after your session.
+        Enquiries and booking requests are stored in Google Cloud Firestore on servers located in
+        India (Mumbai region), and are accessible only to authorised Puja Havan staff through an
+        authenticated internal system.
+      </p>
+      <p>
+        <strong>Enquiries and booking requests are automatically deleted 24 months after
+        submission.</strong> Where a booking results in a paid transaction, the related invoice
+        and accounting records are kept for as long as tax law requires (generally up to eight
+        years). You can ask us to delete your details sooner at any time — see section 7.
+      </p>
+      <p>
+        Birth details submitted to the astrology tools are processed in memory to generate your
+        chart and are <strong>not stored</strong>. Our server logs record only the place name,
+        timezone and response time — never your name or date of birth.
       </p>
 
       <h2>6. Security</h2>

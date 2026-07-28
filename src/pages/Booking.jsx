@@ -11,6 +11,7 @@ import WhatsAppFloat from '../components/layout/WhatsAppFloat'
 import servicesData from '../data/services.json'
 import citiesData from '../data/cities.json'
 import { ChevronRight, CheckCircle2 } from 'lucide-react'
+import { submitLead } from '../utils/leadsApi'
 
 const STEPS = ['Select Puja', 'Your Location', 'Your Details', 'Review & Pay']
 
@@ -38,6 +39,9 @@ export default function Booking() {
   const [step, setStep] = useState(1)
   const [formData, setFormData] = useState({})
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [sendError, setSendError] = useState('')
+  const [reference, setReference] = useState('')
 
   const { register: reg1, handleSubmit: hs1, formState: { errors: e1 } } = useForm({ resolver: zodResolver(step1Schema), defaultValues: formData })
   const { register: reg2, handleSubmit: hs2, formState: { errors: e2 } } = useForm({ resolver: zodResolver(step2Schema), defaultValues: formData })
@@ -46,9 +50,22 @@ export default function Booking() {
   const onStep1 = (data) => { setFormData(d => ({ ...d, ...data })); setStep(2) }
   const onStep2 = (data) => { setFormData(d => ({ ...d, ...data })); setStep(3) }
   const onStep3 = (data) => { setFormData(d => ({ ...d, ...data })); setStep(4) }
-  const onConfirm = () => {
-    console.log('Booking data:', formData)
-    setSubmitted(true)
+
+  const onConfirm = async () => {
+    setSendError('')
+    setSending(true)
+    try {
+      const res = await submitLead('booking', {
+        ...formData,
+        pujaName: selectedPuja?.name || '',
+      })
+      setReference(res.id || '')
+      setSubmitted(true)
+    } catch (err) {
+      setSendError(err.message)
+    } finally {
+      setSending(false)
+    }
   }
 
   const selectedPuja = servicesData.find(s => s.id === formData.pujaId)
@@ -70,14 +87,17 @@ export default function Booking() {
             <div style={{ textAlign: 'center', padding: '3rem' }}>
               <CheckCircle2 size={64} color="var(--gold)" style={{ margin: '0 auto 1.5rem' }} />
               <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '2.5rem', color: 'var(--text-primary)', marginBottom: '1rem' }}>
-                Booking Confirmed!
+                Request Received!
               </h2>
-              <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-body)', marginBottom: '0.5rem' }}>
-                Your puja has been booked. You'll receive a WhatsApp confirmation shortly.
+              <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-body)', marginBottom: '0.5rem', maxWidth: '460px' }}>
+                We&rsquo;ve received your booking request. Our team will call you shortly to
+                confirm the muhurat, assign your pandit and share payment details.
               </p>
-              <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-muted)', fontSize: '0.85rem', marginBottom: '2rem' }}>
-                Booking ID: PH{Math.floor(100000 + Math.random() * 900000)}
-              </p>
+              {reference && (
+                <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-muted)', fontSize: '0.85rem', marginBottom: '2rem' }}>
+                  Reference: {reference.slice(0, 8).toUpperCase()}
+                </p>
+              )}
               <Link to="/" className="btn-primary">Back to Home</Link>
             </div>
           </div>
@@ -290,12 +310,23 @@ export default function Booking() {
                   <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.78rem', color: 'var(--text-muted)', marginBottom: '1.25rem', lineHeight: 1.6 }}>
                     By confirming, you agree to our{' '}
                     <Link to="/terms-of-service" style={{ color: 'var(--maroon)' }}>Terms of Service</Link> and{' '}
-                    <Link to="/refund-policy" style={{ color: 'var(--maroon)' }}>Refund Policy</Link>. Payment will be processed by Razorpay.
+                    <Link to="/refund-policy" style={{ color: 'var(--maroon)' }}>Refund Policy</Link>. Our team
+                    will call you to confirm the muhurat and pandit, and share payment details &mdash; no payment is taken now.
                   </p>
+                  {sendError && (
+                    <p role="alert" style={{ fontFamily: 'var(--font-body)', fontSize: '0.85rem', color: 'var(--maroon)', marginBottom: '1rem', lineHeight: 1.6 }}>
+                      {sendError}
+                    </p>
+                  )}
                   <div style={{ display: 'flex', gap: '0.75rem' }}>
-                    <button onClick={() => setStep(3)} className="btn-secondary" style={{ flex: '0 0 auto' }}>← Edit</button>
-                    <button onClick={onConfirm} className="btn-primary" style={{ flex: 1, justifyContent: 'center' }}>
-                      🔒 Confirm &amp; Pay ₹{price.toLocaleString('en-IN')}
+                    <button onClick={() => setStep(3)} disabled={sending} className="btn-secondary" style={{ flex: '0 0 auto' }}>← Edit</button>
+                    <button
+                      onClick={onConfirm}
+                      disabled={sending}
+                      className="btn-primary"
+                      style={{ flex: 1, justifyContent: 'center', opacity: sending ? 0.7 : 1, cursor: sending ? 'wait' : 'pointer' }}
+                    >
+                      {sending ? 'Submitting…' : 'Request Booking'}
                     </button>
                   </div>
                 </div>

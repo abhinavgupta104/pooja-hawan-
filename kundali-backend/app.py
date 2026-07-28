@@ -22,6 +22,9 @@ from calculations.divisional import calculate_navamsa
 from calculations.ashtakavarga import calculate_ashtakavarga
 from calculations.panchang import calculate_panchang, calculate_avakhada_chakra
 from geo import GeocodingError, cache_stats, geocode, resolve_timezone
+from leads import LeadError, create_lead, delete_lead, list_leads, update_status
+from admin_auth import require_admin
+from notify import send_lead_alert
 
 # ---------------------------------------------------------------------------
 # Logging — JSON lines so Cloud Logging picks up severity and fields properly
@@ -65,8 +68,8 @@ if os.environ.get("ALLOW_LOCALHOST", "").lower() in ("1", "true", "yes"):
 CORS(
     app,
     resources={r"/api/*": {"origins": ALLOWED_ORIGINS}},
-    methods=["GET", "POST", "OPTIONS"],
-    allow_headers=["Content-Type"],
+    methods=["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
+    allow_headers=["Content-Type", "Authorization"],
     max_age=3600,
 )
 
@@ -391,6 +394,76 @@ def get_daily_panchang():
         return error("We couldn't calculate the panchang for that location.", 500)
 
     return jsonify({"status": "success", "data": panchang_data, "timezone": tz_name})
+
+
+# ---------------------------------------------------------------------------
+# Leads — public capture + admin review (Firebase Auth protected)
+# ---------------------------------------------------------------------------
+
+
+@app.route("/api/leads", methods=["POST"])
+def submit_lead():
+    """Public: capture a website enquiry/booking. Rate-limited by _guard()."""
+    payload = request.get_json(silent=True) or {}
+    try:
+        lead_id, record = create_lead(payload)
+    except LeadError as exc:
+        return error(str(exc), 400)
+    except Exception:
+        log.exception("Lead capture failed")
+        return error("We couldn't submit your request. Please call us instead.", 500)
+
+    send_lead_alert(record, lead_id)
+    return jsonify({"status": "success", "id": lead_id}), 201
+
+
+@app.route("/api/admin/leads", methods=["GET"])
+@require_admin
+def admin_list_leads():
+    try:
+        return jsonify(
+            {
+                "status": "success",
+                "leads": list_leads(
+                    lead_type=request.args.get("type"),
+                    status=request.args.get("status"),
+                    limit=int(request.args.get("limit", 200)),
+                ),
+            }
+        )
+    except ValueError:
+        return error("Invalid query parameter.", 400)
+    except Exception:
+        log.exception("Admin lead listing failed")
+        return error("Could not load leads.", 500)
+
+
+@app.route("/api/admin/leads/<lead_id>", methods=["PATCH"])
+@require_admin
+def admin_update_lead(lead_id):
+    payload = request.get_json(silent=True) or {}
+    try:
+        if not update_status(lead_id, str(payload.get("status", "")).lower()):
+            return error("Lead not found.", 404)
+    except LeadError as exc:
+        return error(str(exc), 400)
+    except Exception:
+        log.exception("Admin lead update failed")
+        return error("Could not update the lead.", 500)
+    return jsonify({"status": "success"})
+
+
+@app.route("/api/admin/leads/<lead_id>", methods=["DELETE"])
+@require_admin
+def admin_delete_lead(lead_id):
+    """Supports DPDP right-to-erasure requests."""
+    try:
+        if not delete_lead(lead_id):
+            return error("Lead not found.", 404)
+    except Exception:
+        log.exception("Admin lead delete failed")
+        return error("Could not delete the lead.", 500)
+    return jsonify({"status": "success"})
 
 
 if __name__ == "__main__":

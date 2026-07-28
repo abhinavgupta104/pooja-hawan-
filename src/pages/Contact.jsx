@@ -9,6 +9,7 @@ import Footer from '../components/layout/Footer'
 import WhatsAppFloat from '../components/layout/WhatsAppFloat'
 import SectionLabel from '../components/common/SectionLabel'
 import { Phone, Mail, Clock, MapPin, CheckCircle2 } from 'lucide-react'
+import { submitLead } from '../utils/leadsApi'
 
 const schema = z.object({
   name: z.string().min(2, 'Name required'),
@@ -20,11 +21,21 @@ const schema = z.object({
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [sendError, setSendError] = useState('')
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: zodResolver(schema) })
 
-  const onSubmit = (data) => {
-    console.log('Contact form:', data)
-    setSubmitted(true)
+  const onSubmit = async (data) => {
+    setSendError('')
+    setSending(true)
+    try {
+      await submitLead('contact', data)
+      setSubmitted(true)
+    } catch (err) {
+      setSendError(err.message)
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -89,8 +100,18 @@ export default function Contact() {
                     <textarea className="form-input" rows={5} {...register('message')} placeholder="How can we help you?" style={{ resize: 'vertical' }} />
                     {errors.message && <p style={{ color: 'var(--saffron)', fontSize: '0.78rem' }}>{errors.message.message}</p>}
                   </div>
-                  <button type="submit" className="btn-primary" style={{ alignSelf: 'flex-start', padding: '0.8rem 2rem' }}>
-                    Send Message
+                  {sendError && (
+                    <p role="alert" style={{ color: 'var(--maroon)', fontFamily: 'var(--font-body)', fontSize: '0.85rem', lineHeight: 1.6 }}>
+                      {sendError}
+                    </p>
+                  )}
+                  <button
+                    type="submit"
+                    className="btn-primary"
+                    disabled={sending}
+                    style={{ alignSelf: 'flex-start', padding: '0.8rem 2rem', opacity: sending ? 0.7 : 1, cursor: sending ? 'wait' : 'pointer' }}
+                  >
+                    {sending ? 'Sending…' : 'Send Message'}
                   </button>
                 </form>
               )}

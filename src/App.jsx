@@ -50,6 +50,7 @@ const TermsOfService      = lazyWithRetry(() => import('./pages/TermsOfService')
 const RefundPolicy        = lazyWithRetry(() => import('./pages/RefundPolicy'))
 const CookiePolicy        = lazyWithRetry(() => import('./pages/CookiePolicy'))
 const ResponsibleDisclosure = lazyWithRetry(() => import('./pages/ResponsibleDisclosure'))
+const Admin               = lazyWithRetry(() => import('./pages/Admin'))
 
 function LoadingSpinner() {
   return (
@@ -153,6 +154,9 @@ export default function App() {
             <Route path="/refund-policy"           element={<RefundPolicy />} />
             <Route path="/cookie-policy"           element={<CookiePolicy />} />
             <Route path="/responsible-disclosure"  element={<ResponsibleDisclosure />} />
+
+            {/* Internal — noindex, excluded from robots.txt and sitemap */}
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </Suspense>
       </RouteErrorBoundary>

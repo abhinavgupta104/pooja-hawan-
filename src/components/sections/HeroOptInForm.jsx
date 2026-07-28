@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { submitLead } from '../../utils/leadsApi'
 
 export default function HeroOptInForm() {
   // Consent must start UNCHECKED — DPDP Act s.6(1) requires a clear
@@ -11,15 +12,22 @@ export default function HeroOptInForm() {
   })
 
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Mock submission
-    setSubmitted(true)
-    setTimeout(() => {
-      setSubmitted(false)
+    setError('')
+    setSending(true)
+    try {
+      await submitLead('enquiry', formData)
+      setSubmitted(true)
       setFormData({ name: '', phone: '', interest: '', consent: false })
-    }, 4000)
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -43,7 +51,9 @@ export default function HeroOptInForm() {
       {submitted ? (
         <div style={{ padding: '2rem 1rem', textAlign: 'center', backgroundColor: 'var(--gold-bg)', borderRadius: '8px', border: '1px solid var(--border-gold)' }}>
           <p style={{ fontFamily: 'var(--font-heading)', fontSize: '1.2rem', color: 'var(--saffron)', marginBottom: '0.5rem' }}>🙏 Thank You!</p>
-          <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-body)', fontSize: '0.95rem' }}>Acharya Ji's team will contact you shortly.</p>
+          <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-body)', fontSize: '0.95rem' }}>
+            We&rsquo;ve received your request — our team will call you shortly.
+          </p>
         </div>
       ) : (
         <form onSubmit={handleSubmit}>
@@ -94,9 +104,10 @@ export default function HeroOptInForm() {
             <button
               type="submit"
               className="btn-primary"
-              style={{ height: '42px', padding: '0 1.5rem', whiteSpace: 'nowrap' }}
+              disabled={sending}
+              style={{ height: '42px', padding: '0 1.5rem', whiteSpace: 'nowrap', opacity: sending ? 0.7 : 1, cursor: sending ? 'wait' : 'pointer' }}
             >
-              Request Callback
+              {sending ? 'Sending…' : 'Request Callback'}
             </button>
           </div>
 
@@ -109,9 +120,15 @@ export default function HeroOptInForm() {
               style={{ accentColor: 'var(--maroon)', cursor: 'pointer', width: '16px', height: '16px' }}
             />
             <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-              I agree to receive communication from Puja Hawan via RCS, SMS, WhatsApp, Email, or Call. I understand I can opt out anytime.
+              I agree to receive communication from Puja Havan via RCS, SMS, WhatsApp, Email, or Call. I understand I can opt out anytime.
             </span>
           </label>
+
+          {error && (
+            <p role="alert" style={{ marginTop: '0.75rem', fontFamily: 'var(--font-body)', fontSize: '0.8rem', color: 'var(--maroon)', lineHeight: 1.5 }}>
+              {error}
+            </p>
+          )}
         </form>
       )}
 
