@@ -7,6 +7,11 @@
    CSS CUSTOM PROPERTIES — SACRED LUXURY PALETTE v2
    ═══════════════════════════════════════════════ */
 :root {
+  /* Layout — the fixed navbar's height. Pages offset their content by this,
+     and the Panchang sub-bar sticks to it, so it is defined once here. */
+  --nav-h:          84px;
+  --nav-logo-h:     64px;
+
   /* Backgrounds */
   --bg-page:        #FAF5EC;
   --bg-section-alt: #F3EBDB;
@@ -1447,5 +1452,14 @@ img, svg, video, canvas {
   [style*="grid-template-columns: 1fr 1fr"]:not(.keep-columns),
   [style*="grid-template-columns: 1.2fr 1fr"]:not(.keep-columns) {
     grid-template-columns: 1fr !important;
+  }
+}
+
+/* Navbar sizing — one place controls the bar height, the logo, and every
+   page's top offset (see --nav-h in :root). */
+@media (max-width: 768px) {
+  :root {
+    --nav-h:      72px;
+    --nav-logo-h: 52px;
   }
 }

@@ -23,7 +23,7 @@ export default function EPuja() {
         ])}
       />
       <Navbar />
-      <main style={{ paddingTop: '68px', backgroundColor: 'var(--bg-page)', minHeight: '100vh' }}>
+      <main style={{ paddingTop: 'var(--nav-h)', backgroundColor: 'var(--bg-page)', minHeight: '100vh' }}>
         {/* Hero */}
         <div style={{ backgroundColor: 'var(--maroon)', padding: '5rem 0', textAlign: 'center' }}>
           <div className="container-max">

@@ -36,7 +36,7 @@ export default function Pandits() {
         ])}
       />
       <Navbar />
-      <main style={{ paddingTop: '68px', minHeight: '100vh', backgroundColor: 'var(--bg-page)' }}>
+      <main style={{ paddingTop: 'var(--nav-h)', minHeight: '100vh', backgroundColor: 'var(--bg-page)' }}>
         {/* Header */}
         <div style={{ backgroundColor: 'var(--bg-section-alt)', padding: '4rem 0', borderBottom: '1px solid var(--border)' }}>
           <div className="container-max">

@@ -299,7 +299,7 @@ export default function Panchang() {
         ])}
       />
       <Navbar />
-      <main style={{ paddingTop: '68px', backgroundColor: 'var(--bg-page)', minHeight: '100vh' }}>
+      <main style={{ paddingTop: 'var(--nav-h)', backgroundColor: 'var(--bg-page)', minHeight: '100vh' }}>
         {/* Hero Section */}
         <div style={{ 
           background: 'linear-gradient(to bottom, var(--gold-bg), var(--bg-page))', 
@@ -464,7 +464,7 @@ export default function Panchang() {
         </div>
 
         {/* Tabs Navigation */}
-        <div style={{ background: 'white', borderBottom: '1px solid var(--border)', position: 'sticky', top: '68px', zIndex: 10 }}>
+        <div style={{ background: 'white', borderBottom: '1px solid var(--border)', position: 'sticky', top: 'var(--nav-h)', zIndex: 10 }}>
           <div className="container-max" style={{ display: 'flex', gap: '3rem', padding: '0 2rem' }}>
             {[
               { id: 'panchang', label: 'Basics & Muhurat' },

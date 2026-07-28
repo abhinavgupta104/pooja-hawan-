@@ -169,7 +169,7 @@ export default function Kundali() {
         ])}
       />
       <Navbar />
-      <main style={{ paddingTop:68, background:'var(--bg-page)', minHeight:'100vh' }}>
+      <main style={{ paddingTop:'var(--nav-h)', background:'var(--bg-page)', minHeight:'100vh' }}>
         {/* Hero */}
         <div style={{ background:'var(--gold-bg)', padding:'3.5rem 0', borderBottom:'1px solid var(--border)' }}>
           <div className="container-max">

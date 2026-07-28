@@ -29,7 +29,7 @@ export default function About() {
         ])}
       />
       <Navbar />
-      <main style={{ paddingTop: '68px', backgroundColor: 'var(--bg-page)', minHeight: '100vh' }}>
+      <main style={{ paddingTop: 'var(--nav-h)', backgroundColor: 'var(--bg-page)', minHeight: '100vh' }}>
         {/* Hero */}
         <div style={{ backgroundColor: 'var(--bg-section-alt)', padding: '5rem 0', borderBottom: '1px solid var(--border)' }}>
           <div className="container-max" style={{ maxWidth: '720px' }}>

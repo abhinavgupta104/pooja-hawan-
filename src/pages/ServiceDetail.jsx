@@ -51,7 +51,7 @@ export default function ServiceDetail() {
           noindex
         />
         <Navbar />
-        <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '68px' }}>
+        <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: 'var(--nav-h)' }}>
           <div style={{ textAlign: 'center' }}>
             <p style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', color: 'var(--maroon)', marginBottom: '1rem' }}>
               Puja not found
@@ -100,7 +100,7 @@ export default function ServiceDetail() {
           .service-hero-poster { order: -1; max-width: 400px !important; }
         }
       `}</style>
-      <main style={{ paddingTop: '68px', backgroundColor: 'var(--bg-page)' }}>
+      <main style={{ paddingTop: 'var(--nav-h)', backgroundColor: 'var(--bg-page)' }}>
         {/* Hero */}
         <div style={{ backgroundColor: 'var(--bg-section-alt)', padding: '4rem 0', borderBottom: '1px solid var(--border)' }}>
           <div className="container-max">

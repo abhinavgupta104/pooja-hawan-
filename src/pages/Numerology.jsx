@@ -156,7 +156,7 @@ export default function Numerology() {
         ])}
       />
       <Navbar />
-      <main style={{ paddingTop: '68px', backgroundColor: 'var(--bg-page)', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <main style={{ paddingTop: 'var(--nav-h)', backgroundColor: 'var(--bg-page)', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         <div style={{ backgroundColor: 'var(--gold-bg)', padding: '4rem 0', borderBottom: '1px solid var(--border)' }}>
           <div className="container-max">
             <SectionLabel>VEDIC ASTROLOGY</SectionLabel>

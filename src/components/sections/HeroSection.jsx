@@ -93,7 +93,7 @@ export default function HeroSection() {
       style={{
         position: 'relative',
         overflow: 'hidden',
-        paddingTop: '110px',
+        paddingTop: 'calc(var(--nav-h) + 42px)',
         paddingBottom: '5rem',
         minHeight: '100vh',
         display: 'flex',
@@ -429,14 +429,14 @@ export default function HeroSection() {
         }
         @media (max-width: 768px) {
           #hero {
-            padding-top: 88px !important;
+            padding-top: calc(var(--nav-h) + 20px) !important;
             padding-bottom: 3rem !important;
             min-height: auto !important;
           }
         }
         @media (max-width: 480px) {
           #hero {
-            padding-top: 78px !important;
+            padding-top: calc(var(--nav-h) + 14px) !important;
             padding-bottom: 2.5rem !important;
           }
         }

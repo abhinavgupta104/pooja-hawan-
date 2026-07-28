@@ -81,7 +81,7 @@ export default function Booking() {
         ])}
       />
       <Navbar />
-      <main style={{ paddingTop: '68px', minHeight: '100vh', backgroundColor: 'var(--bg-page)' }}>
+      <main style={{ paddingTop: 'var(--nav-h)', minHeight: '100vh', backgroundColor: 'var(--bg-page)' }}>
         {submitted ? (
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '70vh' }}>
             <div style={{ textAlign: 'center', padding: '3rem' }}>

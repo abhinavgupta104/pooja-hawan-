@@ -23,7 +23,7 @@ export default function PanditProfile() {
           noindex
         />
         <Navbar />
-        <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '68px' }}>
+        <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: 'var(--nav-h)' }}>
           <div style={{ textAlign: 'center' }}>
             <p style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', color: 'var(--maroon)', marginBottom: '1rem' }}>Pandit not found</p>
             <Link to="/pandits" className="btn-primary">View All Pandits</Link>
@@ -80,7 +80,7 @@ export default function PanditProfile() {
         jsonLd={panditJsonLd}
       />
       <Navbar />
-      <main style={{ paddingTop: '68px', backgroundColor: 'var(--bg-page)', minHeight: '100vh' }}>
+      <main style={{ paddingTop: 'var(--nav-h)', backgroundColor: 'var(--bg-page)', minHeight: '100vh' }}>
         {/* Profile hero */}
         <div style={{ backgroundColor: 'var(--bg-section-alt)', padding: '4rem 0', borderBottom: '1px solid var(--border)' }}>
           <div className="container-max">

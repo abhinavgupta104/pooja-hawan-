@@ -98,7 +98,7 @@ export default function Navbar() {
           boxShadow: scrolled ? 'var(--shadow-warm)' : 'none',
         }}
       >
-        <div className="container-max" style={{ display: 'flex', alignItems: 'center', height: '68px', gap: '1.5rem' }}>
+        <div className="container-max" style={{ display: 'flex', alignItems: 'center', height: 'var(--nav-h)', gap: '1.5rem' }}>
           {/* Brand Logo */}
           <Link
             to="/"
@@ -114,7 +114,7 @@ export default function Navbar() {
               src={logo}
               alt="Puja Havan Logo"
               style={{
-                height: '48px',
+                height: 'var(--nav-logo-h)',
                 width: 'auto',
                 objectFit: 'contain',
                 display: 'block',
@@ -428,7 +428,7 @@ export default function Navbar() {
         <div className="mobile-sheet-panel" style={{ display: 'block' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem' }}>
             <Link to="/" onClick={() => setMobileOpen(false)} aria-label="Puja Havan — Home">
-              <img src={logo} alt="Puja Havan" style={{ height: '44px', width: 'auto', objectFit: 'contain' }} />
+              <img src={logo} alt="Puja Havan" style={{ height: 'var(--nav-logo-h)', width: 'auto', objectFit: 'contain' }} />
             </Link>
             <button
               onClick={() => setMobileOpen(false)}

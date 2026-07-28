@@ -11,7 +11,7 @@ export default function ComingSoon() {
       <Seo {...PAGES['e-puja']} noindex />
       <Navbar />
       <main style={{ 
-        paddingTop: '68px', 
+        paddingTop: 'var(--nav-h)', 
         minHeight: '80vh', 
         display: 'flex', 
         alignItems: 'center', 

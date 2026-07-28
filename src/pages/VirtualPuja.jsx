@@ -19,7 +19,7 @@ export default function VirtualPuja() {
         ])}
       />
       <Navbar />
-      <main style={{ paddingTop: '68px', backgroundColor: 'var(--bg-page)', minHeight: '100vh' }}>
+      <main style={{ paddingTop: 'var(--nav-h)', backgroundColor: 'var(--bg-page)', minHeight: '100vh' }}>
         {/* Hero Section */}
         <section style={{ 
           background: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url(${virtualBg})`,
