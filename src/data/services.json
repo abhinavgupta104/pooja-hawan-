@@ -408,7 +408,8 @@
       "Daily",
       "Path"
     ],
-    "image": "/images/gods/hanuman.png"
+    "image": "/images/gods/hanuman.png",
+    "poster": "/images/poojas/sundarkand-path.jpg"
   },
   {
     "id": "office-opening-puja",
