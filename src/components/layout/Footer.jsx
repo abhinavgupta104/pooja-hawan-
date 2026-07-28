@@ -266,8 +266,8 @@ export default function Footer() {
             <a href="tel:+919670955055" className="footer-link" style={{ display: 'flex', alignItems: 'center', gap: '0.7rem', color: 'rgba(248, 239, 220, 0.7)', textDecoration: 'none', fontSize: '0.93rem', transition: 'color 0.25s ease' }}>
               <Phone size={15} color="var(--gold-muted)" /> +91 96709 55055
             </a>
-            <a href="mailto:support@pujahavan.com" className="footer-link" style={{ display: 'flex', alignItems: 'center', gap: '0.7rem', color: 'rgba(248, 239, 220, 0.7)', textDecoration: 'none', fontSize: '0.93rem', transition: 'color 0.25s ease' }}>
-              <Mail size={15} color="var(--gold-muted)" /> support@pujahavan.com
+            <a href="mailto:support@poojahawan.com" className="footer-link" style={{ display: 'flex', alignItems: 'center', gap: '0.7rem', color: 'rgba(248, 239, 220, 0.7)', textDecoration: 'none', fontSize: '0.93rem', transition: 'color 0.25s ease' }}>
+              <Mail size={15} color="var(--gold-muted)" /> support@poojahawan.com
             </a>
             <p style={{ display: 'flex', alignItems: 'center', gap: '0.7rem', fontSize: '0.9rem', color: 'rgba(248, 239, 220, 0.5)', margin: 0 }}>
               <Clock size={15} color="var(--gold-muted)" /> Mon–Sun, 6:00 AM – 10:00 PM

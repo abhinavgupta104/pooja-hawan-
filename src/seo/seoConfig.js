@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────
 
 /** Canonical production origin — no trailing slash. */
-export const SITE_URL = 'https://pujahavan.com'
+export const SITE_URL = 'https://poojahawan.com'
 
 export const SITE = {
   name: 'Puja Havan',
@@ -17,7 +17,7 @@ export const SITE = {
   locale: 'en_IN',
   themeColor: '#7B1C1C',
   phone: '+91-96709-55055',
-  email: 'support@pujahavan.com',
+  email: 'support@poojahawan.com',
   foundingLocation: 'India',
   sameAs: [
     // Add real profile URLs when available — these strengthen the Knowledge Graph.
@@ -36,12 +36,12 @@ export const LAST_UPDATED = '19 July 2026'
  */
 export const LEGAL_ENTITY = {
   brand: 'Puja Havan',
-  domain: 'pujahavan.com',
+  domain: 'poojahawan.com',
   name: 'NucleusAi Automation Private Limited',
   shortName: 'NucleusAi Automation',
   address:
     'Unit 603-604, 6th Floor, Tower B, Bhutani Alphathum, Sector 90, NEPZ Post Office, Noida, Gautam Buddha Nagar 201305, Uttar Pradesh, India',
-  email: 'support@pujahavan.com',
+  email: 'support@poojahawan.com',
   phoneDisplay: '+91 96709 55055',
   phoneHref: '+919670955055',
   jurisdiction: 'Gautam Buddha Nagar, Uttar Pradesh',
@@ -175,7 +175,7 @@ export const PAGES = {
     path: '/contact',
     title: 'Contact Puja Havan — Support & Booking Help',
     description:
-      'Get in touch with Puja Havan for booking help, custom pujas or support. Call +91 96709 55055 or email support@pujahavan.com. We’re here 6 AM–10 PM daily.',
+      'Get in touch with Puja Havan for booking help, custom pujas or support. Call +91 96709 55055 or email support@poojahawan.com. We’re here 6 AM–10 PM daily.',
     keywords: 'contact puja havan, puja booking support, customer care',
   },
   'privacy-policy': {

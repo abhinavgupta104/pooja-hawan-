@@ -27,7 +27,7 @@ log = logging.getLogger(__name__)
 # a contact address. Override via env var if the support address changes.
 _USER_AGENT = os.environ.get(
     "GEOCODER_USER_AGENT",
-    "PujaHavan-Kundali/1.0 (+https://pujahavan.com; support@pujahavan.com)",
+    "PujaHavan-Kundali/1.0 (+https://poojahawan.com; support@poojahawan.com)",
 )
 
 _nominatim = Nominatim(user_agent=_USER_AGENT, timeout=8)

@@ -125,7 +125,7 @@ export default function Contact() {
                 </p>
                 {[
                   { icon: Phone, text: '+91 96709 55055', sub: 'Mon–Sun, 6 AM – 10 PM', href: 'tel:+919670955055' },
-                  { icon: Mail, text: 'support@pujahavan.com', sub: 'We respond within 24 hours', href: 'mailto:support@pujahavan.com' },
+                  { icon: Mail, text: 'support@poojahawan.com', sub: 'We respond within 24 hours', href: 'mailto:support@poojahawan.com' },
                   { icon: MapPin, text: 'Unit 603-604, 6th Floor, Tower B, Bhutani Alphathum, Sector 90, Noida, Gautam Buddha Nagar 201305, Uttar Pradesh', sub: 'NucleusAi Automation Pvt. Ltd. — Registered Office' },
                   { icon: Clock, text: '6:00 AM – 10:00 PM', sub: 'All days including holidays' },
                 ].map(({ icon: Icon, text, sub, href }) => (

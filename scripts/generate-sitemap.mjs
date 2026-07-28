@@ -10,7 +10,7 @@ import { dirname, resolve } from 'node:path'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '..')
-const SITE_URL = 'https://pujahavan.com'
+const SITE_URL = 'https://poojahawan.com'
 const today = new Date().toISOString().split('T')[0]
 
 const xmlEscape = (s = '') =>

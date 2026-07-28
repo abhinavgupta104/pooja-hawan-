@@ -11,7 +11,7 @@
   # Force HTTPS + non-www (canonical host). Comment out if not desired.
   RewriteCond %{HTTPS} off [OR]
   RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-  RewriteRule ^ https://pujahavan.com%{REQUEST_URI} [L,R=301]
+  RewriteRule ^ https://poojahawan.com%{REQUEST_URI} [L,R=301]
 
   # Never SPA-fallback for build assets: a missing hashed chunk must 404
   # (returning index.html as JS breaks stale tabs silently).

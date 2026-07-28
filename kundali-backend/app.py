@@ -58,7 +58,7 @@ app.config["MAX_CONTENT_LENGTH"] = 16 * 1024  # 16 KB is ample for our payloads
 # CORS — restricted to our own origins. Previously CORS(app) reflected any
 # Origin, which let any site on the internet use this API.
 # ---------------------------------------------------------------------------
-_default_origins = "https://pujahavan.com,https://www.pujahavan.com"
+_default_origins = "https://poojahawan.com,https://www.poojahawan.com"
 ALLOWED_ORIGINS = [
     o.strip() for o in os.environ.get("ALLOWED_ORIGINS", _default_origins).split(",") if o.strip()
 ]

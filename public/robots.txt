@@ -8,4 +8,4 @@ Allow: /
 # Internal admin area — not for indexing
 Disallow: /admin
 
-Sitemap: https://pujahavan.com/sitemap.xml
+Sitemap: https://poojahawan.com/sitemap.xml
