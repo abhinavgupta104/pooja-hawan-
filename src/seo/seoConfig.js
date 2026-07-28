@@ -9,7 +9,7 @@ export const SITE_URL = 'https://pujahavan.com'
 
 export const SITE = {
   name: 'Puja Havan',
-  legalName: 'NUCLEUSAI Automation Private Limited',
+  legalName: 'NucleusAi Automation Private Limited',
   url: SITE_URL,
   // Default social share image (absolute URL required by OG/Twitter).
   defaultImage: `${SITE_URL}/logo.png`,
@@ -37,8 +37,8 @@ export const LAST_UPDATED = '19 July 2026'
 export const LEGAL_ENTITY = {
   brand: 'Puja Havan',
   domain: 'pujahavan.com',
-  name: 'NUCLEUSAI Automation Private Limited',
-  shortName: 'NUCLEUSAI Automation',
+  name: 'NucleusAi Automation Private Limited',
+  shortName: 'NucleusAi Automation',
   address:
     'Unit 603-604, 6th Floor, Tower B, Bhutani Alphathum, Sector 90, NEPZ Post Office, Noida, Gautam Buddha Nagar 201305, Uttar Pradesh, India',
   email: 'support@pujahavan.com',
@@ -50,7 +50,7 @@ export const LEGAL_ENTITY = {
 /** Registered office — powers LocalBusiness structured data. */
 export const OFFICES = [
   {
-    name: 'NUCLEUSAI Automation Private Limited',
+    name: 'NucleusAi Automation Private Limited',
     streetAddress: 'Unit 603-604, 6th Floor, Tower B, Bhutani Alphathum, Sector 90, NEPZ Post Office',
     addressLocality: 'Noida',
     addressRegion: 'Uttar Pradesh',
@@ -189,7 +189,7 @@ export const PAGES = {
     path: '/privacy-policy',
     title: 'Privacy Policy | Puja Havan',
     description:
-      'How NUCLEUSAI Automation Private Limited collects, uses, stores and protects your personal data on Puja Havan, and the rights you have over it.',
+      'How NucleusAi Automation Private Limited collects, uses, stores and protects your personal data on Puja Havan, and the rights you have over it.',
     keywords: 'privacy policy, data protection, puja havan privacy',
   },
   'terms-of-service': {

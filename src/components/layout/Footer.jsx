@@ -56,7 +56,7 @@ const OFFICES = [
   {
     label: 'Registered Office',
     lines: [
-      'NUCLEUSAI Automation Pvt. Ltd.',
+      'NucleusAi Automation Pvt. Ltd.',
       'Unit 603-604, 6th Floor, Tower B, Bhutani Alphathum',
       'Sector 90, NEPZ Post Office, Noida',
       'Gautam Buddha Nagar 201305, Uttar Pradesh',

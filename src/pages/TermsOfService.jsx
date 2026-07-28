@@ -8,7 +8,7 @@ export default function TermsOfService() {
     <LegalPage
       eyebrow="LEGAL"
       title="Terms of Service"
-      intro="These terms form the agreement between you and NUCLEUSAI Automation Private Limited when you use Puja Havan to book pandits, order samagri or use our astrology tools."
+      intro="These terms form the agreement between you and NucleusAi Automation Private Limited when you use Puja Havan to book pandits, order samagri or use our astrology tools."
       lastUpdated={LAST_UPDATED}
       seo={PAGES['terms-of-service']}
     >

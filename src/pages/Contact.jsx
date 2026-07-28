@@ -105,7 +105,7 @@ export default function Contact() {
                 {[
                   { icon: Phone, text: '+91 96709 55055', sub: 'Mon–Sun, 6 AM – 10 PM', href: 'tel:+919670955055' },
                   { icon: Mail, text: 'support@pujahavan.com', sub: 'We respond within 24 hours', href: 'mailto:support@pujahavan.com' },
-                  { icon: MapPin, text: 'Unit 603-604, 6th Floor, Tower B, Bhutani Alphathum, Sector 90, Noida, Gautam Buddha Nagar 201305, Uttar Pradesh', sub: 'NUCLEUSAI Automation Pvt. Ltd. — Registered Office' },
+                  { icon: MapPin, text: 'Unit 603-604, 6th Floor, Tower B, Bhutani Alphathum, Sector 90, Noida, Gautam Buddha Nagar 201305, Uttar Pradesh', sub: 'NucleusAi Automation Pvt. Ltd. — Registered Office' },
                   { icon: Clock, text: '6:00 AM – 10:00 PM', sub: 'All days including holidays' },
                 ].map(({ icon: Icon, text, sub, href }) => (
                   <div key={text} style={{ display: 'flex', gap: '0.9rem', marginBottom: '1rem' }}>
@@ -166,7 +166,7 @@ export default function Contact() {
               }}>
                 <div>
                   <p style={{ fontWeight: 600, color: 'var(--maroon)', fontSize: '0.85rem' }}>REGISTERED OFFICE</p>
-                  📍 NUCLEUSAI Automation Pvt. Ltd.<br />
+                  📍 NucleusAi Automation Pvt. Ltd.<br />
                   Unit 603-604, 6th Floor, Tower B, Bhutani Alphathum,<br />
                   Sector 90, NEPZ Post Office, Noida,<br />
                   Gautam Buddha Nagar 201305, Uttar Pradesh
