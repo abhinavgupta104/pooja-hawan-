@@ -474,67 +474,6 @@
     "poster": "/images/poojas/birthday-puja.jpg"
   },
   {
-    "id": "durga-puja",
-    "slug": "durga-puja",
-    "name": "Durga Puja",
-    "hindiName": "दुर्गा पूजा",
-    "category": "Festival",
-    "icon": "Flame",
-    "description": "Grand worship of Goddess Durga with Saptashati path, invoking the divine mother for protection, strength, and victory over evil.",
-    "shortDesc": "Invoke Goddess Durga for strength and protection",
-    "duration": "4-5 hours",
-    "startingPrice": 2501,
-    "includes": [
-      "Saptashati recitation",
-      "Kumkum archana",
-      "Red flowers",
-      "Complete samagri"
-    ],
-    "benefits": [
-      "Divine protection",
-      "Victory over enemies",
-      "Inner strength",
-      "Removal of fears"
-    ],
-    "featured": false,
-    "mostBooked": true,
-    "tags": [
-      "Festival"
-    ],
-    "image": "/images/gods/durga.png"
-  },
-  {
-    "id": "saraswati-puja",
-    "slug": "saraswati-puja",
-    "name": "Saraswati Puja",
-    "hindiName": "सरस्वती पूजा",
-    "category": "Festival",
-    "icon": "BookOpen",
-    "description": "Worship of Goddess Saraswati, the deity of knowledge, wisdom, and arts, especially auspicious during Vasant Panchami.",
-    "shortDesc": "Blessings of Goddess Saraswati for education",
-    "duration": "2-3 hours",
-    "startingPrice": 1501,
-    "includes": [
-      "White flowers",
-      "Books offering",
-      "Musical instruments",
-      "White prasad"
-    ],
-    "benefits": [
-      "Academic success",
-      "Artistic talent",
-      "Speech improvement",
-      "Wisdom"
-    ],
-    "featured": false,
-    "mostBooked": false,
-    "tags": [
-      "Festival",
-      "Education"
-    ],
-    "image": "/images/gods/saraswati.png"
-  },
-  {
     "id": "diwali-puja",
     "slug": "diwali-puja",
     "name": "Diwali Puja",

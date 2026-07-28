@@ -11,7 +11,7 @@ import SectionLabel from '../components/common/SectionLabel'
 import { CheckCircle2, Upload } from 'lucide-react'
 
 const LANGUAGES = ['Hindi', 'Tamil', 'Telugu', 'Kannada', 'Marathi', 'Bengali', 'Gujarati', 'Bihari', 'Maithil', 'Sanskrit', 'Oriya']
-const SPECIALIZATIONS = ['Satyanarayan Puja', 'Griha Pravesh', 'Ganesh Puja', 'Rudrabhishek', 'Navgraha Havan', 'Lakshmi Puja', 'Vivah Puja', 'Vastu Shanti', 'Kaal Sarp Dosh', 'Pitru Dosh Nivaran', 'Durga Puja', 'All Ceremonies']
+const SPECIALIZATIONS = ['Satyanarayan Puja', 'Griha Pravesh', 'Ganesh Puja', 'Rudrabhishek', 'Navgraha Havan', 'Lakshmi Puja', 'Vivah Puja', 'Vastu Shanti', 'Kaal Sarp Dosh', 'Pitru Dosh Nivaran', 'Mahamrityunjay Jaap', 'All Ceremonies']
 const CITIES_LIST = ['Delhi', 'Mumbai', 'Bangalore', 'Chennai', 'Hyderabad', 'Pune', 'Ahmedabad', 'Kolkata', 'Jaipur', 'Lucknow', 'Patna', 'Varanasi']
 
 const schema = z.object({

@@ -9,7 +9,7 @@ import servicesData from '../data/services.json'
 import { Globe, Smartphone, Package, Video, CheckCircle2 } from 'lucide-react'
 
 const EPUJA_SERVICES = servicesData.filter(s =>
-  ['Satyanarayan Puja', 'Lakshmi Puja', 'Ganesh Puja', 'Durga Puja', 'Rudrabhishek', 'Mahamrityunjay Jaap', 'Sundarkand Path'].includes(s.name)
+  ['Satyanarayan Puja', 'Lakshmi Puja', 'Ganesh Puja', 'Rudrabhishek', 'Mahamrityunjay Jaap', 'Sundarkand Path'].includes(s.name)
 )
 
 export default function EPuja() {

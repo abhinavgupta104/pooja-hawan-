@@ -55,17 +55,6 @@
     "date": "March 2026"
   },
   {
-    "id": 6,
-    "name": "Deepak Chatterjee",
-    "profession": "Architect",
-    "city": "Kolkata",
-    "rating": 5,
-    "review": "Booked Pandit Krishnagopal for our Durga Puja at home. The pandal decoration guidance, proper Navapatra ritual with all 9 plants, and his melodious recitation of Chandi Path created an atmosphere that felt exactly like going to a traditional Bengal puja. His deep knowledge of Bengali traditions is unmatched on any platform.",
-    "platform": "Google",
-    "photoInitials": "DC",
-    "date": "October 2025"
-  },
-  {
     "id": 7,
     "name": "Meera Patel",
     "profession": "Teacher",
@@ -75,16 +64,5 @@
     "platform": "Google",
     "photoInitials": "MP",
     "date": "November 2025"
-  },
-  {
-    "id": 8,
-    "name": "Arjun Reddy",
-    "profession": "IIT Graduate Student",
-    "city": "Hyderabad",
-    "rating": 4,
-    "review": "Used Puja Havan for Saraswati Puja before my entrance exams. Pandit Narayana Iyer performed the puja beautifully in Telugu and explained the significance of each ritual. Very knowledgeable and approachable. The booking process through the app was seamless — even got the muhurat timing verified. Highly recommend!",
-    "platform": "Trustpilot",
-    "photoInitials": "AR",
-    "date": "January 2026"
   }
 ]

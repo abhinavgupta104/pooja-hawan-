@@ -15,7 +15,7 @@
     "hindiName": "वसंत पंचमी",
     "hinduMonth": "Magh",
     "description": "Day of Goddess Saraswati. Students worship books and instruments and seek blessings for knowledge.",
-    "suggestedPuja": "saraswati-puja"
+    "suggestedPuja": "satyanarayan-puja"
   },
   {
     "id": 3,
@@ -105,7 +105,7 @@
     "hindiName": "गुरु पूर्णिमा",
     "hinduMonth": "Ashadha",
     "description": "Day to express gratitude to teachers and spiritual gurus. Worship of Veda Vyasa.",
-    "suggestedPuja": "saraswati-puja"
+    "suggestedPuja": "satyanarayan-puja"
   },
   {
     "id": 13,
@@ -168,7 +168,7 @@
     "hindiName": "शारदीय नवरात्रि",
     "hinduMonth": "Ashwin",
     "description": "Nine nights of Goddess Durga worship with fasting, dandiya dance, and elaborate decorations.",
-    "suggestedPuja": "durga-puja"
+    "suggestedPuja": "satyanarayan-puja"
   },
   {
     "id": 20,
@@ -177,7 +177,7 @@
     "hindiName": "दशहरा",
     "hinduMonth": "Ashwin",
     "description": "Celebration of Rama's victory over Ravana. Burning of Ravana effigy and Ayudha Puja.",
-    "suggestedPuja": "durga-puja"
+    "suggestedPuja": "sundarkand-path"
   },
   {
     "id": 21,

@@ -10,7 +10,7 @@ import panditsData from '../data/pandits.json'
 import citiesData from '../data/cities.json'
 
 const ALL_LANGUAGES = ['All', 'Hindi', 'Tamil', 'Telugu', 'Kannada', 'Marathi', 'Bengali', 'Gujarati', 'Bihari', 'Maithil']
-const ALL_SPECS = ['All', 'Satyanarayan Puja', 'Griha Pravesh', 'Rudrabhishek', 'Durga Puja', 'Kaal Sarp Dosh', 'Vivah Puja']
+const ALL_SPECS = ['All', 'Satyanarayan Puja', 'Griha Pravesh', 'Rudrabhishek', 'Navgraha Havan', 'Kaal Sarp Dosh', 'Vivah Puja']
 
 export default function Pandits() {
   const [filterCity, setFilterCity] = useState('All')

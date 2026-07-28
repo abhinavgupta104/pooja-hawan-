@@ -319,7 +319,7 @@ export default function Footer() {
           <p style={{ fontSize: '0.83rem', color: 'rgba(248, 239, 220, 0.35)', margin: 0, lineHeight: 1.7 }}>
             © {new Date().getFullYear()} Puja Havan. All rights reserved. &nbsp;·&nbsp; Crafted with 🪔 in India
             <br />
-            A brand of <strong style={{ color: 'rgba(248, 239, 220, 0.5)', fontWeight: 600 }}>NUCLEUSAI Automation Private Limited</strong>
+            A brand of <strong style={{ color: 'rgba(248, 239, 220, 0.5)', fontWeight: 600 }}>NucleusAi Automation Pvt. Ltd.</strong>
           </p>
           <div className="footer-bottom-links" style={{ display: 'flex', gap: '1.75rem', alignItems: 'center', flexWrap: 'wrap' }}>
             {[
