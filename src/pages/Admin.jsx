@@ -52,6 +52,7 @@ export default function Admin() {
   const [password, setPassword] = useState('')
   const [authError, setAuthError] = useState('')
   const [signingIn, setSigningIn] = useState(false)
+  const [resetNotice, setResetNotice] = useState('')
 
   const [leads, setLeads] = useState([])
   const [loading, setLoading] = useState(false)
@@ -111,6 +112,26 @@ export default function Admin() {
     } finally {
       setSigningIn(false)
     }
+  }
+
+  const sendReset = async () => {
+    setAuthError('')
+    setResetNotice('')
+    if (!email.trim()) {
+      setAuthError('Enter your email address first, then click “Forgot password?”.')
+      return
+    }
+    try {
+      const { auth, sendPasswordResetEmail } = await getFirebaseAuth()
+      await sendPasswordResetEmail(auth, email.trim())
+    } catch {
+      /* ignore — the notice below is deliberately the same either way */
+    }
+    // Always show the same message so this can't be used to discover which
+    // email addresses have accounts.
+    setResetNotice(
+      'If that email has an account, a password reset link is on its way. Check your inbox and spam folder.',
+    )
   }
 
   const signOutNow = async () => {
@@ -218,8 +239,20 @@ export default function Admin() {
                 {authError}
               </p>
             )}
+            {resetNotice && (
+              <p role="status" style={{ color: 'var(--text-gold)', fontSize: '0.85rem', fontFamily: 'var(--font-body)', lineHeight: 1.6 }}>
+                {resetNotice}
+              </p>
+            )}
             <button type="submit" className="btn-primary" disabled={signingIn} style={{ justifyContent: 'center', cursor: signingIn ? 'wait' : 'pointer' }}>
               {signingIn ? 'Signing in…' : 'Sign In'}
+            </button>
+            <button
+              type="button"
+              onClick={sendReset}
+              style={{ background: 'none', border: 'none', color: 'var(--text-muted)', fontFamily: 'var(--font-body)', fontSize: '0.82rem', textDecoration: 'underline', cursor: 'pointer', padding: 0, alignSelf: 'center' }}
+            >
+              Forgot password?
             </button>
           </form>
         </Shell>
